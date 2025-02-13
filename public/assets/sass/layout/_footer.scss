@@ -1,0 +1,80 @@
+
+/* ============= Footer Start Here ======================= */
+.footer {
+    margin-block-start: auto;
+    background-color: #d6d6d6;
+    &-item-wrapper {
+        gap: clampCal(32, 44, 1199, 1899);
+    }
+    &-item-two-wrapper {
+        gap: clampCal(32, 90, 1199, 1899);
+    }
+    &-item {
+        &__logo {
+            margin-block-end: 20px;
+            a {
+                img {
+                    width: 100%;
+                    height: 100%;
+                    max-width: 190px;
+                    max-height: 64px;
+                }
+            }
+        }
+    }
+    p{
+        font-size: 14px;
+        color: #000000 !important;
+    }
+}
+
+.body-bottom-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+.bottom-footer{
+    background-color: #161616;
+    border-top: 1px solid#fff;
+}
+.footer-item__title{
+    color: #000000;
+}
+ul.footer-menu li a{
+    color: #000000 !important;
+    font-size: 14px !important;
+}
+ul.footer-menu li a:hover{
+    color: #000000 !important;
+}
+
+// animation css
+.topanimation{
+  animation: upDown 2s linear infinite;
+}
+
+// wahtsapp css
+.wh-icon {
+    position: absolute;
+    left: 0px;
+    top: 84%;
+    position: fixed;
+    background-color: #04961f;
+    padding: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 999999;
+}
+.wh-i {
+  color: #fff;
+  font-size: 35px;
+}
+
+/* ============= Footer End Here ======================= */
+
+.footer-item__logo{
+    img{
+        border-radius: 20px;
+    }
+}
