@@ -868,7 +868,7 @@ ul.why-us-bx li {
 }
 
 .mainheader {
-  padding: 1em 0 !important;
+  padding: 0.5em 0 !important;
   background-color: #fff !important;
   .return {
     font-size: 13px;
@@ -935,4 +935,95 @@ ul.why-us-bx li {
     width: 80%;
     max-width: 80% !important;
   }
+}
+.searchdropdown {
+  max-width: 4em !important;
+  padding: 8px !important;
+}
+
+.bestsellerslider {
+  box-shadow: 0px 0px 10px -3px #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  .bestcard {
+    width: 100%;
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: column;
+    text-align: center;
+    h5 {
+      font-size: 20px;
+    }
+  }
+  .slick-slide img {
+    display: block;
+    width: 74%;
+    margin: auto;
+    padding-bottom: 5px;
+  }
+}
+
+.mainhead {
+  h5 {
+    font-size: 22px;
+    margin-bottom: 1em;
+  }
+}
+
+.commonspacing {
+  padding: 2em 0;
+}
+
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+  h5 {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+  .btn {
+    width: 2em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    padding: 20px;
+  }
+}
+
+.categorycard {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  margin: 5px 0;
+  img {
+    border-radius: 10px;
+    width: 70%;
+    margin: 0 auto 1em;
+  }
+  h5 {
+    color: green;
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+}
+
+.catcardSection{
+  box-shadow: 0px 0px 12px -3px #ccc;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.adsbanner{
+  img{
+    width: 100%;
+  }
+}
+
+.innerspace{
+  margin: 1.5em 0;
 }

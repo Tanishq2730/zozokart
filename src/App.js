@@ -28,6 +28,7 @@ import A2Ghee from "./pages/subpages/A2Ghee";
 import A2Milk from "./pages/subpages/A2Milk";
 import OtpPage from "./pages/auth/OtpPage";
 import VerifyOtp from "./pages/auth/VerifyOtp";
+import CategoryPage from "./pages/CategoryPage";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route exact path="/product-details-two" element={<ProductDetailsPageTwo />} />
         <Route exact path="/cart" element={<CartPage />} />
         <Route exact path="/checkout" element={<CheckoutPage />} />
+        <Route exact path="/category" element={<CategoryPage />} />
         <Route exact path="/account" element={<AccountPage />} />
         <Route exact path="/blog" element={<BlogPage />} />
         <Route exact path="/blog-details" element={<BlogDetailsPage />} />

@@ -38,7 +38,7 @@ const CartSection = () => {
                                                         className="table-product__thumb border border-gray-100 rounded-8 flex-center "
                                                     >
                                                         <img
-                                                            src="assets/images/common/ghee-1.png"
+                                                            src="assets/images/product/p1.png"
                                                             alt=""
                                                         />
                                                     </Link>
@@ -49,7 +49,7 @@ const CartSection = () => {
                                                                 className="link text-line-2"
                                                                 tabIndex={0}
                                                             >
-                                                                A2 Gir Cow Ghee – 250ml
+                                                                Boat Ear Buds
                                                             </Link>
                                                         </h6>
                                                         <div className="flex-align gap-16 mb-16">

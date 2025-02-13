@@ -1,8 +1,10 @@
 import { Search, ShoppingCart, User, MapPin } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 
 export default function HeaderOne() {
+  const navigate = useNavigate();
   const categories = [
+    "All",
     "MX Player",
     "Sell",
     "Best Sellers",
@@ -18,6 +20,7 @@ export default function HeaderOne() {
     "Computers",
     "Car & Motorbike",
   ];
+
   return (
     <div className="headers">
       <div className="mainheader text-dark px-5 py-5">
@@ -28,8 +31,11 @@ export default function HeaderOne() {
               <div className="col-md-4 m-auto">
                 <div className="row">
                   <div className="col-md-6">
-                    <div className="h3 fw-bold mb-0 logo">
-                        <img src="assets/images/logo/logo.png" />
+                    <div
+                      className="h3 fw-bold mb-0 logo"
+                      onClick={() => navigate(`/`)}
+                    >
+                      <img src="assets/images/logo/logo.png" alt="Logo" />
                     </div>
                   </div>
                   <div className="col-md-6 m-auto">
@@ -44,14 +50,26 @@ export default function HeaderOne() {
                 </div>
               </div>
 
-              {/* Search Bar */}
+              {/* Search Bar with Dropdown */}
               <div className="col-md-4 m-auto">
                 <div className="input-group w-100">
+                  {/* Dropdown for Categories */}
+                  <select className="form-select bg-light searchdropdown">
+                    {categories.map((category, index) => (
+                      <option key={index} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+
+                  {/* Search Input */}
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Search Amazon"
                   />
+
+                  {/* Search Button */}
                   <button className="btn btn-light">
                     <Search className="text-dark" />
                   </button>
@@ -70,7 +88,10 @@ export default function HeaderOne() {
                     <span className="return">Return & Orders</span>
                   </div>
 
-                  <div className="text-center position-relative cursor-pointer">
+                  <div
+                    className="text-center position-relative cursor-pointer"
+                    onClick={() => navigate(`/cart`)}
+                  >
                     <ShoppingCart size={20} />
                     <div className="small">Cart</div>
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -83,10 +104,12 @@ export default function HeaderOne() {
           </header>
         </div>
       </div>
+
+      {/* Categories Navigation */}
       <div className="headerCategory">
         <nav className="headcat text-white py-5">
           <div className="container-fluid mx-auto flex space-x-4 m-auto px-4">
-            {categories.map((category, index) => (
+            {categories.slice(1).map((category, index) => (
               <span
                 key={index}
                 className="cursor-pointer hover:underline whitespace-nowrap"

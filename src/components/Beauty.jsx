@@ -1,13 +1,14 @@
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
+import Card from "./common/card";
 
-const PromotionalOne = () => {
+const Beauty = () => {
   const settings = {
     dots: false,
     infinite: true,
     speed: 800,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -54,28 +55,21 @@ const PromotionalOne = () => {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="bestseller">
-        <div className="row">
-          <div className="col-md-10">
-            <div className="bestsellerslider">
-              <div className="mainhead">
-                <h5>Best Seller</h5>
+    <div className="commonspacing">
+      <div className="container-fluid my-5">
+        <div className="bestseller">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="bestsellerslider">
+                <div className="mainhead">
+                  <h5>Beauty, Food, Toys & more</h5>
+                </div>
+                <Slider {...settings}>
+                  {products.map((product) => (
+                    <Card key={product.id} product={product} />
+                  ))}
+                </Slider>
               </div>
-              <Slider {...settings}>
-                {products.map((product) => (
-                  <div key={product.id} className="bestcard">
-                    <img src={product.image} alt={product.name} />
-                    <span>{product.name}</span>
-                    <h5>{product.price}</h5>
-                  </div>
-                ))}
-              </Slider>
-            </div>
-          </div>
-          <div className="col-md-2">
-            <div className="adsimg">
-              <img src="assets/images/ads/ads.png" />
             </div>
           </div>
         </div>
@@ -84,4 +78,4 @@ const PromotionalOne = () => {
   );
 };
 
-export default PromotionalOne;
+export default Beauty;

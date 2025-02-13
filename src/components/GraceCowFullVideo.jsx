@@ -4,7 +4,7 @@ const GraceCowFullVideo = () => {
 
     return (
         <>
-            <section className='mb-30'>
+            <section className='my-30'>
                 <div className='container-fluid'>
                     <div className='row'>
                         <div className='col-md-12 p-0'>

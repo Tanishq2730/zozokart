@@ -18,6 +18,9 @@ import InstagramFeed from "../components/InstagramFeed";
 import TestimonialsFeed from "../components/TestimonialsFeed";
 import BlogGrid from "../components/BlogGrid";
 import Banner from "../components/Banner";
+import Beauty from "../components/Beauty";
+import Adscatgory from "../components/adscatgory";
+import CategorySection from "../components/categorySection";
 const HomePageOne = () => {
   // State to control the popup visibility
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,13 +51,23 @@ const HomePageOne = () => {
       <Banner/>
 
       {/* BannerOne */}
-      <BannerOne />
+      {/* <BannerOne /> */}
 
       {/* PromotionalOne */}
       <PromotionalOne />
 
-      {/* RecommendedOne */}
-      <RecommendedOne />
+      {/* beauty  */}
+      <Beauty/>
+
+      {/* ads */}
+      <Adscatgory/>
+
+      <CategorySection/>
+
+      {/* beauty  */}
+      <Beauty/>
+      {/* ads */}
+      <Adscatgory/>
 
       {/* fullvedeo */}
       <GraceCowFullVideo />
@@ -98,7 +111,7 @@ const HomePageOne = () => {
               <a className="btn btn-main d-inline-flex align-items-center rounded-pill gap-8 mt-20 mb-20" href="/shop">Shop Now<span class="icon text-xl d-flex"><i class="ph ph-arrow-right"></i></span></a>
             </Col>
             <Col md="7">
-              <img src="assets/images/common/popimg.png" alt="Logo" width="100%" />
+              <img src="assets/images/product/p1.png" alt="Logo" width="100%" />
             </Col>
           </Row>
           {/* <Button color="primary" onClick={toggleModal}>

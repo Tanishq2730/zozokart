@@ -6,19 +6,16 @@ import NewArrivalTwo from "../components/NewArrivalTwo";
 import ShippingOne from "../components/ShippingOne";
 import FooterOne from "../components/FooterOne";
 import BottomFooter from "../components/BottomFooter";
-import BreadcrumbTwo from './../components/BreadcrumbTwo';
+import BreadcrumbTwo from "./../components/BreadcrumbTwo";
 import ScrollToTop from "react-scroll-to-top";
 import ColorInit from "../helper/ColorInit";
 import DeliveryOne from "../components/DeliveryOne";
 import GraceCowFullVideo from "../components/GraceCowFullVideo";
+import Beauty from "../components/Beauty";
 
 const ProductDetailsPageOne = () => {
-
-
-
   return (
     <>
-
       {/* Preloader */}
       <Preloader />
 
@@ -37,25 +34,26 @@ const ProductDetailsPageOne = () => {
       {/* ProductDetailsOne */}
       <ProductDetailsOne />
 
-      {/* NewArrivalTwo */}
-      <NewArrivalTwo />
+      <Beauty/>
 
-      <div className=''>
+      {/* NewArrivalTwo */}
+      {/* <NewArrivalTwo /> */}
+
+      <div className="">
         <GraceCowFullVideo />
       </div>
 
       {/* DeliveryOne */}
-      <DeliveryOne />
+      {/* <DeliveryOne /> */}
 
       {/* ShippingOne */}
-      <ShippingOne />
+      {/* <ShippingOne /> */}
 
       {/* FooterTwo */}
       <FooterOne />
 
       {/* BottomFooter */}
       <BottomFooter />
-
     </>
   );
 };
