@@ -134,7 +134,7 @@ const Checkout = () => {
                                 <div className="flex-between gap-24 mb-32">
                                     <div className="flex-align gap-12">
                                         <span className="text-gray-900 fw-normal text-md font-heading-two w-144">
-                                           A2 Ghee
+                                           Boat Ear Buds
                                         </span>
                                         <span className="text-gray-900 fw-normal text-md font-heading-two">
                                             <i className="ph-bold ph-x" />

@@ -940,7 +940,26 @@ ul.why-us-bx li {
   max-width: 4em !important;
   padding: 8px !important;
 }
-
+.bestcard {
+  width: 100%;
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: column;
+  text-align: center;
+  margin: 5px 0;
+  img{
+    width: 90%;
+    margin: auto;
+  }
+  h5 {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+}
+.catCard{
+  margin: 10px 0;
+  padding: 5px;
+}
 .bestsellerslider {
   box-shadow: 0px 0px 10px -3px #ccc;
   border-radius: 10px;
@@ -1026,4 +1045,24 @@ ul.why-us-bx li {
 
 .innerspace{
   margin: 1.5em 0;
+}
+
+.catCard{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.filtercard{
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 22px -3px #ccc;
+  margin: 10px 0;
+  h4{
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+}
+
+.categoryPagemain{
+  margin: 2em 0;
 }

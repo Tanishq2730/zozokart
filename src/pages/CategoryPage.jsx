@@ -9,7 +9,9 @@ const CategoryPage = () => {
       {/* HeaderOne */}
       <HeaderOne />
 
+      <div className="categoryPagemain">
       <CategoryPageSection />
+      </div>
 
       <FooterOne />
 
