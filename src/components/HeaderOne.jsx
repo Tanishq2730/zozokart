@@ -1,5 +1,5 @@
 import { Search, ShoppingCart, User, MapPin } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function HeaderOne() {
   const navigate = useNavigate();
@@ -80,8 +80,10 @@ export default function HeaderOne() {
               <div className="col-md-4 m-auto">
                 <div className="d-flex gap-4 justify-content-end align-items-center">
                   <div className="text-center cursor-pointer">
-                    <User size={20} />
-                    <div className="small">Account</div>
+                    <Link className="account" to="/sign-up">
+                      <User size={20} />
+                      <div className="small">Account</div>
+                    </Link>
                   </div>
 
                   <div className="text-center cursor-pointer">

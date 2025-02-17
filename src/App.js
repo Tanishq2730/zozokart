@@ -63,7 +63,7 @@ function App() {
 
 
         {/* profile */}
-        <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/profile" element={<Dashboard />} />
 
         {/* other pages */}
         <Route exact path="/privacypolicy" element={<PrivacyPolicy />} />

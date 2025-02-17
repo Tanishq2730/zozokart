@@ -402,7 +402,7 @@ const ProductDetailsOne = () => {
                         onClick={toggleSubscriptionVisibility}
                         className="btn btn-main rounded-pill flex-align d-inline-flex gap-8 px-20"
                       >
-                        Subscription
+                        Buy Now
                       </button>
                     </div>
                     <div className="flex-align gap-12">
