@@ -399,7 +399,7 @@ const ProductDetailsOne = () => {
                         <i className="ph ph-shopping-cart" /> Add To Cart
                       </Link>
                       <button
-                        onClick={toggleSubscriptionVisibility}
+                        // onClick={toggleSubscriptionVisibility}
                         className="btn btn-main rounded-pill flex-align d-inline-flex gap-8 px-20"
                       >
                         Buy Now
