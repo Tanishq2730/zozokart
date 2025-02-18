@@ -126,7 +126,7 @@ const Dashboard = () => {
                 >
                   Account details
                 </button>
-                <button
+                {/* <button
                   className="nav-link st-active text-black"
                   id="v-pills-wallet-tab"
                   data-bs-toggle="pill"
@@ -137,7 +137,7 @@ const Dashboard = () => {
                   aria-selected="false"
                 >
                   Wallet
-                </button>
+                </button> */}
                 <button
                   className="nav-link st-active text-black"
                   // id="v-pills-wallet-tab"
