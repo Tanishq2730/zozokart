@@ -38,21 +38,21 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<HomePageOne />} />
-        <Route exact path="/shop" element={<ShopPage />} />
+        {/* <Route exact path="/shop" element={<ShopPage />} /> */}
         <Route exact path="/product-details" element={<ProductDetailsPageOne />} />
-        <Route exact path="/product-details-two" element={<ProductDetailsPageTwo />} />
+        {/* <Route exact path="/product-details-two" element={<ProductDetailsPageTwo />} /> */}
         <Route exact path="/cart" element={<CartPage />} />
         <Route exact path="/checkout" element={<CheckoutPage />} />
         <Route exact path="/category" element={<CategoryPage />} />
         <Route exact path="/account" element={<AccountPage />} />
-        <Route exact path="/blog" element={<BlogPage />} />
-        <Route exact path="/blog-details" element={<BlogDetailsPage />} />
+        {/* <Route exact path="/blog" element={<BlogPage />} /> */}
+        {/* <Route exact path="/blog-details" element={<BlogDetailsPage />} /> */}
         <Route exact path="/contact" element={<ContactPage />} />
-        <Route exact path="/subscription" element={<SubscriptionPlan />} />
+        {/* <Route exact path="/subscription" element={<SubscriptionPlan />} /> */}
         <Route exact path="/about" element={<AboutPage />} />
         <Route exact path="/contact" element={<ContactPage />} />
 
-        <Route exact path="/subs" element={<SubscriptionCalendar />} />
+        {/* <Route exact path="/subs" element={<SubscriptionCalendar />} /> */}
 
         {/* auth */}
         <Route exact path="/sign-in" element={<SignIn />} />
@@ -66,15 +66,15 @@ function App() {
         <Route exact path="/profile" element={<Dashboard />} />
 
         {/* other pages */}
-        <Route exact path="/privacypolicy" element={<PrivacyPolicy />} />
-        <Route exact path="/returnpolicy" element={<ReturnsPolicy />} />
-        <Route exact path="/termscondition" element={<TermsConditions />} />
-        <Route exact path="/shipping" element={<ShippingPolicy />} />
-        <Route exact path="/refundpolicy" element={<RefundPolicy />} />
+        {/* <Route exact path="/privacypolicy" element={<PrivacyPolicy />} /> */}
+        {/* <Route exact path="/returnpolicy" element={<ReturnsPolicy />} /> */}
+        {/* <Route exact path="/termscondition" element={<TermsConditions />} /> */}
+        {/* <Route exact path="/shipping" element={<ShippingPolicy />} /> */}
+        {/* <Route exact path="/refundpolicy" element={<RefundPolicy />} /> */}
 
         {/* subpages */}
-        <Route exact path="/a2ghee" element={<A2Ghee />} />
-        <Route exact path="/a2milk" element={<A2Milk />} />
+        {/* <Route exact path="/a2ghee" element={<A2Ghee />} /> */}
+        {/* <Route exact path="/a2milk" element={<A2Milk />} /> */}
 
       </Routes>
     </BrowserRouter>
