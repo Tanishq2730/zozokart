@@ -75,7 +75,7 @@ export default function CategoryPageSection() {
   });
 
   return (
-    <div className="container mt-4">
+    <div className="container-fluid mt-4">
       <div className="row">
         {/* Filter Section */}
         <div className="col-md-3 border-end">

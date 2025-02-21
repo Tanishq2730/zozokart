@@ -142,7 +142,7 @@ const ProductDetailsOne = () => {
         <div className="row gy-4">
           <div className="col-lg-12">
             <div className="row gy-4">
-              <div className="col-xl-6">
+              <div className="col-xl-5">
                 <div className="row">
                   <div className="col-2">
                     {/* Thumbnail List */}
@@ -300,9 +300,14 @@ const ProductDetailsOne = () => {
                 </div>
                 {/* horizental for mobile  close*/}
               </div>
-              <div className="col-xl-6">
+              <div className="col-xl-4">
                 <div className="product-details__content">
-                  <h5 className="mb-12">Boat Ear Buds</h5>
+                  <h5 className="mb-12">
+                    Noise Pulse Go Buzz Smart Watch with Advanced Bluetooth
+                    Calling, 1.69" TFT Display, SpO2, 100 Sports Mode with Auto
+                    Detection, Upto 7 Days Battery (2 Days with Heavy Calling) -
+                    Jet Black
+                  </h5>
                   <div className="flex-align flex-wrap gap-12">
                     <div className="flex-align gap-12 flex-wrap">
                       <div className="flex-align gap-8">
@@ -344,20 +349,25 @@ const ProductDetailsOne = () => {
                     </div>
                   </div>
                   <span className="mt-10 pt-10 text-gray-700 border-top border-gray-100 d-block" />
-                  <ul className="list-inside ms-12 mt-10">
-                    <li className="text-gray-900 text-sm mb-0">With Mic:Yes</li>
-                    <li className="text-gray-900 text-sm mb-0">
-                      Bluetooth version: 5.1
-                    </li>
-                    <li className="text-gray-900 text-sm mb-0">
-                      40 HRS Playback: These earbuds offer a total playback time
-                      of 40 hours.
-                    </li>
-                    <li className="text-gray-900 text-sm mb-0">
-                      Quick Touch Response Control: A tap on the buds is all you
-                      need to get things going.
-                    </li>
-                  </ul>
+                  <div className="productdetaillist">
+                    <h5>Product Detail</h5>
+                    <ul className="list-inside ms-12 mt-10">
+                      <li className="text-gray-900 text-sm mb-0">
+                        With Mic:Yes
+                      </li>
+                      <li className="text-gray-900 text-sm mb-0">
+                        Bluetooth version: 5.1
+                      </li>
+                      <li className="text-gray-900 text-sm mb-0">
+                        40 HRS Playback: These earbuds offer a total playback
+                        time of 40 hours.
+                      </li>
+                      <li className="text-gray-900 text-sm mb-0">
+                        Quick Touch Response Control: A tap on the buds is all
+                        you need to get things going.
+                      </li>
+                    </ul>
+                  </div>
                   <hr />
                   <p className="text-gray-700 mt-10 text-14">
                     It's time to Do Your Groove, with Airdopes161TWS earbuds.
@@ -366,71 +376,84 @@ const ProductDetailsOne = () => {
                   </p>
 
                   <span className="mt-32 pt-10 text-gray-700 border-top border-gray-100 d-block" />
-                  <span className="text-gray-900 d-block mb-8">Quantity:</span>
-                  <div className="flex-between gap-16 flex-wrap">
-                    <div className="flex-align flex-wrap gap-16">
-                      <div className="border border-gray-100 rounded-pill py-9 px-16 flex-align">
-                        <button
-                          onClick={decrementQuantity}
-                          type="button"
-                          className="quantity__minus p-4 text-gray-700 hover-text-main-600 flex-center"
-                        >
-                          <i className="ph ph-minus" />
-                        </button>
-                        <input
-                          type="number"
-                          className="quantity__input border-0 text-center w-32"
-                          value={quantity}
-                          readOnly
-                        />
-                        <button
-                          onClick={incrementQuantity}
-                          type="button"
-                          className="quantity__plus p-4 text-gray-700 hover-text-main-600 flex-center"
-                        >
-                          <i className="ph ph-plus" />
-                        </button>
-                      </div>
-                      <Link
-                        to="#"
-                        className="btn btn-main rounded-pill flex-align d-inline-flex gap-8 px-20"
-                      >
-                        {" "}
-                        <i className="ph ph-shopping-cart" /> Add To Cart
-                      </Link>
-                      <button
-                        // onClick={toggleSubscriptionVisibility}
-                        className="btn btn-main rounded-pill flex-align d-inline-flex gap-8 px-20"
-                      >
-                        Buy Now
+                </div>
+              </div>
+              <div className="col-xl-3">
+                <div className="productsidecard">
+                  <div className="">
+                    <h2 className="text-2xl font-semibold">
+                      &#8377;1,799<sup>00</sup>
+                    </h2>
+                    <p className="text-sm text-blue-600 font-medium">
+                      FREE delivery <strong>Wednesday, 19 February</strong>.{" "}
+                      <span className="underline">Details</span>
+                    </p>
+                    <p className="text-sm text-gray-700">
+                      Or fastest delivery <strong>Tomorrow, 18 February</strong>
+                      . Order within{" "}
+                      <span className="text-green-600">1 hr 46 mins</span>.{" "}
+                      <span className="underline">Details</span>
+                    </p>
+                    <p className="text-sm text-gray-600 flex items-center location">
+                      <span className="mr-1">📍</span> Deliver to Tanishq -
+                      Udaipur 313002
+                    </p>
+                    <div className="instock">
+                      <p className="text-green-600 font-bold mt-2">In stock</p>
+                      <p className="text-gray-700 text-sm">
+                        Payment{" "}
+                        <span className="text-blue-600 underline">
+                          Secure transaction
+                        </span>
+                      </p>
+                      <p className="text-sm text-gray-700">
+                        Ships from <strong>Amazon</strong>
+                      </p>
+                      <p className="text-sm text-gray-700">
+                        Sold by <strong>Clicktech Retail Private Ltd</strong>
+                      </p>
+                    </div>
+
+                    <div className="mt-3">
+                      <p className="text-sm font-semibold">
+                        Add a Protection Plan:
+                      </p>
+                      <label className="text-sm flex items-center">
+                        <input type="checkbox" className="mr-2" /> 1 Year
+                        Extended Warranty Plan for{" "}
+                        <span className="text-red-600 font-bold">
+                          &#8377;129.00
+                        </span>
+                      </label>
+                    </div>
+
+                    <div className="mt-3">
+                      <label className="block text-sm font-medium">
+                        Quantity:
+                      </label>
+                      <select className="w-full border rounded p-1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <button className="btn btn-main w-100 text-center rounded-pill flex-align justify-content-center gap-8 px-20 my-4">
+                        Add to cart
                       </button>
                     </div>
-                    <div className="flex-align gap-12">
-                      <Link
-                        to="#"
-                        className="w-52 h-52 bg-main-50 text-main-600 text-xl hover-bg-main-600 hover-text-white flex-center rounded-circle"
-                      >
-                        <i className="ph ph-heart" />
-                      </Link>
-                      <Link
-                        to="#"
-                        className="w-52 h-52 bg-main-50 text-main-600 text-xl hover-bg-main-600 hover-text-white flex-center rounded-circle"
-                      >
-                        <i className="ph ph-shuffle" />
-                      </Link>
-                      <Link
-                        to="#"
-                        className="w-52 h-52 bg-main-50 text-main-600 text-xl hover-bg-main-600 hover-text-white flex-center rounded-circle"
-                      >
-                        <i className="ph ph-share-network" />
+                    <div>
+                      <Link to="/cart" className="btn btn-main w-100 text-center rounded-pill flex-align justify-content-center gap-8 px-20 my-4">
+                        Buy Now
                       </Link>
                     </div>
-                  </div>
-                  <span className="mt-10 pt-20 text-gray-700 border-top border-gray-100 d-block" />
-                  <div className="mb-10">
-                    {/* subscription plan start */}
-                    {isSubscriptionVisible && <SubscriptionCalendar />}
-                    {/* subscription plan close */}
+
+                    <label className="flex items-center mt-2 text-sm">
+                      <input type="checkbox" className="mr-2" /> Add gift
+                      options
+                    </label>
                   </div>
                 </div>
               </div>
