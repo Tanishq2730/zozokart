@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { IMAGE_URL } from "../../utils/api-config";
 
 function Card({ product }) {
   const navigate = useNavigate();
@@ -7,12 +8,19 @@ function Card({ product }) {
   return (
     <div
       className="bestcard"
-      onClick={() => navigate(`/product-details`)}
+      onClick={() => navigate(`/product-details/${product.slug}`)}
       style={{ cursor: "pointer" }}
     >
-      <img src={product.image} alt={product.name} />
-      <span>{product.name}</span>
-      <h5>{product.price}</h5>
+      <img
+        src={`${IMAGE_URL}/${product.images.mainImage}`}
+        alt={product.name}
+      />
+      <span>
+        {product.name}
+      </span>
+      <h5>
+        {product.salePrice}
+      </h5>
     </div>
   );
 }

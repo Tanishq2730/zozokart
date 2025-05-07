@@ -39,7 +39,7 @@ const BannerOne = () => {
     slidesToScroll: 1,
     initialSlide: 0,
     nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    prevArrow: <SamplePrevArrow />
   };
   return (
     <div className="banner">
@@ -58,31 +58,31 @@ const BannerOne = () => {
             alt=""
             className="banner-img position-absolute inset-block-start-0 inset-inline-start-0 w-100 h-100 z-n1 object-fit-cover rounded-24"
           />
-          <div className="flex-align"></div>
+          <div className="flex-align" />
           <div className="banner-slider">
             <Slider {...settings}>
               <div className="banner-slider__item">
                 <div className="banner-slider__inner flex-between position-relative">
                   <div className="banner-item__content">
-                    <AnimationOnScroll animateIn="animate__fadeInLeft">
-                      <h1 className="banner-item__title bounce">
-                        Order A2 Ghee Daily and Get Express Delivery
-                      </h1>
-                      <Link
-                        to="/"
-                        className="btn btn-main d-inline-flex align-items-center rounded-pill gap-8"
-                      >
-                        Explore Shop{" "}
-                        <span className="icon text-xl d-flex">
-                          <i className="ph ph-shopping-cart-simple" />{" "}
-                        </span>
-                      </Link>
-                    </AnimationOnScroll>
+                    {/* <AnimationOnScroll animateIn="animate__fadeInLeft"> */}
+                    <h1 className="banner-item__title bounce">
+                      Order A2 Ghee Daily and Get Express Delivery
+                    </h1>
+                    <Link
+                      to="/"
+                      className="btn btn-main d-inline-flex align-items-center rounded-pill gap-8"
+                    >
+                      Explore Shop{" "}
+                      <span className="icon text-xl d-flex">
+                        <i className="ph ph-shopping-cart-simple" />{" "}
+                      </span>
+                    </Link>
+                    {/* </AnimationOnScroll> */}
                   </div>
                   <div className="banner-item__thumb mt-20">
-                    <AnimationOnScroll animateIn="animate__fadeInRight">
-                      <img src="assets/images/thumbs/banner-img1.png" alt="" />
-                    </AnimationOnScroll>
+                    {/* <AnimationOnScroll animateIn="animate__fadeInRight"> */}
+                    <img src="assets/images/thumbs/banner-img1.png" alt="" />
+                    {/* </AnimationOnScroll> */}
                   </div>
                 </div>
               </div>

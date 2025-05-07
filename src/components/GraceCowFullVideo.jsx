@@ -16,7 +16,7 @@ const GraceCowFullVideo = () => {
                                     zIndex: '-1'
                                 }}
                             >
-                                <source src="assets/images/video/fashion.mp4" type="video/mp4" />
+                                <source src="/assets/images/video/fashion.mp4" type="video/mp4" />
                             </video>
                         </div>
                     </div>

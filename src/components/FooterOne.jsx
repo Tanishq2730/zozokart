@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { fetchCategories } from "../api/homeAPI";
 
 const FooterOne = () => {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const getCategories = async () => {
+    try {
+      const data = await fetchCategories();
+      if (data.success) {
+        console.log(data.data);
+        setCategories(data.data);
+      }
+    } catch (error) {
+      console.error("Error fetching banners:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
   return (
     <footer className="footer py-60">
       <img
-        src="assets/images/bg/body-bottom-bg.png"
+        src="/assets/images/bg/body-bottom-bg.png"
         alt="BG"
         className="body-bottom-bg"
       />
@@ -15,8 +36,7 @@ const FooterOne = () => {
           <div className="footer-item">
             <div className="footer-item__logo">
               <Link to="/">
-                {" "}
-                <img src="assets/images/logo/logo.png" alt="" />
+                {" "}<img src="/assets/images/logo/logo.png" alt="" />
               </Link>
             </div>
             <p className="mb-24">
@@ -36,7 +56,7 @@ const FooterOne = () => {
                 </Link>
               </li>
               <li className="mb-5">
-                <Link to="/" className="text-gray-600 hover-text-main-600">
+                <Link to="/about" className="text-gray-600 hover-text-main-600">
                   About Us
                 </Link>
               </li>
@@ -63,7 +83,15 @@ const FooterOne = () => {
           <div className="footer-item">
             <h6 className="footer-item__title">Categories</h6>
             <ul className="footer-menu">
-              <li className="mb-5">
+              {categories &&
+                categories.map(category =>
+                  <li className="mb-5">
+                    <Link to="/" className="text-gray-600 hover-text-main-600">
+                      {category.name}
+                    </Link>
+                  </li>
+                )}
+              {/* <li className="mb-5">
                 <Link to="/" className="text-gray-600 hover-text-main-600">
                   Shirts
                 </Link>
@@ -77,7 +105,7 @@ const FooterOne = () => {
                 <Link to="/" className="text-gray-600 hover-text-main-600">
                   Bag
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="footer-item">
@@ -85,8 +113,7 @@ const FooterOne = () => {
             <ul className="footer-menu">
               <li className="mb-5">
                 <Link
-                  to="/"
-                  //   to="/privacypolicy"
+                  to="/privacy-policy"
                   className="text-gray-600 hover-text-main-600"
                 >
                   Privacy Policy
@@ -94,8 +121,7 @@ const FooterOne = () => {
               </li>
               <li className="mb-5">
                 <Link
-                  to="/"
-                  //   to="/returnpolicy"
+                  to="/returns-policy"
                   className="text-gray-600 hover-text-main-600"
                 >
                   Returns Policy
@@ -103,8 +129,7 @@ const FooterOne = () => {
               </li>
               <li className="mb-5">
                 <Link
-                  to="/"
-                  //   to="/termscondition"
+                  to="/terms-conditions"
                   className="text-gray-600 hover-text-main-600"
                 >
                   Terms and Conditions
@@ -112,8 +137,7 @@ const FooterOne = () => {
               </li>
               <li className="mb-5">
                 <Link
-                  to="/"
-                  //   to="/shipping"
+                  to="/shipping-policy"
                   className="text-gray-600 hover-text-main-600"
                 >
                   Shipping & Delivery Policy
@@ -121,8 +145,7 @@ const FooterOne = () => {
               </li>
               <li className="mb-5">
                 <Link
-                  to="/"
-                  //   to="/refundpolicy"
+                  to="/refund-policy"
                   className="text-gray-600 hover-text-main-600"
                 >
                   Refund & Cancellation Policy

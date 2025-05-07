@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Preloader from "../../helper/Preloader";
 import ScrollToTop from "react-scroll-to-top";
 import ColorInit from "../../helper/ColorInit";
@@ -12,7 +12,27 @@ import Download from "./Download";
 import Addresses from "./Addresses";
 import AccountDetail from "./AccountDetail";
 import Wallet from "./Wallet";
+import { useDispatch, useSelector } from "react-redux";
+import { LOGOUT } from "../../reducers/authReducer";
+
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+
+  const isAuthenticated = useSelector((state) => state.auth?.isAuthenticated)
+  const user = useSelector(state => state.auth?.user);
+
+  useEffect(() => {
+    if(!isAuthenticated){
+      navigate('/sign-in')
+    }
+  }, [isAuthenticated])
+  
+  const handleLogout = () => {
+      // Dispatch the logout action
+      dispatch({ type: LOGOUT });
+  };
   return (
     <>
       {/* Preloader */}
@@ -48,9 +68,9 @@ const Dashboard = () => {
               className="rounded"
             />
             <div className="ms-10 mt-3 dashdetail">
-              <h5 className="text-18 mb-0">John Deo</h5>
-              <p className="mb-0">Info@gmail.com</p>
-              <p className="mb-0">1234567</p>
+              <h5 className="text-18 mb-0">{user.name}</h5>
+              <p className="mb-0">{user.email}</p>
+              <p className="mb-0">{user.phone}</p>
             </div>
           </div>
         </div>
@@ -147,6 +167,7 @@ const Dashboard = () => {
                   role="tab"
                   // aria-controls="v-pills-wallet"
                   aria-selected="false"
+                  onClick={handleLogout}
                 >
                   Logout
                 </button>
@@ -162,7 +183,7 @@ const Dashboard = () => {
                 >
                   <h4>Dashboard</h4>
                   <hr></hr>
-                  <h5 className="text-16">Hello john ( Log out)</h5>
+                  <h5 className="text-16">Hello {user.name}</h5>
                   <p className="mb-20">
                     From your account dashboard you can view your recent orders,
                     manage your shipping and billing addresses, and edit your
@@ -209,10 +230,10 @@ const Dashboard = () => {
                     </div>
                     <div className="col-md-4 mb-10">
                       <div className="p-20 border">
-                        <Link>
+                        <button onClick={handleLogout}>
                           <i className="ph ph-sign-out text-22"></i>
                           <h5 className="text-18 mt-0">Logout</h5>
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </div>

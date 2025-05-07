@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Preloader from "../helper/Preloader";
 import HeaderOne from "../components/HeaderOne";
 import ProductDetailsOne from "../components/ProductDetailsOne";
@@ -12,8 +12,35 @@ import ColorInit from "../helper/ColorInit";
 import DeliveryOne from "../components/DeliveryOne";
 import GraceCowFullVideo from "../components/GraceCowFullVideo";
 import Beauty from "../components/Beauty";
+import { fetchProductDetails } from "../api/productAPI";
+import { useParams } from "react-router-dom";
+import SimilarProduct from "../components/SimilarProduct";
+import ProductRatingAndReview from "../components/ProductRatingAndReview";
 
 const ProductDetailsPageOne = () => {
+
+  const { slug } = useParams();
+  const [product, setProduct] = useState("");
+  const [loading, setLoading] = useState(true);
+  
+  const getProduct = async () => {
+    try {
+      const data = await fetchProductDetails(slug);
+      if (data.success) {
+        setProduct(data.data);
+        console.log(product)
+        // setRelatedProducts(data.data.relatedProducts);
+      }
+    } catch (error) {
+      console.error("Error fetching product:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    getProduct();
+  }, [slug]);
+
   return (
     <>
       {/* Preloader */}
@@ -32,9 +59,12 @@ const ProductDetailsPageOne = () => {
       {/* <BreadcrumbTwo title={"Product Details"} /> */}
 
       {/* ProductDetailsOne */}
-      <ProductDetailsOne />
-
-      <Beauty/>
+      <ProductDetailsOne product={product}/>
+      <hr />
+      {/* product ratings */}
+      <ProductRatingAndReview product={product} getProduct={getProduct}/>
+      <hr />
+      <SimilarProduct product={product}/>
 
       {/* NewArrivalTwo */}
       {/* <NewArrivalTwo /> */}
