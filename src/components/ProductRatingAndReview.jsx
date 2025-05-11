@@ -8,6 +8,7 @@ import { IMAGE_URL } from "../utils/api-config";
 import { showToast } from "./ToastifyNotification";
 import { StoreRatingAndReview } from "../api/ratingAndReviewAPI";
 import { useSelector } from "react-redux";
+import { formatDistanceToNow } from 'date-fns';
 
 const ProductRatingAndReview = ({ product,getProduct }) => {
   const [reviewTitle, setReviewTitle] = useState("");
@@ -15,7 +16,6 @@ const ProductRatingAndReview = ({ product,getProduct }) => {
   const [selectedRating, setSelectedRating] = useState(0);
   const isAuthenticated = useSelector((state) => state.auth?.isAuthenticated)
   
-
   useEffect(
     () => {
       if (product && product.ratingAndReviews) {
@@ -40,13 +40,6 @@ const ProductRatingAndReview = ({ product,getProduct }) => {
   };
 
   const handleSubmitReview = async(event) => {
-    event.preventDefault();
-    // Here you would typically send the reviewTitle, reviewContent, and selectedRating
-    // to your backend API to save the review.
-    // console.log("Review Title:", reviewTitle);
-    // console.log("Review Content:", reviewContent);
-    // console.log("Selected Rating:", selectedRating);
-    // Reset the form after submission (optional)
     event.preventDefault();
     try {
       if(!reviewTitle){
@@ -87,16 +80,19 @@ const ProductRatingAndReview = ({ product,getProduct }) => {
     
   };
 
-  if (
-    !product ||
-    !product.ratingAndReviews ||
-    product.ratingAndReviews.length === 0
-  ) {
-    return <p>No reviews yet.</p>;
+  // if (
+  //   !product ||
+  //   !product.ratingAndReviews ||
+  //   product.ratingAndReviews.length === 0
+  // ) {
+  //   return <p>No reviews yet.</p>;
+  // }
+
+  let { ratingAndReviews, starCounts } = product;
+
+  if(!ratingAndReviews){
+    ratingAndReviews = [];
   }
-
-  const { ratingAndReviews, starCounts } = product;
-
   // Calculate the average rating
   const totalRating = ratingAndReviews.reduce(
     (sum, review) => sum + review.rating,
@@ -114,7 +110,7 @@ const ProductRatingAndReview = ({ product,getProduct }) => {
           <div className="row g-4">
               <h6 className="mb-24">Customer reviews</h6>
             <div className="col-lg-6">
-              {ratingAndReviews.map((reviewData) => (
+              {ratingAndReviews.length > 0 ? ratingAndReviews.map((reviewData) => (
                 <div
                   className="d-flex align-items-start gap-24 pb-44 border-bottom border-gray-100 mb-44"
                   key={reviewData._id}
@@ -156,14 +152,15 @@ const ProductRatingAndReview = ({ product,getProduct }) => {
                         </div>
                       </div>
                       <span className="text-gray-800 text-xs">
-                        {new Date(reviewData.createdAt).toLocaleString('en-IN', {
+                        {/* {new Date(reviewData.createdAt).toLocaleString('en-IN', {
                           day: 'numeric',
                           month: 'long',
                           year: 'numeric',
                           hour: 'numeric',
                           minute: 'numeric',
                           hour12: true, // Or true for AM/PM
-                        })}
+                        })} */}
+                        {formatDistanceToNow(new Date(reviewData.createdAt), { addSuffix: true })}
                       </span>
                     </div>
                     <h6 className="mb-14 text-md mt-24">
@@ -186,7 +183,7 @@ const ProductRatingAndReview = ({ product,getProduct }) => {
                     </div> */}
                   </div>
                 </div>
-              ))}
+              )):<p>No reviews yet.</p>}
               {/* Form for writing a review */}
               {isAuthenticated && 
               <div className="mt-56">

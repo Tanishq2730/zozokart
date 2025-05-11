@@ -8,11 +8,13 @@ import "./index.scss";
 import store from "./store";
 import { Provider } from "react-redux";
 import ToastifyNotification from "./components/ToastifyNotification";
+import LoaderOverlay from "./components/LoaderOverlay";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <ToastifyNotification />
+    <LoaderOverlay />
     <App />
   </Provider>
 );

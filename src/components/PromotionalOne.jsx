@@ -27,13 +27,13 @@ const PromotionalOne = () => {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: products.length > 5,
     speed: 800,
-    slidesToShow: 5,
+    slidesToShow: Math.min(products.length, 5),
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    arrows: true
+    arrows: products.length > 1
   };
 
   // const products = [
@@ -82,13 +82,17 @@ const PromotionalOne = () => {
           <div className="col-md-10">
             <div className="bestsellerslider">
               <div className="mainhead">
-                <h5>Best Seller</h5>
+                <h5>Beauty, Food, Toys & more</h5>
               </div>
-              <Slider {...settings}>
-                {products.map(product =>
-                  <Card key={product._id} product={product} />
-                )}
-              </Slider>
+              {products.length > 1
+                ? <Slider {...settings}>
+                    {products.map(product =>
+                      <Card key={product._id} product={product} />
+                    )}
+                  </Slider>
+                : products.map(product =>
+                    <Card key={product._id} product={product} />
+                  )}
             </div>
           </div>
           <div className="col-md-2">

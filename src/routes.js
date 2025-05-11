@@ -11,6 +11,7 @@ const CartPage = React.lazy(() => import("./pages/CartPage"));
 const CheckoutPage = React.lazy(() => import("./pages/CheckoutPage"));
 const AccountPage = React.lazy(() => import("./pages/AccountPage"));
 const CategoryPage = React.lazy(() => import("./pages/CategoryPage"));
+const ProductPage = React.lazy(() => import("./pages/ProductPage"));
 
 const ContactPage = React.lazy(() => import("./pages/ContactPage"));
 const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
@@ -45,6 +46,7 @@ const routes = [
   { path: "/cart", exact: true, name: "Cart", component: CartPage },
   { path: "/checkout", exact: true, name: "Checkout", component: CheckoutPage },
   { path: "/category", exact: true, name: "Checkout", component: CategoryPage },
+  { path: "/product", exact: true, name: "Product", component: ProductPage },
   { path: "/account", exact: true, name: "Account", component: AccountPage },
 
   { path: "/contact", exact: true, name: "Contact", component: ContactPage },
@@ -57,13 +59,24 @@ const routes = [
     component: SignInOtpPage
   },
 
-  { path: "/sign-up", exact: true, name: "Sign Up", component: SignUp },
   {
-    path: "/verify-otp",
+    path: "/sign-up",
     exact: true,
-    name: "Verify OTP",
-    component: VerifyOtp
+    name: "Sign Up",
+    component: SignUp
   },
+  {
+    path: "/sign-up-otp-page",
+    exact: true,
+    name: "Sign Up",
+    component: SignUpOtpPage
+  },
+  // {
+  //   path: "/verify-otp",
+  //   exact: true,
+  //   name: "Verify OTP",
+  //   component: VerifyOtp
+  // },
 
   { path: "/about", exact: true, name: "About", component: AboutPage },
 

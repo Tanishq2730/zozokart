@@ -38,7 +38,9 @@ const ProductDetailsPageOne = () => {
     }
   };
   useEffect(() => {
-    getProduct();
+    if(slug){
+      getProduct();
+    }
   }, [slug]);
 
   return (

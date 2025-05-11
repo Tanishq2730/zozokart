@@ -14,6 +14,8 @@ import AccountDetail from "./AccountDetail";
 import Wallet from "./Wallet";
 import { useDispatch, useSelector } from "react-redux";
 import { LOGOUT } from "../../reducers/authReducer";
+import TransactionList from "./Transaction";
+import NotificationList from "./Notification";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -110,18 +112,18 @@ const Dashboard = () => {
                 >
                   Orders
                 </button>
-                {/* <button
+                <button
                   className="nav-link st-active text-black"
-                  id="v-pills-download-tab"
+                  id="v-pills-transaction-tab"
                   data-bs-toggle="pill"
-                  data-bs-target="#v-pills-download"
+                  data-bs-target="#v-pills-transaction"
                   type="button"
                   role="tab"
-                  aria-controls="v-pills-download"
+                  aria-controls="v-pills-transaction"
                   aria-selected="false"
                 >
-                  Downloads
-                </button> */}
+                  Transactions
+                </button>
                 <button
                   className="nav-link st-active text-black"
                   id="v-pills-addresses-tab"
@@ -145,6 +147,18 @@ const Dashboard = () => {
                   aria-selected="false"
                 >
                   Account details
+                </button>
+                <button
+                  className="nav-link st-active text-black"
+                  id="v-pills-notification-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#v-pills-notification"
+                  type="button"
+                  role="tab"
+                  aria-controls="v-pills-notification"
+                  aria-selected="false"
+                >
+                  All Notifications
                 </button>
                 {/* <button
                   className="nav-link st-active text-black"
@@ -247,6 +261,26 @@ const Dashboard = () => {
                   <h4>Orders</h4>
                   <hr></hr>
                   <OrderList />
+                </div>
+                <div
+                  className="tab-pane fade"
+                  id="v-pills-transaction"
+                  role="tabpanel"
+                  aria-labelledby="v-pills-transaction-tab"
+                >
+                  <h4>Transactions</h4>
+                  <hr></hr>
+                  <TransactionList />
+                </div>
+                <div
+                  className="tab-pane fade"
+                  id="v-pills-notification"
+                  role="tabpanel"
+                  aria-labelledby="v-pills-notification-tab"
+                >
+                  <h4>Notifications</h4>
+                  <hr></hr>
+                  <NotificationList />
                 </div>
                 <div
                   className="tab-pane fade"

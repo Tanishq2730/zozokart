@@ -12,8 +12,8 @@ function Card({ product }) {
       style={{ cursor: "pointer" }}
     >
       <img
-        src={`${IMAGE_URL}/${product.images.mainImage}`}
-        alt={product.name}
+        src={`${IMAGE_URL}/${product?.images?.mainImage}`}
+        alt={product.name} style={{ width: "150px", height: "150px" }}
       />
       <span>
         {product.name}

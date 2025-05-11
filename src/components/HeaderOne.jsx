@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { LOGOUT } from "../reducers/authReducer";
 import { fetchCategories } from "../api/homeAPI";
 import { useEffect, useState } from "react";
+import { fetchProducts } from "../api/productAPI";
 
 export default function HeaderOne() {
   const navigate = useNavigate();
@@ -11,7 +12,57 @@ export default function HeaderOne() {
   const isAuthenticated = useSelector((state) => state.auth?.isAuthenticated)
   
   const [categories, setCategories] = useState([]);
+  const [categoryId, setCategoryId] = useState('');
   const [loading, setLoading] = useState(true);
+
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [skipFetch, setSkipFetch] = useState(false);
+
+  useEffect(() => {
+    if (skipFetch) {
+      setSkipFetch(false); // Reset flag
+      return;
+    }
+    const delayDebounce = setTimeout(() => {
+      const fetchSuggestions = async () => {
+        if (query.trim()) {
+          setLoading(true);
+          try {
+            const response = await fetchProducts({searchKey:query}); // Pass query if needed
+            if (response.success) {
+              setSuggestions(response.data);
+              setShowDropdown(true);
+            }
+          } catch (error) {
+            console.error("Error fetching suggestions:", error);
+          } finally {
+            setLoading(false);
+          }
+        } else {
+          setSuggestions([]);
+          setShowDropdown(false);
+        }
+      };
+
+      fetchSuggestions();
+    }, 300); // Debounce by 300ms
+
+    return () => clearTimeout(delayDebounce);
+}, [query]);
+
+  const handleSelect = (suggestion) => {
+    setSkipFetch(true);
+    setQuery(suggestion);
+    setShowDropdown(false);
+  };
+
+  const handleSearch = () => {
+    // if (query.trim()) {
+      navigate('/product',{state:{categoryId:categoryId,searchKey:query}});
+    // }
+  };
 
   const getCategories = async () => {
     try {
@@ -51,26 +102,6 @@ export default function HeaderOne() {
 
 
 
-
-
-  // const categories = [
-  //   "All",
-  //   "MX Player",
-  //   "Sell",
-  //   "Best Sellers",
-  //   "Today's Deals",
-  //   "Mobiles",
-  //   "Electronics",
-  //   "Customer Service",
-  //   "Amazon Pay",
-  //   "Prime",
-  //   "Home & Kitchen",
-  //   "New Releases",
-  //   "Fashion",
-  //   "Computers",
-  //   "Car & Motorbike",
-  // ];
-
   return (
     <div className="headers">
       <div className="mainheader text-dark px-5 py-5">
@@ -104,7 +135,8 @@ export default function HeaderOne() {
               <div className="col-md-4 m-auto">
                 <div className="input-group w-100">
                   {/* Dropdown for Categories */}
-                  <select className="form-select bg-light searchdropdown">
+                  <select className="form-select bg-light searchdropdown" onChange={(e) => setCategoryId(e.target.value)}>
+                    <option value="">Select</option>
                     {categories && categories.map((category) => (
                       <option key={category._id} value={category._id}>
                         {category.name}
@@ -117,13 +149,30 @@ export default function HeaderOne() {
                     type="text"
                     className="form-control"
                     placeholder="Search Amazon"
+                    onChange={(e) => setQuery(e.target.value)}
+                    value={query}
                   />
 
                   {/* Search Button */}
                   <button className="btn btn-light">
-                    <Search className="text-dark" />
+                    <Search className="text-dark" onClick={handleSearch}/>
                   </button>
                 </div>
+                {loading && <div className="position-absolute top-0 end-0 p-2">Loading...</div>}
+
+                  {showDropdown && suggestions.length > 0 && (
+                    <ul className="position-absolute bg-white border rounded shadow w-25 mt-1 zindex-dropdown">
+                      {suggestions.map((item, index) => (
+                        <li
+                          key={index}
+                          onClick={() => handleSelect(item.name)}
+                          className="px-3 py-2 hover-bg-light cursor-pointer"
+                        >
+                          {item.name}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
               </div>
 
               {/* Navigation Icons */}
@@ -172,6 +221,11 @@ export default function HeaderOne() {
               <span
               key={category._id}
               className="cursor-pointer hover:underline whitespace-nowrap"
+              onClick={() =>
+                navigate("/product", {
+                  state: { categoryId: category._id },
+                })
+              }
               >
                 {console.log(category.name)}
                 {category.name}

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { placeOrder } from "../api/orderAPI";
 import { getUserAddresses, addUserAddress, updateUserAddress, deleteUserAddress } from "../api/addressAPI";
 import { showToast } from "./ToastifyNotification";
-import { ShoppingCart } from "@phosphor-icons/react";
+// import { ShoppingCart } from "@phosphor-icons/react";
 import {
     Button,
     Modal,
@@ -276,7 +276,7 @@ const Checkout = () => {
                 showToast("error", "Failed to load Razorpay SDK.");
                 return;
             }
-
+            dispatch({ type: 'loader', loader: true })
             try {
                 const orderResponse = await createRazorpayOrder({ amount: cart.total * 100 });
 
@@ -284,6 +284,8 @@ const Checkout = () => {
                     const errorData = orderResponse.message;
                     showToast("error", errorData || "Failed to create payment order.");
                     return;
+                }else{
+                    dispatch({ type: 'loader', loader: false })
                 }
 
                 const orderData = orderResponse.data;
@@ -299,6 +301,8 @@ const Checkout = () => {
                     handler: async (response) => {
                         if (response?.razorpay_payment_id) {
                             // Payment successful, now place the order
+                            dispatch({ type: 'loader', loader: true })
+
                             const placeOrderResponse = await placeOrder({
                                 addressId: selectedAddressId,
                                 paymentId: response.razorpay_payment_id,
@@ -314,8 +318,10 @@ const Checkout = () => {
                             } else {
                                 showToast("error", placeOrderResponse?.message || "Failed to place order after successful payment.");
                             }
+                            dispatch({ type: 'loader', loader: false })
                         } else {
                             showToast("error", "Payment failed or was cancelled.");
+                            dispatch({ type: 'loader', loader: false })
                         }
                     },
                     prefill: {
@@ -333,6 +339,8 @@ const Checkout = () => {
             } catch (error) {
                 console.error("Error initiating payment:", error);
                 showToast("error", "Failed to initiate payment.");
+            }finally{
+                dispatch({ type: 'loader', loader: false })
             }
         } else {
             handlePlaceOrderNow(); // For other payment methods
@@ -599,7 +607,7 @@ const Checkout = () => {
                                         className="empty-cart p-10 text-center"
                                         style={{ flex: 1 }}
                                     >
-                                        <ShoppingCart size={60} color="#ccc" />
+                                        {/* <ShoppingCart size={60} color="#ccc" /> */}
                                         <p className="text-black">No products in the cart.</p>
                                         <Link
                                             to="/shop"

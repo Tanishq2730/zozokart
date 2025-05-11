@@ -27,13 +27,13 @@ const SimilarProduct = () => {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: products.length > 6,
     speed: 800,
-    slidesToShow: 6,
+    slidesToShow: Math.min(products.length, 6),
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    arrows: true
+    arrows: products.length > 1
   };
 
   return (
@@ -44,13 +44,17 @@ const SimilarProduct = () => {
             <div className="col-md-12">
               <div className="bestsellerslider">
                 <div className="mainhead">
-                  <h5>Similar Products</h5>
+                  <h5>Beauty, Food, Toys & more</h5>
                 </div>
-                <Slider {...settings}>
-                  {products.map(product =>
-                    <Card key={product._id} product={product} />
-                  )}
-                </Slider>
+                {products.length > 1
+                  ? <Slider {...settings}>
+                      {products.map(product =>
+                        <Card key={product._id} product={product} />
+                      )}
+                    </Slider>
+                  : products.map(product =>
+                      <Card key={product._id} product={product} />
+                    )}
               </div>
             </div>
           </div>

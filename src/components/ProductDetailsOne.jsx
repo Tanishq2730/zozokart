@@ -10,6 +10,16 @@ import { IMAGE_URL } from "../utils/api-config";
 import { FaLocationDot } from "react-icons/fa6";
 import { addToCart } from "../actions/cartActions";
 import { useDispatch } from "react-redux";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  EmailShareButton, // Import EmailShareButton
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
+  EmailIcon, // Import EmailIcon
+} from 'react-share';
 
 const ProductDetailsOne = ({ product, onAddToCart }) => {
   const dispatch = useDispatch();
@@ -23,6 +33,9 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [selectedVariation, setSelectedVariation] = useState(null);
   const [attributeOptions, setAttributeOptions] = useState({});
+  const currentUrl = window.location.href;
+  const emailSubject = `Check out this product: ${product.name}`; // Default email subject
+  const emailBody = `I found this interesting product and thought you might like it: ${currentUrl}`; // Default email body
 
   useEffect(() => {
     if (product?.images) {
@@ -460,6 +473,26 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                       >
                         Buy Now
                       </Link>
+                    </div>
+                    {/* Social Sharing Options */}
+                    <div className="mt-4">
+                      <label className="block text-sm font-medium">Share:</label>
+                      <div className="flex mt-2">
+                        <FacebookShareButton url={currentUrl}>
+                          <FacebookIcon size={32} round />
+                        </FacebookShareButton>
+                        <TwitterShareButton url={currentUrl} title={product.name}>
+                          <TwitterIcon size={32} round />
+                        </TwitterShareButton>
+                        <WhatsappShareButton url={currentUrl} title={product.name}>
+                          <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
+                        {/* Email Share Button */}
+                        <EmailShareButton subject={emailSubject} body={emailBody} url={currentUrl}>
+                          <EmailIcon size={32} round />
+                        </EmailShareButton>
+                        {/* You can add more social media sharing options here */}
+                      </div>
                     </div>
                   </div>
                 </div>

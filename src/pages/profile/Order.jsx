@@ -21,32 +21,6 @@ const OrderList = () => {
   useEffect(() => {
     fetchOrders();
   }, []);
-  // const orders = [
-  //   {
-  //     id: 1,
-  //     userName: 'John Doe',
-  //     product: 'Martial Arts Gloves',
-  //     quantity: 2,
-  //     price: '₹30',
-  //     status: 'Delivered',
-  //   },
-  //   {
-  //     id: 2,
-  //     userName: 'Jane Smith',
-  //     product: 'Karate Uniform',
-  //     quantity: 1,
-  //     price: '₹50',
-  //     status: 'Shipped',
-  //   },
-  //   {
-  //     id: 3,
-  //     userName: 'Sam Johnson',
-  //     product: 'Training Shoes',
-  //     quantity: 1,
-  //     price: '₹70',
-  //     status: 'Processing',
-  //   },
-  // ];
 
   return (
     <div className="table-responsive">

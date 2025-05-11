@@ -27,53 +27,14 @@ const Beauty = () => {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: products.length > 6,
     speed: 800,
-    slidesToShow: 6,
+    slidesToShow: Math.min(products.length, 6),
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    arrows: true
+    arrows: products.length > 1
   };
-
-  // const products = [
-  //   {
-  //     id: 1,
-  //     image: "assets/images/product/p1.png",
-  //     name: "Wireless Bluetooth",
-  //     price: "From ₹999"
-  //   },
-  //   {
-  //     id: 2,
-  //     image: "assets/images/product/p2.png",
-  //     name: "Wireless Bluetooth",
-  //     price: "From ₹999"
-  //   },
-  //   {
-  //     id: 3,
-  //     image: "assets/images/product/p3.png",
-  //     name: "Wireless Bluetooth",
-  //     price: "From ₹999"
-  //   },
-  //   {
-  //     id: 4,
-  //     image: "assets/images/product/p4.png",
-  //     name: "Wireless Bluetooth",
-  //     price: "From ₹999"
-  //   },
-  //   {
-  //     id: 5,
-  //     image: "assets/images/product/p5.png",
-  //     name: "Wireless Bluetooth",
-  //     price: "From ₹999"
-  //   },
-  //   {
-  //     id: 6,
-  //     image: "assets/images/product/p6.png",
-  //     name: "Wireless Bluetooth",
-  //     price: "From ₹999"
-  //   }
-  // ];
 
   return (
     <div className="commonspacing">
@@ -85,11 +46,15 @@ const Beauty = () => {
                 <div className="mainhead">
                   <h5>Beauty, Food, Toys & more</h5>
                 </div>
-                <Slider {...settings}>
-                  {products.map(product =>
-                    <Card key={product._id} product={product} />
-                  )}
-                </Slider>
+                {products.length > 1
+                  ? <Slider {...settings}>
+                      {products.map(product =>
+                        <Card key={product._id} product={product} />
+                      )}
+                    </Slider>
+                  : products.map(product =>
+                      <Card key={product._id} product={product} />
+                    )}
               </div>
             </div>
           </div>
