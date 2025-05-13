@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Breadcrumb = ({ title }) => {
     return (
-        <div className="breadcrumb py-10 bg-main-two-50">
+        <div className="breadcrumb py-10 bg-main-two-50 mb-0">
             <div className="container container-lg">
                 <div className="breadcrumb-wrapper flex-between flex-wrap gap-16">
                     <h6 className="mb-0">{title}</h6>

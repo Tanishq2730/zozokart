@@ -1,4 +1,5 @@
 import React from "react";
+import OrderList from "./pages/orderList";
 
 const HomePageOne = React.lazy(() => import("./pages/HomePageOne"));
 const ProductDetailsPageOne = React.lazy(() =>
@@ -48,6 +49,7 @@ const routes = [
   { path: "/category", exact: true, name: "Checkout", component: CategoryPage },
   { path: "/product", exact: true, name: "Product", component: ProductPage },
   { path: "/account", exact: true, name: "Account", component: AccountPage },
+  { path: "/order-list", exact: true, name: "OrderList", component: OrderList },
 
   { path: "/contact", exact: true, name: "Contact", component: ContactPage },
 

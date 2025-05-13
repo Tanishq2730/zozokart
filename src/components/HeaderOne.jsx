@@ -181,7 +181,7 @@ export default function HeaderOne() {
                   <div className="text-center cursor-pointer">
                     <Link className="account" to={!isAuthenticated ? "/sign-in":"/dashboard"}>
                       <User size={20} />
-                      <div className="small">{!isAuthenticated ? "Account":"Dashboard"}</div>
+                      <div className="small">{!isAuthenticated ? "Account":"My Account"}</div>
                     </Link>
                   </div>
 

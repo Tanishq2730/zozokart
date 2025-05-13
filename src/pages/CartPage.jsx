@@ -5,11 +5,11 @@ import HeaderTwo from "../components/HeaderTwo";
 import Breadcrumb from "../components/Breadcrumb";
 import FooterTwo from "../components/FooterTwo";
 import BottomFooter from "../components/BottomFooter";
-import CartSection from "../components/CartSection";
 import ShippingOne from "../components/ShippingOne";
 import ScrollToTop from "react-scroll-to-top";
 import HeaderOne from "../components/HeaderOne";
 import FooterOne from "../components/FooterOne";
+import KartPage from "../components/kartpage";
 
 
 const CartPage = () => {
@@ -34,7 +34,7 @@ const CartPage = () => {
       <Breadcrumb title={"Cart"} />
 
       {/* CartSection */}
-      <CartSection />
+      <KartPage/>
 
       {/* ShippingOne */}
       <ShippingOne />

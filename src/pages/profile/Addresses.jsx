@@ -1,19 +1,28 @@
-// import { Trash2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
-    Button,
-    Modal,
-    ModalHeader,
-    ModalBody,
-    Form,
-    FormGroup,
-    Label,
-    Input,
-    Row,
-    Col,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Row,
+  Col,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from "reactstrap";
-import { addUserAddress, deleteUserAddress, getUserAddresses, updateUserAddress } from "../../api/addressAPI";
+import { EllipsisVertical, MoreVertical } from "lucide-react"; // 3 dots icon
+import {
+  addUserAddress,
+  deleteUserAddress,
+  getUserAddresses,
+  updateUserAddress,
+} from "../../api/addressAPI";
 import { showToast } from "../../components/ToastifyNotification";
 
 const Addresses = () => {
@@ -32,190 +41,227 @@ const Addresses = () => {
     area: "",
     nearByFamous: "",
     default: false,
-    addressType: "Home"
+    addressType: "Home",
   });
-  const isAuthenticated = useSelector(state => state.auth?.isAuthenticated);
-  const user = useSelector(state => state.auth?.user);
+  const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null); // Track the open dropdown
+  const isAuthenticated = useSelector((state) => state.auth?.isAuthenticated);
+  const user = useSelector((state) => state.auth?.user);
 
   useEffect(() => {
-          const fetchAddresses = async () => {
-              if (isAuthenticated && user?._id) {
-                  try {
-                      const response = await getUserAddresses();
-                      if (response?.success) {
-                          setAddresses(response.data);
-                      } else {
-                          showToast("error", response?.message || "Failed to fetch addresses.");
-                      }
-                  } catch (error) {
-                      showToast("error", "Error fetching addresses.");
-                  }
-              }
-          };
-  
-          fetchAddresses();
-      }, [isAuthenticated, user?._id]);
-  
-      const openAddAddressModal = () => {
-          setModalMode('add');
-          setModalFormData({ // Initialize form for adding
-              fullName: "",
-              phoneNumber: "",
-              alternatePhoneNumber: "",
-              pinCode: "",
-              state: "",
-              city: "",
-              houseNumber: "",
-              area: "",
-              nearByFamous: "",
-              defaultAddress: false,
-              addressType: "Home",
-          });
-          setCurrentAddressToEdit(null);
-          setIsModalOpen(true);
-      };
-  
-      const openEditAddressModal = (address) => {
-          setModalMode('edit');
-          setModalFormData({ ...address });
-          setCurrentAddressToEdit(address);
-          setIsModalOpen(true);
-      };
-  
-      const closeModal = () => {
-          setIsModalOpen(false);
-          setModalMode(null);
-          setCurrentAddressToEdit(null);
-          setModalFormData({ // Reset form data on close
-              fullName: "",
-              phoneNumber: "",
-              alternatePhoneNumber: "",
-              pinCode: "",
-              state: "",
-              city: "",
-              houseNumber: "",
-              area: "",
-              nearByFamous: "",
-              defaultAddress: false,
-              addressType: "Home",
-          });
-      };
-  
-      const handleModalInputChange = (event) => {
-          const { name, value, type, checked } = event.target;
-          setModalFormData(prevState => ({
-              ...prevState,
-              [name]: type === 'checkbox' ? checked : value,
-          }));
-      };
-  
-      const handleSaveAddressModal = async () => {
-          if (!user?._id) {
-              showToast("error", "User not authenticated.");
-              return;
+    const fetchAddresses = async () => {
+      if (isAuthenticated && user?._id) {
+        try {
+          const response = await getUserAddresses();
+          if (response?.success) {
+            setAddresses(response.data);
+          } else {
+            showToast(
+              "error",
+              response?.message || "Failed to fetch addresses."
+            );
           }
-  
-          try {
-              let response;
-              if (modalMode === 'add') {
-                  response = await addUserAddress(modalFormData);
-                  if (response.success) {
-                      showToast("success", "New address added successfully.");
-                      setAddresses([...addresses, response.data]);
-                      
-                      closeModal();
-                  } else {
-                      showToast("error", response?.message || "Failed to add new address.");
-                  }
-              } else if (modalMode === 'edit' && currentAddressToEdit?._id) {
-                  response = await updateUserAddress(currentAddressToEdit._id, modalFormData);
-                  if (response.success) {
-                      showToast("success", "Address updated successfully.");
-                      setAddresses(prevAddresses =>
-                          prevAddresses.map(addr =>
-                              addr._id === currentAddressToEdit._id ? response.data : addr
-                          )
-                      );
-                      closeModal();
-                  } else {
-                      showToast("error", response?.message || "Failed to update address.");
-                  }
-              }
-          } catch (error) {
-              showToast("error", `Error ${modalMode === 'add' ? 'adding' : 'updating'} address.`);
-          }
-      };
-  
-      const handleDeleteAddress = async (addressId) => {
-          if (!user?._id || !addressId) {
-              showToast("error", "Invalid request to delete address.");
-              return;
-          }
-          if (window.confirm("Are you sure you want to delete this address?")) {
-              try {
-                  const response = await deleteUserAddress(addressId);
-                  if (response?.success) {
-                      showToast("success", "Address deleted successfully.");
-                      setAddresses(prevAddresses => prevAddresses.filter(addr => addr._id !== addressId));
-                     
-                  } else {
-                      showToast("error", response?.message || "Failed to delete address.");
-                  }
-              } catch (error) {
-                  showToast("error", "Error deleting address.");
-              }
-          }
-      };
+        } catch (error) {
+          showToast("error", "Error fetching addresses.");
+        }
+      }
+    };
+
+    fetchAddresses();
+  }, [isAuthenticated, user?._id]);
+
+  const openAddAddressModal = () => {
+    setModalMode("add");
+    setModalFormData({
+      // Initialize form for adding
+      fullName: "",
+      phoneNumber: "",
+      alternatePhoneNumber: "",
+      pinCode: "",
+      state: "",
+      city: "",
+      houseNumber: "",
+      area: "",
+      nearByFamous: "",
+      defaultAddress: false,
+      addressType: "Home",
+    });
+    setCurrentAddressToEdit(null);
+    setIsModalOpen(true);
+  };
+
+  const openEditAddressModal = (address) => {
+    setModalMode("edit");
+    setModalFormData({ ...address });
+    setCurrentAddressToEdit(address);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalMode(null);
+    setCurrentAddressToEdit(null);
+    setModalFormData({
+      // Reset form data on close
+      fullName: "",
+      phoneNumber: "",
+      alternatePhoneNumber: "",
+      pinCode: "",
+      state: "",
+      city: "",
+      houseNumber: "",
+      area: "",
+      nearByFamous: "",
+      defaultAddress: false,
+      addressType: "Home",
+    });
+  };
+
+  const handleModalInputChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    setModalFormData((prevState) => ({
+      ...prevState,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSaveAddressModal = async () => {
+    if (!user?._id) {
+      showToast("error", "User not authenticated.");
+      return;
+    }
+
+    try {
+      let response;
+      if (modalMode === "add") {
+        response = await addUserAddress(modalFormData);
+        if (response.success) {
+          showToast("success", "New address added successfully.");
+          setAddresses([...addresses, response.data]);
+
+          closeModal();
+        } else {
+          showToast("error", response?.message || "Failed to add new address.");
+        }
+      } else if (modalMode === "edit" && currentAddressToEdit?._id) {
+        response = await updateUserAddress(
+          currentAddressToEdit._id,
+          modalFormData
+        );
+        if (response.success) {
+          showToast("success", "Address updated successfully.");
+          setAddresses((prevAddresses) =>
+            prevAddresses.map((addr) =>
+              addr._id === currentAddressToEdit._id ? response.data : addr
+            )
+          );
+          closeModal();
+        } else {
+          showToast("error", response?.message || "Failed to update address.");
+        }
+      }
+    } catch (error) {
+      showToast(
+        "error",
+        `Error ${modalMode === "add" ? "adding" : "updating"} address.`
+      );
+    }
+  };
+
+  const handleDeleteAddress = async (addressId) => {
+    if (!user?._id || !addressId) {
+      showToast("error", "Invalid request to delete address.");
+      return;
+    }
+    if (window.confirm("Are you sure you want to delete this address?")) {
+      try {
+        const response = await deleteUserAddress(addressId);
+        if (response?.success) {
+          showToast("success", "Address deleted successfully.");
+          setAddresses((prevAddresses) =>
+            prevAddresses.filter((addr) => addr._id !== addressId)
+          );
+        } else {
+          showToast("error", response?.message || "Failed to delete address.");
+        }
+      } catch (error) {
+        showToast("error", "Error deleting address.");
+      }
+    }
+  };
 
   return (
-    <div>
-      <div className="mainheader d-flex justify-content-between align-items-center">
+    <div className="addressSection">
+      <div
+        className="mainheader d-flex justify-content-between p-0 align-items-center"
+        style={{ padding: "0 !important" }}
+      >
         <h4>Addresses</h4>
-        <button className="btn btn-main" onClick={openAddAddressModal}>
+      </div>
+      <div>
+        <button
+          className="btn btn-primary addressBtn border"
+          onClick={openAddAddressModal}
+        >
           + Add New Address
         </button>
       </div>
-      <hr />
 
-      {addresses.length === 0
-        ? <p className="text-center text-muted">
-            Please add your address here.
-          </p>
-        : <div className="row">
-            {addresses.map((address, index) =>
-              <div className="col-md-6" key={index}>
-                <div className="border p-10 mb-10 position-relative">
-                  
-                  <h4 className="text-18">
-                    {address.fullName}  ({address.addressType}) {address.defaultAddress && <span className="text-sm text-main-600">(Default)</span>}
-                  </h4>
+      <div className="mt-10">
+        {addresses.length === 0 ? (
+          <p className="text-center text-muted">Please add your address here.</p>
+        ) : (
+          <div className="row">
+            {addresses.map((address, index) => (
+              <div className="col-md-12" key={index}>
+                <div className="border p-20 mb-0 position-relative">
+                  <button className="home">{address.addressType}</button>
+                  <div className="homename">
+                    <h4 className="text-18">{address.fullName} </h4>
+                    <p className="text-14">
+                      Phone: {address.phoneNumber}
+                      {address.alternatePhoneNumber &&
+                        `, Alt: ${address.alternatePhoneNumber}`}
+                    </p>
+                  </div>
+                  <p className="text-14">{address.address}</p>
                   <p className="text-14">
-                    {address.address}
+                    {address.houseNumber && `${address.houseNumber}, `}
+                    {address.area},{" "}
+                    {address.nearByFamous && `Near ${address.nearByFamous}, `}
+                    {address.city}, {address.state} - {address.pinCode}
                   </p>
-                  <p className="text-14">
-                    {address.houseNumber && `${address.houseNumber}, `}{address.area}, {address.nearByFamous && `Near ${address.nearByFamous}, `}{address.city}, {address.state} - {address.pinCode}
-                  </p>
-                  <p className="text-14">
-                    Phone: {address.phoneNumber}{address.alternatePhoneNumber && `, Alt: ${address.alternatePhoneNumber}`}
-                  </p>
-                  <Button color="primary" size="sm" className="me-1" onClick={() => openEditAddressModal(address)}>Edit</Button>
-                  <Button color="danger" size="sm" className="text-danger" onClick={() => handleDeleteAddress(address._id)}>Delete</Button>
+
+                  {/* 3 Dots Dropdown */}
+                  <div className="position-absolute" style={{ top: '10px', right: '10px' }}>
+                    <Dropdown
+                      direction="down"
+                      isOpen={dropdownOpenIndex === index}
+                      toggle={() => setDropdownOpenIndex(dropdownOpenIndex === index ? null : index)}
+                    >
+                      <DropdownToggle color="link" className="p-0 text-dark">
+                        <EllipsisVertical size={20} style={{color:"#000 !important"}}/>
+                      </DropdownToggle>
+                      <DropdownMenu end>
+                        <DropdownItem onClick={() => openEditAddressModal(address)}>
+                          Edit
+                        </DropdownItem>
+                        <DropdownItem onClick={() => handleDeleteAddress(address._id)}>
+                          Delete
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                  </div>
                 </div>
               </div>
-            )}
-          </div>}
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Reactstrap Modal */}
-      <Modal
-        size="lg"
-        isOpen={isModalOpen}
-        toggle={closeModal}
-        className="address-modal"
-      >
+      <Modal size="lg" isOpen={isModalOpen} toggle={closeModal} className="address-modal">
         <ModalHeader toggle={closeModal}>
-          {modalMode === "add"
-            ? "Add New Delivery Address"
-            : "Edit Delivery Address"}
+          {modalMode === "add" ? "Add New Delivery Address" : "Edit Delivery Address"}
         </ModalHeader>
         <ModalBody>
           <Form>
@@ -250,9 +296,7 @@ const Addresses = () => {
               </Col>
               <Col xs={12}>
                 <FormGroup>
-                  <Label for="alternatePhoneNumber">
-                    Alternate Phone Number (Optional)
-                  </Label>
+                  <Label for="alternatePhoneNumber">Alternate Phone Number (Optional)</Label>
                   <Input
                     type="text"
                     className="common-input border-gray-100"
@@ -333,9 +377,7 @@ const Addresses = () => {
               </Col>
               <Col xs={12}>
                 <FormGroup>
-                  <Label for="nearByFamous">
-                    Nearby Famous Place (Optional)
-                  </Label>
+                  <Label for="nearByFamous">Nearby Famous Place (Optional)</Label>
                   <Input
                     type="text"
                     className="common-input border-gray-100"
@@ -350,72 +392,19 @@ const Addresses = () => {
                 <FormGroup className="form-check common-check">
                   <Input
                     type="checkbox"
-                    className="form-check-input"
-                    id="isDefaultModal"
-                    name="defaultAddress"
-                    checked={modalFormData.defaultAddress}
+                    name="default"
+                    id="default"
+                    checked={modalFormData.default}
                     onChange={handleModalInputChange}
                   />
-                  <Label
-                    className="form-check-label fw-normal text-neutral-600"
-                    htmlFor="isDefaultModal"
-                  >
-                    Set as default address
-                  </Label>
+                  <Label for="default">Set as Default Address</Label>
                 </FormGroup>
-              </Col>
-              <Col xs={12}>
-                <FormGroup className="form-check common-check">
-                  <Input
-                    type="radio"
-                    className="form-check-input"
-                    id="addressTypeHomeModal"
-                    name="addressType"
-                    value="Home"
-                    checked={modalFormData.addressType === "Home"}
-                    onChange={handleModalInputChange}
-                  />
-                  <Label
-                    className="form-check-label fw-normal text-neutral-600 me-3"
-                    htmlFor="addressTypeHomeModal"
-                  >
-                    Home
-                  </Label>
-                  <Input
-                    type="radio"
-                    className="form-check-input"
-                    id="addressTypeWorkModal"
-                    name="addressType"
-                    value="Work"
-                    checked={modalFormData.addressType === "Work"}
-                    onChange={handleModalInputChange}
-                  />
-                  <Label
-                    className="form-check-label fw-normal text-neutral-600"
-                    htmlFor="addressTypeWorkModal"
-                  >
-                    Work
-                  </Label>
-                </FormGroup>
-              </Col>
-              <Col xs={12} className="mt-3">
-                <Button
-                  color="primary"
-                  className="rounded-pill me-2"
-                  onClick={handleSaveAddressModal}
-                >
-                  {modalMode === "add" ? "Add Address" : "Save Changes"}
-                </Button>
-                <Button
-                  color="secondary"
-                  className="rounded-pill"
-                  onClick={closeModal}
-                >
-                  Cancel
-                </Button>
               </Col>
             </Row>
           </Form>
+          <Button color="primary" onClick={handleSaveAddressModal} className="px-4 py-2">
+            {modalMode === "add" ? "Save Address" : "Update Address"}
+          </Button>
         </ModalBody>
       </Modal>
     </div>

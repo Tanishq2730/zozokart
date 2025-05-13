@@ -26,11 +26,11 @@ const FooterOne = () => {
   }, []);
   return (
     <footer className="footer py-60">
-      <img
+      {/* <img
         src="/assets/images/bg/body-bottom-bg.png"
         alt="BG"
         className="body-bottom-bg"
-      />
+      /> */}
       <div className="container container-lg">
         <div className="footer-item-wrapper d-flex align-items-start flex-wrap">
           <div className="footer-item">
