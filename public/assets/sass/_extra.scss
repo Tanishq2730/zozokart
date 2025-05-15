@@ -963,10 +963,10 @@ ul.why-us-bx li {
 .catCard {
   margin: 10px 0;
   padding: 0px;
-  .card-img-top{
+  .card-img-top {
     border-radius: 0px !important;
   }
-  .btn-warning{
+  .btn-warning {
     border-radius: 200px;
     width: 60% !important;
     font-size: 12px;
@@ -1063,7 +1063,7 @@ ul.why-us-bx li {
 .catCard {
   border: 1px solid #efefef;
   border-radius: 2px;
-  .card{
+  .card {
     border: none !important;
   }
 }
@@ -1076,7 +1076,7 @@ ul.why-us-bx li {
     font-size: 16px;
     margin-bottom: 5px;
   }
-  .form-check-label{
+  .form-check-label {
     font-size: 14px !important;
     color: #2e2e2e;
   }
@@ -1349,21 +1349,21 @@ ul.why-us-bx li {
   }
 }
 
-.filter{
-  h5{
+.filter {
+  h5 {
     font-size: 24px;
   }
-  h6{
+  h6 {
     font-size: 18px;
   }
 }
 
-.productDetailing{
+.productDetailing {
   margin: 1em 0;
-  h5{
+  h5 {
     font-size: 22px;
   }
-  img{
+  img {
     width: 6em;
     height: 6em;
     object-fit: cover;
@@ -1371,20 +1371,92 @@ ul.why-us-bx li {
     border-radius: 5px;
   }
 }
-.videoSection{
-  img{
+.videoSection {
+  img {
     width: 100%;
     height: 500px;
     object-fit: cover;
   }
 }
 
-.mainfiltercard{
+.mainfiltercard {
   padding: 10px 40px;
 }
 
-.kartCard{
-  .card{
+.kartCard {
+  .card {
     border: none;
+  }
+}
+
+.cartSection {
+  background-color: #f0f3f6;
+  padding-top: 2em;
+  .card {
+    padding: 1.5em !important;
+    border: none;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0 !important;
+  }
+}
+
+.increasedecreaseBtn {
+  margin-top: 10px !important;
+  .increa {
+    border: 1px solid #ccc !important;
+    border-radius: 100px !important;
+    background-color: #fff !important;
+    color: #000 !important;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px !important;
+  }
+  .count {
+    margin: 10px 10px !important;
+    border: 1px solid #ccc;
+    padding: 2px 20px;
+  }
+}
+
+.notification {
+  padding: 1.5em;
+  .notifyImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3em 0;
+    img {
+      width: 30%;
+      text-align: center;
+      height: 100%;
+      border-radius: 0 !important;
+    }
+  }
+  .notifyCard{
+    border: 1px solid #ccc;
+    padding: 1em;
+    border-radius: 10px;
+    margin: 10px 0;
+    h5{
+      font-size: 16px;
+      margin-bottom: 10px !important;
+    }
+  }
+}
+
+.notifyimagCard{
+  text-align: center;
+}
+
+.productincreBtn{
+  padding: 5px 13px !important;
+}
+
+.socailiconProduct{
+  button{
+    margin-right: 0.5em !important;
   }
 }

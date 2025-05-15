@@ -66,7 +66,7 @@ const Dashboard = () => {
               <section>
                 <div className="dashcardtop mt-20 mb-20">
                   <div className="menuList">
-                    <Link to="#" onClick={() => setActiveTab("orders")}>
+                    <Link to="/order-list" >
                       <div className="innerMenuLists">
                         <div className="iconlist">
                           <List />
@@ -115,7 +115,7 @@ const Dashboard = () => {
                 </div>
               </section>
             </div>
-            <div className="col-md-9">
+            <div className="col-md-9 mb-20">
               <div className="dashcardtop p-10">
               {activeTab === "orders" && <OrderList />}
               {activeTab === "transaction" && <TransactionList />}

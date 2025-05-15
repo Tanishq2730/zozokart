@@ -19,7 +19,7 @@ import {
   TwitterIcon,
   WhatsappIcon,
   EmailIcon, // Import EmailIcon
-} from 'react-share';
+} from "react-share";
 
 const ProductDetailsOne = ({ product, onAddToCart }) => {
   const dispatch = useDispatch();
@@ -71,7 +71,9 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
 
       // Update images based on the selected variation (if the variation has specific images)
       if (selectedVariation.images?.length > 0) {
-        setProductImages(selectedVariation.images.map((img) => `${IMAGE_URL}/${img}`));
+        setProductImages(
+          selectedVariation.images.map((img) => `${IMAGE_URL}/${img}`)
+        );
       } else if (product?.images) {
         const imagesArray = [
           product.images.mainImage,
@@ -165,8 +167,12 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
     return <div>Loading product details...</div>;
   }
 
-  const parsedDetails = product.productDetails ? JSON.parse(product.productDetails) : [];
-  const parsedSpecifications = product.specifications ? JSON.parse(product.specifications) : [];
+  const parsedDetails = product.productDetails
+    ? JSON.parse(product.productDetails)
+    : [];
+  const parsedSpecifications = product.specifications
+    ? JSON.parse(product.specifications)
+    : [];
 
   // Get unique attribute names and values for dropdowns
   const uniqueAttributes = {};
@@ -188,33 +194,47 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                         {productImages.map((image, index) => (
                           <li
                             style={{ cursor: "pointer" }}
-                            className={`mb-10 center max-w-120 max-h-120 h-100 flex-center border rounded-16 p-8 ${photoIndex === index ? "border-primary" : "border-gray-100"
-                              }`}
+                            className={`mb-10 center max-w-120 max-h-120 h-100 flex-center border rounded-16 p-8 ${
+                              photoIndex === index
+                                ? "border-primary"
+                                : "border-gray-100"
+                            }`}
                             key={index}
                             onClick={() => setPhotoIndex(index)}
-                          // onMouseMove={() => setPhotoIndex(index)}
+                            // onMouseMove={() => setPhotoIndex(index)}
                           >
-                            <img className="thum" src={image} alt={`Thumbnail ${index}`} />
+                            <img
+                              className="thum"
+                              src={image}
+                              alt={`Thumbnail ${index}`}
+                            />
                           </li>
                         ))}
                       </ul>
                     </div>
                   )}
-                  <div className={productImages.length > 1 ? "col-10" : "col-12"}>
+                  <div
+                    className={productImages.length > 1 ? "col-10" : "col-12"}
+                  >
                     <div className="product-details__left">
                       <div
                         className="product-details__thumb-slider border border-gray-100 p-5 rounded-16"
-                        style={{ display: "block!important", position: "relative" }}
+                        style={{
+                          display: "block!important",
+                          position: "relative",
+                        }}
                       >
-                        {selectedVariation?.salePrice < selectedVariation?.regularPrice && (
+                        {selectedVariation?.salePrice <
+                          selectedVariation?.regularPrice && (
                           <span
                             style={{ zIndex: "9999999" }}
                             className="product-card__badge bg-danger-600 px-8 py-4 text-sm text-white position-absolute inset-inline-start-0 inset-block-start-0"
                           >
                             {Math.round(
-                              ((selectedVariation.regularPrice - selectedVariation.salePrice) /
+                              ((selectedVariation.regularPrice -
+                                selectedVariation.salePrice) /
                                 selectedVariation.regularPrice) *
-                              100
+                                100
                             )}
                             % OFF
                           </span>
@@ -229,7 +249,11 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                               <img
                                 src={image}
                                 alt={`Main Thumbnail ${index}`}
-                                style={{ width: "100%", margin: "0 auto", cursor: "pointer" }}
+                                style={{
+                                  width: "100%",
+                                  margin: "0 auto",
+                                  cursor: "pointer",
+                                }}
                                 onClick={() => setIsOpen(true)}
                               />
                             </div>
@@ -239,23 +263,27 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                           <Lightbox
                             mainSrc={productImages[photoIndex]}
                             nextSrc={
-                              productImages[(photoIndex + 1) % productImages.length]
+                              productImages[
+                                (photoIndex + 1) % productImages.length
+                              ]
                             }
                             prevSrc={
                               productImages[
-                              (photoIndex + productImages.length - 1) %
-                              productImages.length
+                                (photoIndex + productImages.length - 1) %
+                                  productImages.length
                               ]
                             }
                             onCloseRequest={() => setIsOpen(false)}
                             onMovePrevRequest={() =>
                               setPhotoIndex(
                                 (photoIndex + productImages.length - 1) %
-                                productImages.length
+                                  productImages.length
                               )
                             }
                             onMoveNextRequest={() =>
-                              setPhotoIndex((photoIndex + 1) % productImages.length)
+                              setPhotoIndex(
+                                (photoIndex + 1) % productImages.length
+                              )
                             }
                           />
                         )}
@@ -270,7 +298,11 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                                   key={index}
                                   onClick={() => setPhotoIndex(index)}
                                 >
-                                  <img className="thum" src={image} alt={`Thumbnail ${index}`} />
+                                  <img
+                                    className="thum"
+                                    src={image}
+                                    alt={`Thumbnail ${index}`}
+                                  />
                                 </div>
                               ))}
                             </Slider>
@@ -287,52 +319,59 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                   <div className="flex-align flex-wrap gap-12">
                     <div className="flex-align gap-12 flex-wrap">
                       <div className="flex-align gap-8">
-                        {Array.from({ length: Math.round(product.overallRating) }).map(
-                          (_, index) => (
-                            <span
-                              key={`star-${index}`}
-                              className="text-15 fw-medium text-warning-600 d-flex"
-                            >
-                              <i className="ph-fill ph-star" />
-                            </span>
-                          )
-                        )}
-                        {Array.from({ length: 5 - Math.round(product.overallRating) }).map(
-                          (_, index) => (
-                            <span
-                              key={`empty-star-${index}`}
-                              className="text-15 fw-medium text-warning-300 d-flex"
-                            >
-                              <i className="ph-fill ph-star" />
-                            </span>
-                          )
-                        )}
+                        {Array.from({
+                          length: Math.round(product.overallRating),
+                        }).map((_, index) => (
+                          <span
+                            key={`star-${index}`}
+                            className="text-15 fw-medium text-warning-600 d-flex"
+                          >
+                            <i className="ph-fill ph-star" />
+                          </span>
+                        ))}
+                        {Array.from({
+                          length: 5 - Math.round(product.overallRating),
+                        }).map((_, index) => (
+                          <span
+                            key={`empty-star-${index}`}
+                            className="text-15 fw-medium text-warning-300 d-flex"
+                          >
+                            <i className="ph-fill ph-star" />
+                          </span>
+                        ))}
                       </div>
                       <span className="text-sm fw-medium text-neutral-600">
                         {product.overallRating} Star Rating
                       </span>
                       <span className="text-sm fw-medium text-gray-500">
-                        ({product.ratingAndReviews ? product.ratingAndReviews.length : 0})
+                        (
+                        {product.ratingAndReviews
+                          ? product.ratingAndReviews.length
+                          : 0}
+                        )
                       </span>
                     </div>
                     <span className="text-sm fw-medium text-gray-500">|</span>
                     <span className="text-gray-900">
                       {" "}
-                      <span className="text-gray-400">SKU:</span> {selectedVariation?.sku || 'N/A'}{" "}
+                      <span className="text-gray-400">SKU:</span>{" "}
+                      {selectedVariation?.sku || "N/A"}{" "}
                     </span>
                   </div>
-
-
 
                   <div className="mt-10 flex-align flex-wrap gap-32">
                     <div className="flex-align gap-8">
                       <h4 className="mb-0">
-                        &#8377;{selectedVariation?.salePrice || product.salePrice}
+                        &#8377;
+                        {selectedVariation?.salePrice || product.salePrice}
                       </h4>
-                      {selectedVariation?.salePrice < selectedVariation?.regularPrice && (
+                      {selectedVariation?.salePrice <
+                        selectedVariation?.regularPrice && (
                         <span className="text-md text-gray-500">
                           <del style={{ color: "#000" }}>
-                            &#8377;{selectedVariation?.regularPrice || product.regularPrice}
+                            &#8377;
+                            {selectedVariation?.regularPrice ||
+                              product.regularPrice}
                           </del>
                         </span>
                       )}
@@ -347,8 +386,10 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                       </label>
                       <select
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        value={attributeOptions[attrName] || ''}
-                        onChange={(e) => handleAttributeChange(attrName, e.target.value)}
+                        value={attributeOptions[attrName] || ""}
+                        onChange={(e) =>
+                          handleAttributeChange(attrName, e.target.value)
+                        }
                       >
                         <option value="">Select {attrName}</option>
                         {uniqueAttributes[attrName]?.map((value) => (
@@ -374,7 +415,9 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                   <hr />
                   <div className="productdetaillist">
                     <h5>Description</h5>
-                    <p className="text-gray-700 mt-10 text-14">{product.description}</p>
+                    <p className="text-gray-700 mt-10 text-14">
+                      {product.description}
+                    </p>
                   </div>
                   <hr />
                   <div className="productdetaillist">
@@ -391,7 +434,9 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
 
                   <div className="productdetaillist">
                     <h5>More</h5>
-                    <p className="text-gray-700 mt-10 text-14">{product.more}</p>
+                    <p className="text-gray-700 mt-10 text-14">
+                      {product.more}
+                    </p>
                   </div>
 
                   <span className="mt-32 pt-10 text-gray-700 border-top border-gray-100 d-block" />
@@ -402,29 +447,41 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                   <div className="">
                     <h2 className="text-2xl font-semibold">
                       &#8377;{selectedVariation?.salePrice || product.salePrice}
-                      {selectedVariation?.salePrice < selectedVariation?.regularPrice && (
+                      {selectedVariation?.salePrice <
+                        selectedVariation?.regularPrice && (
                         <sup>
                           <span className="text-sm text-gray-500">
-                            <del>&#8377;{selectedVariation?.regularPrice || product.regularPrice}</del>
+                            <del>
+                              &#8377;
+                              {selectedVariation?.regularPrice ||
+                                product.regularPrice}
+                            </del>
                           </span>
                         </sup>
                       )}
                     </h2>
                     <p className="text-sm text-blue-600 font-medium">
                       FREE delivery{" "}
-                      {new Date().toLocaleDateString('en-IN', {
-                        weekday: 'long',
-                        day: 'numeric',
-                        month: 'long',
+                      {new Date().toLocaleDateString("en-IN", {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "long",
                       })}
                       . <span className="underline">Details</span>
                     </p>
                     <p className="text-sm text-gray-600 flex items-center location">
-                      <span className="mr-1"><FaLocationDot /></span> Deliver to Jaipur, Rajasthan
+                      <span className="mr-1">
+                        <FaLocationDot />
+                      </span>{" "}
+                      Deliver to Jaipur, Rajasthan
                     </p>
                     <div className="instock">
                       <p className="text-green-600 font-bold mt-2">
-                        In stock ({selectedVariation?.stockQty !== undefined ? selectedVariation.stockQty : product.stockQty})
+                        In stock (
+                        {selectedVariation?.stockQty !== undefined
+                          ? selectedVariation.stockQty
+                          : product.stockQty}
+                        )
                       </p>
                       <p className="text-gray-700 text-sm">
                         Payment{" "}
@@ -439,18 +496,23 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                       )}
                     </div>
 
-                    <div className="mt-3">
-                      <label className="block text-sm font-medium">Quantity:</label>
+                    <div className="mt-3 mb-20">
+                      <label className="block text-sm font-medium">
+                        Quantity:
+                      </label>
                       <div className="flex items-center space-x-2">
                         <button
-                          className="border rounded p-1"
+                          className="border rounded p-4 productincreBtn"
                           onClick={decrementQuantity}
                           disabled={selectedQuantity <= 1}
                         >
                           -
                         </button>
-                        <span>{selectedQuantity}</span>
-                        <button className="border rounded p-1" onClick={incrementQuantity}>
+                        <span className="mx-10">{selectedQuantity}</span>
+                        <button
+                          className="border rounded p-4 productincreBtn"
+                          onClick={incrementQuantity}
+                        >
                           +
                         </button>
                       </div>
@@ -460,35 +522,63 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                       <button
                         className="btn btn-main w-100 text-center rounded-pill flex-align justify-content-center gap-8 px-20 my-4"
                         // onClick={handleAddToCartClick}
-                        onClick={() => dispatch(addToCart(product, selectedVariation,selectedQuantity))}
-                        disabled={(selectedVariation?.stockQty !== undefined ? selectedVariation.stockQty : product.stockQty) <= 0}
+                        onClick={() =>
+                          dispatch(
+                            addToCart(
+                              product,
+                              selectedVariation,
+                              selectedQuantity
+                            )
+                          )
+                        }
+                        disabled={
+                          (selectedVariation?.stockQty !== undefined
+                            ? selectedVariation.stockQty
+                            : product.stockQty) <= 0
+                        }
                       >
-                        {(selectedVariation?.stockQty !== undefined ? selectedVariation.stockQty : product.stockQty) <= 0 ? 'Out of Stock' : 'Add to cart'}
+                        {(selectedVariation?.stockQty !== undefined
+                          ? selectedVariation.stockQty
+                          : product.stockQty) <= 0
+                          ? "Out of Stock"
+                          : "Add to cart"}
                       </button>
                     </div>
                     <div>
                       <Link
                         to="/cart"
-                        className="btn btn-main w-100 text-center rounded-pill flex-align justify-content-center gap-8 px-20 my-4"
+                        className="btn btn-main w-100 text-center rounded-pill flex-align justify-content-center gap-8 px-20 my-10"
                       >
                         Buy Now
                       </Link>
                     </div>
                     {/* Social Sharing Options */}
                     <div className="mt-4">
-                      <label className="block text-sm font-medium">Share:</label>
-                      <div className="flex mt-2">
+                      <label className="block text-sm font-medium">
+                        Share:
+                      </label>
+                      <div className="flex mt-2 socailiconProduct">
                         <FacebookShareButton url={currentUrl}>
                           <FacebookIcon size={32} round />
                         </FacebookShareButton>
-                        <TwitterShareButton url={currentUrl} title={product.name}>
+                        <TwitterShareButton
+                          url={currentUrl}
+                          title={product.name}
+                        >
                           <TwitterIcon size={32} round />
                         </TwitterShareButton>
-                        <WhatsappShareButton url={currentUrl} title={product.name}>
+                        <WhatsappShareButton
+                          url={currentUrl}
+                          title={product.name}
+                        >
                           <WhatsappIcon size={32} round />
                         </WhatsappShareButton>
                         {/* Email Share Button */}
-                        <EmailShareButton subject={emailSubject} body={emailBody} url={currentUrl}>
+                        <EmailShareButton
+                          subject={emailSubject}
+                          body={emailBody}
+                          url={currentUrl}
+                        >
                           <EmailIcon size={32} round />
                         </EmailShareButton>
                         {/* You can add more social media sharing options here */}

@@ -112,7 +112,7 @@ const ProductRatingAndReview = ({ product,getProduct }) => {
             <div className="col-lg-6">
               {ratingAndReviews.length > 0 ? ratingAndReviews.map((reviewData) => (
                 <div
-                  className="d-flex align-items-start gap-24 pb-44 border-bottom border-gray-100 mb-44"
+                  className="d-flex align-items-start gap-24 pb-20 border-bottom border-gray-100 mb-20"
                   key={reviewData._id}
                 >
                   <img
