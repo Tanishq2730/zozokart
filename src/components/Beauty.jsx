@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Card from "./common/card";
 import { fetchProducts } from "../api/homeAPI";
 
@@ -15,7 +16,7 @@ const Beauty = () => {
         setProducts(data.data);
       }
     } catch (error) {
-      console.error("Error fetching banners:", error);
+      console.error("Error fetching products:", error);
     } finally {
       setLoading(false);
     }
@@ -27,13 +28,13 @@ const Beauty = () => {
 
   const settings = {
     dots: false,
-    infinite: products.length > 6,
+    infinite: true,
     speed: 800,
-    slidesToShow: Math.min(products.length, 6),
+    slidesToShow: Math.min(3, products.length),
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    arrows: products.length > 1
+    arrows: false,
   };
 
   return (
@@ -46,15 +47,25 @@ const Beauty = () => {
                 <div className="mainhead">
                   <h5>Beauty, Food, Toys & more</h5>
                 </div>
-                {products.length > 1
-                  ? <Slider {...settings}>
-                      {products.map(product =>
-                        <Card key={product._id} product={product} />
-                      )}
-                    </Slider>
-                  : products.map(product =>
+
+                {loading ? (
+                  <p>Loading...</p>
+                ) : products.length >= 3 ? (
+                  <Slider {...settings}>
+                    {products.map((product) => (
                       <Card key={product._id} product={product} />
-                    )}
+                    ))}
+                  </Slider>
+                ) : (
+                  <div className="row">
+                    {products.map((product) => (
+                      <div className="col-md-4" key={product._id}>
+                        <Card product={product} />
+                      </div>
+                    ))}
+                  </div>
+                )}
+
               </div>
             </div>
           </div>
