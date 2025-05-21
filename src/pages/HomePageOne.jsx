@@ -21,6 +21,7 @@ import Banner from "../components/Banner";
 import Beauty from "../components/Beauty";
 import Adscatgory from "../components/adscatgory";
 import CategorySection from "../components/categorySection";
+import HomeCategoryHeader from "../components/homeCategoryHeader";
 const HomePageOne = () => {
   // State to control the popup visibility
   const [modalOpen, setModalOpen] = useState(false);
@@ -46,6 +47,8 @@ const HomePageOne = () => {
 
       {/* HeaderOne */}
       <HeaderOne />
+
+      <HomeCategoryHeader/>
 
       {/* banner  */}
       <Banner/>

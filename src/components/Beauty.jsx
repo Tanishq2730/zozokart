@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Card from "./common/card";
 import { fetchProducts } from "../api/homeAPI";
+import HomeCategoryCard from "./common/homeCategoryCard";
 
 const Beauty = () => {
   const [products, setProducts] = useState([]);
@@ -26,16 +27,26 @@ const Beauty = () => {
     getProducts();
   }, []);
 
+  // Always show 3 slides
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: products.length > 4,     // disable infinite if less than 4 slides
     speed: 800,
-    slidesToShow: Math.min(3, products.length),
+    slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
     arrows: false,
   };
+
+  // Pad with placeholders so we always have at least 3 items
+  const slides = React.useMemo(() => {
+    const base = [...products];
+    while (base.length < 6) {
+      base.push({ _id: `placeholder-${base.length}`, placeholder: true });
+    }
+    return base;
+  }, [products]);
 
   return (
     <div className="commonspacing">
@@ -45,25 +56,24 @@ const Beauty = () => {
             <div className="col-md-12">
               <div className="bestsellerslider">
                 <div className="mainhead">
-                  <h5>Beauty, Food, Toys & more</h5>
+                  <h5>Beauty, Food, Toys &amp; more</h5>
                 </div>
 
                 {loading ? (
                   <p>Loading...</p>
-                ) : products.length >= 3 ? (
-                  <Slider {...settings}>
-                    {products.map((product) => (
-                      <Card key={product._id} product={product} />
-                    ))}
-                  </Slider>
                 ) : (
-                  <div className="row">
-                    {products.map((product) => (
-                      <div className="col-md-4" key={product._id}>
-                        <Card product={product} />
-                      </div>
-                    ))}
-                  </div>
+                  <Slider {...settings}>
+                    {slides.map((item) =>
+                      item.placeholder ? (
+                        // render an empty slide
+                        <div key={item._id} style={{ padding: "0 15px" }}>
+                          {/* nothing here */}
+                        </div>
+                      ) : (
+                        <HomeCategoryCard key={item._id} product={item} />
+                      )
+                    )}
+                  </Slider>
                 )}
 
               </div>
