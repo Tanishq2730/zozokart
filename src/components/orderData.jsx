@@ -1,12 +1,65 @@
 // orderList.jsx
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { getOrders } from "../api/dashboardAPI";
+import { IMAGE_URL } from "../utils/api-config";
 
 const OrderData = () => {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState({ orderStatus: [], orderTime: [] });
+
+  const fetchOrders = async () => {
+    try {
+      const data = await getOrders(filters);
+      if (data.success) {
+        setOrders(data.data);
+      }
+    } catch (error) {
+      console.error("Error fetching banners:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(
+    () => {
+      fetchOrders();
+    },
+    [filters]
+  );
+
+  const handleFilterChange = (category, value) => {
+    setFilters(prevFilters => {
+      const currentValues = prevFilters[category];
+      const newValues = currentValues.includes(value)
+        ? currentValues.filter(item => item !== value)
+        : [...currentValues, value];
+
+      return { ...prevFilters, [category]: newValues };
+    });
+  };
+
+  const orderStatus = [
+    "Pending",
+    "Processing",
+    "Out For Delivery",
+    "Delivered",
+    "Cancelled",
+    "Returned",
+    "Payment Failed",
+    "Refunded"
+  ];
+  const currentYear = new Date().getFullYear();
+  const orderTimes = [
+    "Last 30 days",
+    ...Array.from({ length: 5 }, (_, i) => (currentYear - i).toString()),
+    "Older"
+  ];
+
   return (
     <div className="container my-20 my-5">
       <div className="row">
         {/* Breadcrumb */}
-        
 
         {/* Sidebar Filters */}
         <div className="col-md-3 px-4 filter">
@@ -15,21 +68,40 @@ const OrderData = () => {
             <hr />
             <div className="mb-3">
               <h6 className="fw-bold">ORDER STATUS</h6>
-              {['On the way', 'Delivered', 'Cancelled', 'Returned'].map((status, index) => (
+              {orderStatus.map((status, index) =>
                 <div className="form-check" key={index}>
-                  <input className="form-check-input" type="checkbox" id={`status-${index}`} />
-                  <label className="form-check-label" htmlFor={`status-${index}`}>{status}</label>
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id={`status-${index}`}
+                    checked={filters.orderStatus.includes(status)}
+                    onChange={() => handleFilterChange("orderStatus", status)}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor={`status-${index}`}
+                  >
+                    {status}
+                  </label>
                 </div>
-              ))}
+              )}
             </div>
             <div>
               <h6 className="fw-bold mt-20">ORDER TIME</h6>
-              {['Last 30 days', '2024', '2023', '2022', '2021', 'Older'].map((year, index) => (
+              {orderTimes.map((year, index) =>
                 <div className="form-check" key={index}>
-                  <input className="form-check-input" type="checkbox" id={`time-${index}`} />
-                  <label className="form-check-label" htmlFor={`time-${index}`}>{year}</label>
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id={`time-${index}`}
+                    checked={filters.orderTime.includes(year)}
+                    onChange={() => handleFilterChange("orderTime", year)}
+                  />
+                  <label className="form-check-label" htmlFor={`time-${index}`}>
+                    {year}
+                  </label>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
@@ -37,37 +109,58 @@ const OrderData = () => {
         {/* Orders Section */}
         <div className="col-md-9">
           <div className="input-group mb-3 px-3">
-            <input type="text" className="form-control" placeholder="Search your orders here" />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search your orders here"
+            />
             <button className="btn btn-primary" type="button">
-              <i className="bi bi-search"></i> Search Orders
+              <i className="bi bi-search" /> Search Orders
             </button>
           </div>
-
           {/* Order Card */}
-          <div className="card mb-3 mx-3 productDetailing">
-            <div className="row g-0 align-items-center p-20">
-              <div className="col-md-2 text-center">
-                <img src="/assets/images/product/p4.png" className="img-fluid p-2" alt="product" />
-              </div>
-              <div className="col-md-7">
-                <div className="card-body">
-                  <h5 className="card-title mb-1">BIRDE Super Stylish Clog Men White Sandal...</h5>
-                  <p className="card-text mb-0 text-muted">Color: White &nbsp;&nbsp; Size: 8</p>
-                  <p className="card-text fw-bold mt-2">&#8377;239</p>
+          {orders.map(order =>
+            <div className="card mb-3 mx-3 productDetailing">
+              <div className="row g-0 align-items-center p-20">
+                <div className="col-md-2 text-center">
+                  <img
+                    src={`${IMAGE_URL}${order.orderRows[0].productVariationId
+                      .image}`}
+                    className="img-fluid p-2"
+                    alt="product"
+                  />
                 </div>
-              </div>
-              <div className="col-md-3">
-                <div className="p-3">
-                  <p className="mb-1 text-success"><i className="bi bi-circle-fill text-success"></i> Delivered on Oct 13, 2023</p>
-                  <p className="text-muted mb-2">Your item has been delivered</p>
-                  <a href="#" className="text-primary text-decoration-none">
-                    <i className="bi bi-star-fill"></i> Rate & Review Product
-                  </a>
+                <div className="col-md-7">
+                  <div className="card-body">
+                    <h5 className="card-title mb-1">
+                      {order.orderRows[0].productId.name}
+                    </h5>
+                    {/* <p className="card-text mb-0 text-muted">
+                      Color: White &nbsp;&nbsp; Size: 8
+                    </p> */}
+                    <p className="card-text fw-bold mt-2">
+                      &#8377;{order.total}
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-3">
+                  <div className="p-3">
+                    <p className="mb-1 text-success">
+                      <i className="bi bi-circle-fill text-success" />
+                      {order.orderStatus} on{" "}
+                      {new Date(order.createdAt).toString().slice(0, 25)}
+                    </p>
+                    <p className="text-muted mb-2">
+                      Your item has been {order.orderStatus}
+                    </p>
+                    <a href="#" className="text-primary text-decoration-none">
+                      <i className="bi bi-star-fill" /> Rate & Review Product
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
+          )}
           {/* No More Results */}
           {/* <div className="text-center py-4">
             <button className="btn btn-outline-primary" disabled>No More Results To Display</button>

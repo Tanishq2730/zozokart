@@ -81,7 +81,7 @@ const BannerOne = () => {
                   </div>
                   <div className="banner-item__thumb mt-20">
                     {/* <AnimationOnScroll animateIn="animate__fadeInRight"> */}
-                    <img src="assets/images/thumbs/banner-img1.png" alt="" />
+                    <img src="/assets/images/thumbs/banner-img1.png" alt="" />
                     {/* </AnimationOnScroll> */}
                   </div>
                 </div>
@@ -103,7 +103,7 @@ const BannerOne = () => {
                     </Link>
                   </div>
                   <div className="banner-item__thumb mt-20">
-                    <img src="assets/images/thumbs/banner-img3.png" alt="" />
+                    <img src="/assets/images/thumbs/banner-img3.png" alt="" />
                   </div>
                 </div>
               </div>

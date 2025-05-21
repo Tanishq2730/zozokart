@@ -37,7 +37,7 @@ function Card({ product }) {
       />
 
       {/* Color Swatches */}
-      <div className="d-flex justify-content-start align-items-center mt-2 mb-2 p-10">
+      {/* <div className="d-flex justify-content-start align-items-center mt-2 mb-2 p-10">
         {colors.map((color, index) => (
           <span
             key={index}
@@ -61,11 +61,11 @@ function Card({ product }) {
             }}
           ></span>
         ))}
-      </div>
+      </div> */}
 
       {/* Product Info */}
       <div className="card-body p-10">
-        <h6 className="card-title mb-1 fw-bold">Levi's</h6>
+        <h6 className="card-title mb-1 fw-bold">{product.brandId.name}</h6>
         <p className="card-text text-muted mb-1" style={{ fontSize: "0.9rem" }}>
           {product.name || "Men's Slim Fit Mid Rise Jeans"}
         </p>
@@ -85,10 +85,10 @@ function Card({ product }) {
         <div className="mb-1">
           <span className="fw-bold me-1">₹{product.salePrice}</span>
           <span className="text-muted text-decoration-line-through me-1">
-            ₹{product.mrp}
+            ₹{product.regularPrice}
           </span>
           <span className="text-success" style={{ fontSize: "0.9rem" }}>
-            ({discount}% off)
+            ({product.discountPercentage}% off)
           </span>
         </div>
 

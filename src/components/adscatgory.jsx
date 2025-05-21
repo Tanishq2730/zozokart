@@ -6,11 +6,11 @@ function Adscatgory() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-4">
-          <CategoryCard heading="Wedding & Gifting Specials"/>
+          <CategoryCard heading="Wedding & Gifting Specials" />
         </div>
         <div className="col-md-8">
           <div className="adsbanner">
-            <img src="assets/images/ads/adsbanner.png" />
+            <img src="/assets/images/ads/adsbanner.png" />
           </div>
         </div>
       </div>

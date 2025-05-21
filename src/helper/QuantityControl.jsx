@@ -27,17 +27,17 @@ const QuantityControl = ({
   };
 
   return (
-    <div className="d-flex rounded-4 overflow-hidden">
+    <div className="d-flex align-items-center mt-3 increasedecreaseBtn">
       <button
         type="button"
         onClick={decrementQuantity}
-        className="quantity__minus border border-end border-gray-100 flex-shrink-0 h-48 w-48 text-neutral-600 flex-center hover-bg-main-600 hover-text-white"
+        className="btn btn-secondary btn-sm increa"
       >
         <i className="ph ph-minus" />
       </button>
       <input
         type="number"
-        className="quantity__input flex-grow-1 border border-gray-100 border-start-0 border-end-0 text-center w-32 px-4"
+        className="mx-3 count w-25"
         value={initialQuantity}
         min={1}
         readOnly
@@ -45,7 +45,7 @@ const QuantityControl = ({
       <button
         type="button"
         onClick={incrementQuantity}
-        className="quantity__plus border border-end border-gray-100 flex-shrink-0 h-48 w-48 text-neutral-600 flex-center hover-bg-main-600 hover-text-white"
+        className="btn btn-secondary btn-sm increa"
       >
         <i className="ph ph-plus" />
       </button>

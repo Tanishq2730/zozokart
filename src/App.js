@@ -8,7 +8,7 @@ import { Suspense } from "react";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/zozo_cart_website">
       <Suspense fallback={<div className="pt-3 text-center" />}>
         <RouteScrollToTop />
         <PhosphorIconInit />

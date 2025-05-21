@@ -27,7 +27,7 @@ const FooterOne = () => {
   return (
     <footer className="footer py-60">
       {/* <img
-        src="/assets/images/bg/body-bottom-bg.png"
+        src="assets/images/bg/body-bottom-bg.png"
         alt="BG"
         className="body-bottom-bg"
       /> */}
@@ -36,7 +36,7 @@ const FooterOne = () => {
           <div className="footer-item">
             <div className="footer-item__logo">
               <Link to="/">
-                {" "}<img src="/assets/images/logo/logo.png" alt="" />
+                {" "}<img src="assets/images/logo/logo.png" alt="" />
               </Link>
             </div>
             <p className="mb-24">
