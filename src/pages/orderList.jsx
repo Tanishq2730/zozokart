@@ -22,6 +22,7 @@ import Beauty from "../components/Beauty";
 import Adscatgory from "../components/adscatgory";
 import CategorySection from "../components/categorySection";
 import OrderData from "../components/orderData";
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 const OrderList = () => {
   // State to control the popup visibility
   
@@ -38,6 +39,7 @@ const OrderList = () => {
 
       {/* HeaderOne */}
       <HeaderOne />
+      <CommonCategoryHeader/>
 
       <OrderData/>
 

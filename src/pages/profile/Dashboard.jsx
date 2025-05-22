@@ -17,7 +17,7 @@ import { LOGOUT } from "../../reducers/authReducer";
 import TransactionList from "./Transaction";
 import NotificationList from "./Notification";
 import { ChevronRight, List, LogOut, UserRound } from "lucide-react";
-
+import CommonCategoryHeader from "../../components/commonCategoryHeader";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ const Dashboard = () => {
       <ScrollToTop smooth color="#299E60" />
       <ColorInit color={false} />
       <HeaderOne />
+      <CommonCategoryHeader/>
       <Breadcrumb title={"Dashboard"} />
 
       <section className="pt-30" style={{ backgroundColor: "#f1f3f6" }}>

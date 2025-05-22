@@ -9,6 +9,7 @@ import ShippingOne from "../components/ShippingOne";
 import Account from "../components/Account";
 import ScrollToTop from "react-scroll-to-top";
 import ColorInit from "../helper/ColorInit";
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 
 
 const AccountPage = () => {
@@ -28,6 +29,7 @@ const AccountPage = () => {
 
       {/* HeaderTwo */}
       <HeaderTwo category={true} />
+      <CommonCategoryHeader/>
 
       {/* Breadcrumb */}
       <Breadcrumb title={"Account"} />
@@ -36,7 +38,7 @@ const AccountPage = () => {
       <Account />
 
       {/* ShippingOne */}
-      <ShippingOne />
+      {/* <ShippingOne /> */}
 
       {/* FooterTwo */}
       <FooterTwo />

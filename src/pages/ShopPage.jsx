@@ -8,7 +8,7 @@ import HeaderOne from "../components/HeaderOne";
 import ShippingOne from "../components/ShippingOne";
 import FooterOne from "../components/FooterOne";
 import BottomFooter from "../components/BottomFooter";
-
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 const ShopPage = () => {
 
   return (
@@ -24,6 +24,7 @@ const ShopPage = () => {
 
       {/* HeaderOne */}
       <HeaderOne />
+      <CommonCategoryHeader/>
       {/* Breadcrumb */}
       {/* <Breadcrumb title={"Shop"} /> */}
 
@@ -31,7 +32,7 @@ const ShopPage = () => {
       <ShopSection />
 
       {/* ShippingTwo */}
-      <ShippingOne />
+      {/* <ShippingOne /> */}
 
       {/* FooterTwo */}
       <FooterOne />

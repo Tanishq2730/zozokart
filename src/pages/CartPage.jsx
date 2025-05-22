@@ -10,6 +10,7 @@ import ScrollToTop from "react-scroll-to-top";
 import HeaderOne from "../components/HeaderOne";
 import FooterOne from "../components/FooterOne";
 import KartPage from "../components/kartpage";
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 
 
 const CartPage = () => {
@@ -29,6 +30,7 @@ const CartPage = () => {
 
       {/* HeaderTwo */}
       <HeaderOne  />
+      <CommonCategoryHeader/>
 
       {/* Breadcrumb */}
       <Breadcrumb title={"Cart"} />
@@ -37,7 +39,7 @@ const CartPage = () => {
       <KartPage/>
 
       {/* ShippingOne */}
-      <ShippingOne />
+      {/* <ShippingOne /> */}
 
       {/* FooterTwo */}
       <FooterOne />

@@ -1,0 +1,110 @@
+.homebanner .slick-prev,
+.homebanner .slick-next {
+  width: 47px;
+  height: 104px;
+  background: #fff !important;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,.11);
+  border-radius: 4px;
+  z-index: 1;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  opacity: 1 !important;
+}
+
+.homebanner .slick-prev {
+  left: 0;
+}
+
+.homebanner .slick-next {
+  right: 0;
+}
+
+.homebanner .slick-prev:before,
+.homebanner .slick-next:before {
+  font-family: 'slick' !important;
+  font-size: 35px !important;
+  line-height: 1;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: none;
+}
+
+.homebanner svg{
+    color: #838383;
+}
+
+.homebanner .slick-prev:before {
+  content: '←' !important;
+}
+
+.homebanner .slick-next:before {
+  content: '→' !important;
+}
+
+.homebanner .slick-prev:hover:before,
+.homebanner .slick-next:hover:before {
+  color: #000 !important;
+}
+
+/* Dots styling */
+.homebanner .slick-dots {
+  bottom: 20px !important;
+  z-index: 1;
+}
+
+.homebanner .slick-dots li {
+  margin: 0 2px !important;
+  width: 30px !important;
+  height: 3px !important;
+}
+
+.homebanner .slick-dots li button {
+  width: 30px !important;
+  height: 3px !important;
+  padding: 0 !important;
+}
+
+.homebanner .slick-dots li button:before {
+  content: '' !important;
+  width: 30px !important;
+  height: 3px !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  opacity: 1 !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.homebanner .slick-dots li.slick-active button:before {
+  background: #fff !important;
+  opacity: 1 !important;
+}
+
+/* Make arrows visible on smaller screens */
+@media (max-width: 768px) {
+  .homebanner .slick-prev,
+  .homebanner .slick-next {
+    width: 35px;
+    height: 80px;
+  }
+  
+  .homebanner .slick-prev:before,
+  .homebanner .slick-next:before {
+    font-size: 28px !important;
+  }
+
+  .homebanner .slick-dots {
+    bottom: 10px !important;
+  }
+
+  .homebanner .slick-dots li {
+    width: 20px !important;
+  }
+
+  .homebanner .slick-dots li button,
+  .homebanner .slick-dots li button:before {
+    width: 20px !important;
+  }
+} 

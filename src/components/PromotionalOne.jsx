@@ -1,9 +1,13 @@
 import React, { useEffect, useState, useMemo } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Card from "./common/card";
 import { fetchProducts } from "../api/homeAPI";
 import HomeCategoryCard from "./common/homeCategoryCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import "./PromotionalOne.css";
 
 const PromotionalOne = () => {
   const [products, setProducts] = useState([]);
@@ -16,7 +20,7 @@ const PromotionalOne = () => {
         setProducts(data.data);
       }
     } catch (error) {
-      console.error("Error fetching banners:", error);
+      console.error("Error fetching products:", error);
     } finally {
       setLoading(false);
     }
@@ -26,7 +30,24 @@ const PromotionalOne = () => {
     getProducts();
   }, []);
 
-  // Always show 5 slides; infinite only if more than 5 real items
+  const NextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <button className="slick-next slick-arrow" onClick={onClick}>
+        <FontAwesomeIcon icon={faChevronRight} />
+      </button>
+    );
+  };
+
+  const PrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <button className="slick-prev slick-arrow" onClick={onClick}>
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </button>
+    );
+  };
+
   const settings = {
     dots: false,
     infinite: products.length > 5,
@@ -36,9 +57,28 @@ const PromotionalOne = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     arrows: products.length > 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false
+        }
+      }
+    ]
   };
 
-  // Pad the products array up to 5 items with placeholders
   const slides = useMemo(() => {
     const arr = [...products];
     while (arr.length < 5) {
@@ -52,8 +92,8 @@ const PromotionalOne = () => {
       <div className="bestseller">
         <div className="row">
           <div className="col-md-10">
-            <div className="bestsellerslider">
-              <div className="mainhead">
+            <div className="bestsellerslider promotional-slider">
+              <div className="mainhead px-20 pt-20 pb-0" >
                 <h5>Beauty, Food, Toys &amp; more</h5>
               </div>
 
@@ -63,7 +103,6 @@ const PromotionalOne = () => {
                 <Slider {...settings}>
                   {slides.map(item =>
                     item.placeholder ? (
-                      // blank slide
                       <div key={item._id} style={{ padding: "0 8px" }} />
                     ) : (
                       <HomeCategoryCard key={item._id} product={item} />
@@ -71,7 +110,6 @@ const PromotionalOne = () => {
                   )}
                 </Slider>
               )}
-
             </div>
           </div>
           <div className="col-md-2">

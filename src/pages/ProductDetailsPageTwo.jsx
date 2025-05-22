@@ -10,7 +10,7 @@ import NewsletterOne from "../components/NewsletterOne";
 import FooterTwo from "../components/FooterTwo";
 import BottomFooter from "../components/BottomFooter";
 import ScrollToTop from "react-scroll-to-top";
-
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 
 const ProductDetailsPageTwo = () => {
 
@@ -29,7 +29,7 @@ const ProductDetailsPageTwo = () => {
 
       {/* HeaderTwo */}
       <HeaderTwo category={true} />
-
+      <CommonCategoryHeader/>
       {/* Breadcrumb */}
       <Breadcrumb title={"Product Details"} />
 
@@ -40,7 +40,7 @@ const ProductDetailsPageTwo = () => {
       <NewArrivalTwo />
 
       {/* ShippingOne */}
-      <ShippingOne />
+      {/* <ShippingOne /> */}
 
       {/* NewsletterOne */}
       <NewsletterOne />

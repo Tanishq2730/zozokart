@@ -16,7 +16,7 @@ import { fetchProductDetails } from "../api/productAPI";
 import { useParams } from "react-router-dom";
 import SimilarProduct from "../components/SimilarProduct";
 import ProductRatingAndReview from "../components/ProductRatingAndReview";
-
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 const ProductDetailsPageOne = () => {
 
   const { slug } = useParams();
@@ -56,6 +56,7 @@ const ProductDetailsPageOne = () => {
 
       {/* HeaderOne */}
       <HeaderOne />
+      <CommonCategoryHeader/>
 
       {/* Breadcrumb */}
       {/* <BreadcrumbTwo title={"Product Details"} /> */}

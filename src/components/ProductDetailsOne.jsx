@@ -253,6 +253,8 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                                   width: "100%",
                                   margin: "0 auto",
                                   cursor: "pointer",
+                                  height:'490px',
+                                  objectFit:'contain'
                                 }}
                                 onClick={() => setIsOpen(true)}
                               />

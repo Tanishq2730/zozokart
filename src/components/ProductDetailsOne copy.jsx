@@ -113,8 +113,9 @@ const ProductDetailsOne = () => {
                                                     <img
                                                         src={productImages[photoIndex]}
                                                         onClick={() => setIsOpen(true)}
-                                                        style={{ cursor: 'pointer', width: '400px' }}
+                                                        style={{ cursor: 'pointer', width: '400px',height:"490px",objectFit:"contain" }}
                                                         alt="Main Thumbnail"
+
                                                     />
                                                     {isOpen && (
                                                         <Lightbox

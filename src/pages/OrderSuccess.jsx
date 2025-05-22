@@ -7,7 +7,7 @@ import HeaderOne from '../components/HeaderOne'
 import FooterOne from '../components/FooterOne'
 import BottomFooter from '../components/BottomFooter'
 import { FaCheckCircle } from 'react-icons/fa' // Success Icon
-
+import CommonCategoryHeader from '../components/commonCategoryHeader'
 const OrderSuccess = () => {
 
     return (
@@ -23,7 +23,7 @@ const OrderSuccess = () => {
 
             {/* HeaderOne */}
             <HeaderOne />
-
+            <CommonCategoryHeader/>
             <section className="py-80">
                 <div className="container">
                     <div className="row">

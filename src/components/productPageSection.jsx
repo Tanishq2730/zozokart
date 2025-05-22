@@ -141,7 +141,7 @@ const ProductPageSection = () => {
 
         {/* Product Listing Section */}
         <div className="col-md-9">
-          <div className="row">
+          <div className="row" style={{backgroundColor:"#fff"}}>
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
                 <div key={product.id} className="col-md-3">

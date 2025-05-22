@@ -5,7 +5,7 @@ import HeaderOne from '../components/HeaderOne';
 import ColorInit from '../helper/ColorInit';
 import FooterOne from '../components/FooterOne';
 import BottomFooter from '../components/BottomFooter';
-
+import CommonCategoryHeader from '../components/commonCategoryHeader';
 const TermsConditions = () => {
     return (
         <>
@@ -20,7 +20,7 @@ const TermsConditions = () => {
 
             {/* HeaderOne */}
             <HeaderOne />
-
+            <CommonCategoryHeader/>
             <section className='py-40' style={{ backgroundImage: 'url(assets/images/common/web-banner.jpg)', backgroundSize: 'cover', }}>
                 <div className='container'>
                     <h4 className='text-white'>

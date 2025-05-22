@@ -3,7 +3,7 @@ import Preloader from '../helper/ColorInit'
 
 import ScrollToTop from 'react-scroll-to-top'
 import HeaderOne from '../components/HeaderOne'
-
+import CommonCategoryHeader from '../components/commonCategoryHeader'
 import ColorInit from '../helper/ColorInit'
 import FooterOne from '../components/FooterOne';
 import BottomFooter from '../components/BottomFooter';
@@ -23,6 +23,7 @@ const RefundPolicy = () => {
 
             {/* HeaderOne */}
             <HeaderOne />
+            <CommonCategoryHeader/>
 
             <section className='py-40' style={{ backgroundImage: 'url(assets/images/common/web-banner.jpg)', backgroundSize: 'cover', }}>
                 <div className='container'>

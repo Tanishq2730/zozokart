@@ -12,6 +12,7 @@ import { PiFarm } from "react-icons/pi";
 import { CiCamera } from "react-icons/ci";
 import { Fade } from "react-reveal";
 import ReactPlayer from "react-player";
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 const AboutPage = () => {
     return (
         <>
@@ -26,6 +27,7 @@ const AboutPage = () => {
 
             {/* HeaderTwo */}
             <HeaderOne category={true} />
+            <CommonCategoryHeader/>
 
             {/* Breadcrumb */}
             <Breadcrumb title={"About Us"} />
@@ -205,7 +207,7 @@ const AboutPage = () => {
             {/* section 1 close */}
 
             {/* ShippingOne */}
-            <ShippingOne />
+            {/* <ShippingOne /> */}
 
             {/* FooterTwo */}
             <FooterOne />

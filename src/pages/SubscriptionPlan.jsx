@@ -9,7 +9,7 @@ import ShippingOne from "../components/ShippingOne";
 import ScrollToTop from "react-scroll-to-top";
 import Fade from "react-reveal/Fade"; // For animation effects
 import { FaCheckCircle } from "react-icons/fa";
-
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 const SubscriptionPlan = () => {
     return (
         <>
@@ -24,6 +24,7 @@ const SubscriptionPlan = () => {
 
             {/* HeaderOne */}
             <HeaderOne category={true} />
+            <CommonCategoryHeader/>
 
             {/* Breadcrumb */}
             <Breadcrumb title={"Subscription"} />
@@ -109,7 +110,7 @@ const SubscriptionPlan = () => {
             </section>
 
             {/* ShippingOne */}
-            <ShippingOne />
+            {/* <ShippingOne /> */}
 
             {/* FooterOne */}
             <FooterOne />

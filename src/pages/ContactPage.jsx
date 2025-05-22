@@ -10,6 +10,7 @@ import Contact from "../components/Contact";
 import ScrollToTop from "react-scroll-to-top";
 import HeaderOne from "../components/HeaderOne";
 import FooterOne from "../components/FooterOne";
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 const ContactPage = () => {
   return (
     <>
@@ -24,6 +25,7 @@ const ContactPage = () => {
 
       {/* HeaderTwo */}
       <HeaderOne category={true} />
+      <CommonCategoryHeader/>
 
       {/* Breadcrumb */}
       <Breadcrumb title={"Contact"} />
@@ -32,7 +34,7 @@ const ContactPage = () => {
       <Contact />
 
       {/* ShippingOne */}
-      <ShippingOne />
+      {/* <ShippingOne /> */}
 
       {/* FooterTwo */}
       <FooterOne />

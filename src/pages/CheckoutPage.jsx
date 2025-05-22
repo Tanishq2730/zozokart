@@ -10,7 +10,7 @@ import Checkout from "../components/Checkout";
 import ScrollToTop from "react-scroll-to-top";
 import HeaderOne from "../components/HeaderOne";
 import FooterOne from "../components/FooterOne";
-
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 
 const CheckoutPage = () => {
 
@@ -29,7 +29,7 @@ const CheckoutPage = () => {
 
       {/* HeaderTwo */}
       <HeaderOne />
-
+      <CommonCategoryHeader/>
       {/* Breadcrumb */}
       <Breadcrumb title={"Checkout"} />
 
@@ -37,7 +37,7 @@ const CheckoutPage = () => {
       <Checkout />
 
       {/* ShippingOne */}
-      <ShippingOne />
+      {/* <ShippingOne /> */}
 
       {/* FooterTwo */}
       <FooterOne />

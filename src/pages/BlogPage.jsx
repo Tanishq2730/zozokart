@@ -6,6 +6,7 @@ import Blog from "../components/Blog";
 import ScrollToTop from "react-scroll-to-top";
 import HeaderOne from "../components/HeaderOne";
 import FooterOne from "../components/FooterOne";
+import CommonCategoryHeader from "../components/commonCategoryHeader";
 
 
 const BlogPage = () => {
@@ -25,6 +26,7 @@ const BlogPage = () => {
 
       {/* HeaderTwo */}
       <HeaderOne/>
+      <CommonCategoryHeader/>
 
       {/* Blog */}
       <Blog />
