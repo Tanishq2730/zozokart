@@ -328,7 +328,7 @@ const Checkout = () => {
           order_id: orderData.id,
           name: "ZozoKart",
           description: "Payment for your order",
-          image: "/assets/images/logo/logo.png", // Replace with your logo URL
+          image: "assets/images/logo/logo.png", // Replace with your logo URL
           handler: async (response) => {
             if (response?.razorpay_payment_id) {
               // Payment successful, now place the order
@@ -683,179 +683,151 @@ const Checkout = () => {
             </div>
           </div>
           <div className="col-xl-5 col-lg-5">
-            <div className="checkout-sidebar" style={{backgroundColor:"#fff",padding:'20px'}}   >
-              <div className="bg-color-three rounded-8 p-24 text-center">
-                <span className="text-gray-900 text-xl fw-semibold">
-                  Your Orders
+  <div className="checkout-sidebar" style={{ backgroundColor: "#fff", padding: "20px" }}>
+    <div className="bg-color-three rounded-8 p-24 text-center">
+      <span className="text-gray-900 text-xl fw-semibold">Your Orders</span>
+    </div>
+
+    <div className="border border-gray-100 rounded-8 px-24 py-40 mt-24">
+      <div className="d-flex justify-content-between align-items-center mb-32 pb-32 border-bottom border-gray-100 gap-8">
+        <span className="text-gray-900 fw-medium text-xl font-heading-two">Product</span>
+        <span className="text-gray-900 fw-medium text-xl font-heading-two">Subtotal</span>
+      </div>
+
+      {cart.items?.length > 0 ? (
+        cart.items.map((item) => {
+          const productName = item.productId?.name || "Unnamed Product";
+          const quantity = item.quantity;
+          const price = item.salePrice ?? item.variationId?.salePrice ?? 0;
+          const subtotal = quantity * price;
+
+          return (
+            <div
+              key={`${item.productId?._id}-${item.variationId?._id || "no-var"}`}
+              className="d-flex justify-content-between gap-24 mb-32"
+            >
+              <div className="d-flex align-items-center gap-12">
+                <span className="text-gray-900 fw-normal text-md font-heading-two w-144">
+                  {productName}
+                </span>
+                <span className="text-gray-900 fw-normal text-md font-heading-two">
+                  <i className="ph-bold ph-x" />
+                </span>
+                <span className="text-gray-900 fw-semibold text-md font-heading-two">
+                  {quantity}
                 </span>
               </div>
-              <div className="border border-gray-100 rounded-8 px-24 py-40 mt-24">
-                <div className="d-flex justify-content-between align-items-center mb-32 pb-32 border-bottom border-gray-100 gap-8">
-                  <span className="text-gray-900 fw-medium text-xl font-heading-two">
-                    Product
-                  </span>
-                  <span className="text-gray-900 fw-medium text-xl font-heading-two">
-                    Subtotal
-                  </span>
-                </div>
-                {cart.items.length > 0 ? (
-                  cart.items?.map((item) => (
-                    <div
-                      key={item.productId._id + item.variationId._id}
-                      className="d-flex justify-content-between gap-24 mb-32"
-                    >
-                      <div className="d-flex align-items-center gap-12">
-                        <span className="text-gray-900 fw-normal text-md font-heading-two w-144">
-                          {item.productId.name}
-                        </span>
-                        <span className="text-gray-900 fw-normal text-md font-heading-two">
-                          <i className="ph-bold ph-x" />
-                        </span>
-                        <span className="text-gray-900 fw-semibold text-md font-heading-two">
-                          {item.quantity}
-                        </span>
-                      </div>
-                      <span className="text-gray-900 fw-bold text-md font-heading-two">
-                        ₹{item.quantity * item.variationId.salePrice}
-                      </span>
-                    </div>
-                  ))
-                ) : (
-                  <div
-                    className="empty-cart p-10 text-center"
-                    style={{ flex: 1 }}
-                  >
-                    {/* <ShoppingCart size={60} color="#ccc" /> */}
-                    <p className="text-black">No products in the cart.</p>
-                    <Link
-                      to="/shop"
-                      className="btn btn-main d-inline-flex align-items-center rounded-pill gap-8 mt-24"
-                    >
-                      Return To Shop
-                    </Link>
-                  </div>
-                )}
-                <div className="d-flex justify-content-between gap-24 py-20  border-top">
-                  <div className="d-flex align-items-center gap-12">
-                    <span className="text-gray-900 fw-normal text-md font-heading-two w-144">
-                      Subtotal
-                    </span>
-                  </div>
-                  <span className="text-gray-900 fw-bold text-md font-heading-two">
-                    ₹{cart.subTotal}
-                  </span>
-                </div>
-                <div className="d-flex justify-content-between gap-24 py-20 border-top">
-                  <div className="d-flex align-items-center gap-12">
-                    <span className="text-gray-900 fw-normal text-md font-heading-two w-144">
-                      Shipping
-                    </span>
-                  </div>
-                  <span className="text-gray-900 fw-bold text-md font-heading-two">
-                    Free
-                  </span>
-                </div>
-                <div className="d-flex justify-content-between gap-24 py-20  border-top">
-                  <div className="d-flex align-items-center gap-12">
-                    <span className="text-gray-900 fw-normal text-md font-heading-two w-144">
-                      Discount
-                    </span>
-                  </div>
-                  <span className="text-gray-900 fw-bold text-md font-heading-two">
-                    ₹{cart.discount}
-                  </span>
-                </div>
-                <div className="d-flex justify-content-between gap-24 py-20  border-top">
-                  <div className="d-flex align-items-center gap-12">
-                    <span className="text-gray-900 fw-normal text-md font-heading-two w-144">
-                      Total
-                    </span>
-                  </div>
-                  <span className="text-gray-900 fw-bold text-md font-heading-two">
-                    ₹{cart.total}
-                  </span>
-                </div>
-              </div>
-              <div className="mt-32">
-                <div className="payment-item">
-                  <div className="form-check common-check common-radio py-16 mb-0">
-                    <Input
-                      className="form-check-input"
-                      type="radio"
-                      name="payment"
-                      id="paynow"
-                      checked={selectedPayment === "paynow"}
-                      onChange={handlePaymentChange}
-                    />
-                    <Label
-                      className="form-check-label fw-semibold text-neutral-600"
-                      htmlFor="paynow"
-                    >
-                      Pay Now
-                    </Label>
-                  </div>
-                  {selectedPayment === "paynow" && (
-                    <div className="payment-item__content px-16 py-24 rounded-8 bg-main-50 position-relative d-block">
-                      <p className="text-gray-800">
-                        Make your payment directly into our bank account. Please
-                        use your Order ID as the payment reference. Your order
-                        will not be shipped until the funds have cleared in our
-                        account.
-                      </p>
-                    </div>
-                  )}
-                </div>
-                <div className="payment-item">
-                  <div className="form-check common-check common-radio py-16 mb-0">
-                    <Input
-                      className="form-check-input"
-                      type="radio"
-                      name="payment"
-                      id="cod"
-                      checked={selectedPayment === "cod"}
-                      onChange={handlePaymentChange}
-                    />
-                    <Label
-                      className="form-check-label fw-semibold text-neutral-600"
-                      htmlFor="cod"
-                    >
-                      Cash on delivery
-                    </Label>
-                  </div>
-                  {selectedPayment === "cod" && (
-                    <div className="payment-item__content px-16 py-24 rounded-8 bg-main-50 position-relative d-block">
-                      <p className="text-gray-800">
-                        Pay with cash upon delivery.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="mt-32 pt-32 border-top border-gray-100">
-                <p className="text-gray-500">
-                  Your personal data will be used to process your order, support
-                  your experience throughout this website, and for other
-                  purposes described in our{" "}
-                  <Link
-                    to="#"
-                    className="text-main-600 text-decoration-underline"
-                  >
-                    {" "}
-                    privacy policy
-                  </Link>{" "}
-                  .
-                </p>
-              </div>
-              <Button
-                color="primary"
-                className="mt-40 py-18 w-100 rounded-8 mt-56"
-                onClick={handleInitiatePayment}
-                disabled={!selectedAddressId}
-              >
-                Place Order
-              </Button>
+              <span className="text-gray-900 fw-bold text-md font-heading-two">
+                ₹{subtotal}
+              </span>
             </div>
+          );
+        })
+      ) : (
+        <div className="empty-cart p-10 text-center" style={{ flex: 1 }}>
+          <p className="text-black">No products in the cart.</p>
+          <Link to="/shop" className="btn btn-main d-inline-flex align-items-center rounded-pill gap-8 mt-24">
+            Return To Shop
+          </Link>
+        </div>
+      )}
+
+      <div className="d-flex justify-content-between gap-24 py-20 border-top">
+        <div className="d-flex align-items-center gap-12">
+          <span className="text-gray-900 fw-normal text-md font-heading-two w-144">Subtotal</span>
+        </div>
+        <span className="text-gray-900 fw-bold text-md font-heading-two">₹{cart.subTotal}</span>
+      </div>
+
+      <div className="d-flex justify-content-between gap-24 py-20 border-top">
+        <div className="d-flex align-items-center gap-12">
+          <span className="text-gray-900 fw-normal text-md font-heading-two w-144">Shipping</span>
+        </div>
+        <span className="text-gray-900 fw-bold text-md font-heading-two">Free</span>
+      </div>
+
+      <div className="d-flex justify-content-between gap-24 py-20 border-top">
+        <div className="d-flex align-items-center gap-12">
+          <span className="text-gray-900 fw-normal text-md font-heading-two w-144">Discount</span>
+        </div>
+        <span className="text-gray-900 fw-bold text-md font-heading-two">₹{cart.discount}</span>
+      </div>
+
+      <div className="d-flex justify-content-between gap-24 py-20 border-top">
+        <div className="d-flex align-items-center gap-12">
+          <span className="text-gray-900 fw-normal text-md font-heading-two w-144">Total</span>
+        </div>
+        <span className="text-gray-900 fw-bold text-md font-heading-two">₹{cart.total}</span>
+      </div>
+    </div>
+
+    <div className="mt-32">
+      <div className="payment-item">
+        <div className="form-check common-check common-radio py-16 mb-0">
+          <Input
+            className="form-check-input"
+            type="radio"
+            name="payment"
+            id="paynow"
+            checked={selectedPayment === "paynow"}
+            onChange={handlePaymentChange}
+          />
+          <Label className="form-check-label fw-semibold text-neutral-600" htmlFor="paynow">
+            Pay Now
+          </Label>
+        </div>
+        {selectedPayment === "paynow" && (
+          <div className="payment-item__content px-16 py-24 rounded-8 bg-main-50 position-relative d-block">
+            <p className="text-gray-800">
+              Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+            </p>
           </div>
+        )}
+      </div>
+
+      <div className="payment-item">
+        <div className="form-check common-check common-radio py-16 mb-0">
+          <Input
+            className="form-check-input"
+            type="radio"
+            name="payment"
+            id="cod"
+            checked={selectedPayment === "cod"}
+            onChange={handlePaymentChange}
+          />
+          <Label className="form-check-label fw-semibold text-neutral-600" htmlFor="cod">
+            Cash on delivery
+          </Label>
+        </div>
+        {selectedPayment === "cod" && (
+          <div className="payment-item__content px-16 py-24 rounded-8 bg-main-50 position-relative d-block">
+            <p className="text-gray-800">Pay with cash upon delivery.</p>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div className="mt-32 pt-32 border-top border-gray-100">
+      <p className="text-gray-500">
+        Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our{" "}
+        <Link to="#" className="text-main-600 text-decoration-underline">
+          privacy policy
+        </Link>
+        .
+      </p>
+    </div>
+
+    <Button
+      color="primary"
+      className="mt-40 py-18 w-100 rounded-8 mt-56"
+      onClick={handleInitiatePayment}
+      disabled={!selectedAddressId}
+    >
+      Place Order
+    </Button>
+  </div>
+</div>
+
         </div>
       </div>
     </section>

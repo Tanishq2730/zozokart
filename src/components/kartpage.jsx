@@ -20,10 +20,10 @@ const KartPage = () => {
     cart.couponCode ? true : false
   );
 
-  const subtotal = cart.items?.reduce(
-    (total, item) => total + item.variationId.salePrice * item.quantity,
-    0
-  );
+  const subtotal = cart.items?.reduce((total, item) => {
+    const priceSource = item.variationId || item.productId;
+    return total + priceSource.salePrice * item.quantity;
+  }, 0);
   const tax = 0;
   const total = subtotal - discount + tax;
 
@@ -40,7 +40,7 @@ const KartPage = () => {
         const coupon = response.data;
         const { discountType, discountAmount } = coupon;
         let discount = 0;
-        
+
         if (discountType === "Fixed") {
           discount = discountAmount;
         } else if (discountType === "Percentage") {
@@ -80,63 +80,67 @@ const KartPage = () => {
         <div className="row g-4">
           <div className="col-lg-8">
             <div className="card">
-              {cart.items?.map((item) => (
-                <div className="product-card" key={item.id}>
-                  <div className="d-flex">
-                    <img
-                      src={`${IMAGE_URL}/${item.variationId.image}`}
-                      alt={item.title}
-                      className="product-image"
-                    />
-                    <div className="product-details">
-                      <h6 className="product-title">{item.productId.name}</h6>
-                      <div className="seller-name">
-                        Seller: {item?.vendorId?.name}
-                      </div>
-                      <div className="price-container">
-                        <span className="current-price">
-                          ₹{item.variationId.salePrice}
-                        </span>
-                        <span className="original-price">
-                          ₹{item.variationId.regularPrice}
-                        </span>
-                        <span className="discount">
-                          {Math.round(
-                            ((item.variationId.regularPrice - item.variationId.salePrice) /
-                              item.variationId.regularPrice) *
-                              100
-                          )}
-                          % off
-                        </span>
-                      </div>
-                      <div className="d-flex align-items-center">
-                        <div className="quantity-control">
-                          <QuantityControl
-                            productId={item.productId._id}
-                            variation={item.variationId}
-                            initialQuantity={parseInt(item.quantity)}
-                            cart_item_id={item.id}
-                          />
+              {cart.items?.map((item) => {
+                const priceSource = item.variationId || item.productId;
+
+                return (
+                  <div className="product-card" key={item.id}>
+                    <div className="d-flex">
+                      <img
+                        src={`${IMAGE_URL}/${item.variationId ? item.variationId.image : item.productId.images.mainImage}`}
+                        alt={item.productId.name}
+                        className="product-image"
+                      />
+                      <div className="product-details">
+                        <h6 className="product-title">{item.productId.name}</h6>
+                        <div className="seller-name">
+                          Seller: {item?.vendorId?.name}
                         </div>
-                        <div className="action-buttons">
-                          <button
-                            onClick={() =>
-                              dispatch(
-                                removeFromCart(item.productId._id, item.variationId)
-                              )
-                            }
-                          >
-                            REMOVE
-                          </button>
+                        <div className="price-container">
+                          <span className="current-price">
+                            ₹{priceSource.salePrice}
+                          </span>
+                          <span className="original-price">
+                            ₹{priceSource.regularPrice}
+                          </span>
+                          <span className="discount">
+                            {Math.round(
+                              ((priceSource.regularPrice - priceSource.salePrice) /
+                                priceSource.regularPrice) *
+                              100
+                            )}
+                            % off
+                          </span>
+                        </div>
+                        <div className="d-flex align-items-center">
+                          <div className="quantity-control">
+                            <QuantityControl
+                              productId={item.productId._id}
+                              variation={item.variationId || null}
+                              initialQuantity={parseInt(item.quantity)}
+                              cart_item_id={item.id}
+                            />
+                          </div>
+                          <div className="action-buttons">
+                            <button
+                              onClick={() =>
+                                dispatch(
+                                  removeFromCart(item.productId._id, item.variationId || null)
+                                )
+                              }
+                            >
+                              REMOVE
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
               <div className="p-3">
                 <button className="checkout-button" onClick={handleCheckout}>
-                  PLACE ORDER
+                  PROCEED TO CHECKOUT
                 </button>
               </div>
             </div>

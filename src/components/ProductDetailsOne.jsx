@@ -224,21 +224,25 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                           position: "relative",
                         }}
                       >
-                        {selectedVariation?.salePrice <
+                        {selectedVariation ? selectedVariation?.salePrice <
                           selectedVariation?.regularPrice && (
                           <span
                             style={{ zIndex: "9999999" }}
                             className="product-card__badge bg-danger-600 px-8 py-4 text-sm text-white position-absolute inset-inline-start-0 inset-block-start-0"
                           >
-                            {Math.round(
-                              ((selectedVariation.regularPrice -
-                                selectedVariation.salePrice) /
-                                selectedVariation.regularPrice) *
-                                100
-                            )}
+                            {Math.round(selectedVariation.discountPercentage)}
                             % OFF
                           </span>
-                        )}
+                        ):<span
+                          style={{ zIndex: "9999999" }}
+                          className="product-card__badge bg-danger-600 px-8 py-4 text-sm text-white position-absolute inset-inline-start-0 inset-block-start-0"
+                        >
+                          {Math.round(
+                            product.discountPercentage) 
+                          }
+                          % OFF
+                        </span>
+                        }
                         <Slider {...settings} ref={sliderRef}>
                           {productImages.map((image, index) => (
                             <div
@@ -367,7 +371,7 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                         &#8377;
                         {selectedVariation?.salePrice || product.salePrice}
                       </h4>
-                      {selectedVariation?.salePrice <
+                      {selectedVariation ? selectedVariation?.salePrice <
                         selectedVariation?.regularPrice && (
                         <span className="text-md text-gray-500">
                           <del style={{ color: "#000" }}>
@@ -376,7 +380,14 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                               product.regularPrice}
                           </del>
                         </span>
-                      )}
+                      )
+                      :<span className="text-md text-gray-500">
+                      <del style={{ color: "#000" }}>
+                        &#8377;
+                        {product.regularPrice}
+                      </del>
+                    </span>
+                    }
                     </div>
                   </div>
 
@@ -449,7 +460,7 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                   <div className="">
                     <h2 className="text-2xl font-semibold">
                       &#8377;{selectedVariation?.salePrice || product.salePrice}
-                      {selectedVariation?.salePrice <
+                      {selectedVariation ? selectedVariation?.salePrice <
                         selectedVariation?.regularPrice && (
                         <sup>
                           <span className="text-sm text-gray-500">
@@ -460,7 +471,14 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
                             </del>
                           </span>
                         </sup>
-                      )}
+                      ):<sup>
+                      <span className="text-sm text-gray-500">
+                        <del>
+                          &#8377;
+                          {product.regularPrice}
+                        </del>
+                      </span>
+                    </sup>}
                     </h2>
                     <p className="text-sm text-blue-600 font-medium">
                       FREE delivery{" "}

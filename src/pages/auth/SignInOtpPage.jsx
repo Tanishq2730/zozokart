@@ -85,7 +85,7 @@ const SignInOtpPage = () => {
 
             if (response.success == true) {
                 showToast('success', response.message)
-                // localStorage.setItem('token', response.data.token); // Store token in localStorage
+                localStorage.setItem('token', response.token); // Store token in localStorage
                 // localStorage.setItem('user', JSON.stringify(response.data.customer));
                 dispatch({ type: LOGIN_SUCCESS, payload: { response } }); // Dispatch LOGIN_SUCCESS action
 

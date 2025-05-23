@@ -10,7 +10,7 @@ function Adscatgory() {
         </div>
         <div className="col-md-8">
           <div className="adsbanner">
-            <img src="/assets/images/ads/adsbanner.png" />
+            <img src="assets/images/ads/adsbanner.png" />
           </div>
         </div>
       </div>
