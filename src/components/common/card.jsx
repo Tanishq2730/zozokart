@@ -101,7 +101,7 @@ function Card({ product }) {
         </p>
 
         {/* Add to Cart Button */}
-        <button
+        {/* <button
           className="btn btn-warning w-100 fw-semibold"
           onClick={() =>
             dispatch(
@@ -114,7 +114,7 @@ function Card({ product }) {
           }
         >
           Add to cart
-        </button>
+        </button> */}
       </div>
     </div>
   );

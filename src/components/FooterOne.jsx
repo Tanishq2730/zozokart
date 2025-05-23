@@ -40,11 +40,12 @@ const FooterOne = () => {
           {/* About Section */}
           <div className="col-lg-4 col-md-6">
             <div className="footer-column">
-              <div className="footer-logo">
+              <div className="footers-logo">
                 <Link to="/">
                   <img
                     src="/zozo_cart_website/assets/images/logo/logo.png"
                     alt="Zozo Kart Logo"
+                    style={{filter:'none !important',width:"35%",marginBottom:'1em',borderRadius:'10px'}}
                   />
                 </Link>
               </div>
