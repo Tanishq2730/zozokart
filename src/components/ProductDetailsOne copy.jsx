@@ -705,7 +705,7 @@ const ProductDetailsOne = () => {
                                             <h6 className="mb-24">Product Description</h6>
                                             <div className="d-flex align-items-start gap-24 pb-44 border-bottom border-gray-100 mb-44">
                                                 <img
-                                                    src="assets/images/thumbs/comment-img1.png"
+                                                    src="/zozo_cart_website/assets/images/thumbs/comment-img1.png"
                                                     alt=""
                                                     className="w-52 h-52 object-fit-cover rounded-circle flex-shrink-0"
                                                 />
@@ -758,7 +758,7 @@ const ProductDetailsOne = () => {
                                             </div>
                                             <div className="d-flex align-items-start gap-24">
                                                 <img
-                                                    src="assets/images/thumbs/comment-img1.png"
+                                                    src="/zozo_cart_website/assets/images/thumbs/comment-img1.png"
                                                     alt=""
                                                     className="w-52 h-52 object-fit-cover rounded-circle flex-shrink-0"
                                                 />

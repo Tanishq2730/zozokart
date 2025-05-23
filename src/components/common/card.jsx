@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IMAGE_URL } from "../../utils/api-config";
+import { addToCart } from "../../actions/cartActions";
+import { useDispatch } from "react-redux";
 
 function Card({ product }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
 
   const discount = Math.round(
@@ -100,10 +103,15 @@ function Card({ product }) {
         {/* Add to Cart Button */}
         <button
           className="btn btn-warning w-100 fw-semibold"
-          onClick={(e) => {
-            e.stopPropagation();
-            // Add to cart logic here
-          }}
+          onClick={() =>
+            dispatch(
+              addToCart(
+                product,
+                product.variations?.[0] || null,
+                1
+              )
+            )
+          }
         >
           Add to cart
         </button>

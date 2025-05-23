@@ -28,6 +28,32 @@ export const fetchCategories = async () => {
   }
 };
 
+export const fetchSubCategoriesOne = async () => {
+  try {
+    const response = await axios.get(
+      `${API_CONFIG.baseURL}/web/sub-categories-one`,
+      { headers: API_CONFIG.headers } // Pass headers correctly
+    );
+    return response.data; // Axios automatically parses JSON
+  } catch (error) {
+    return error.response?.data;
+    // throw new Error(error.response?.data?.message || "No category found");
+  }
+};
+
+export const fetchSubCategoriesTwo = async () => {
+  try {
+    const response = await axios.get(
+      `${API_CONFIG.baseURL}/web/sub-categories-two`,
+      { headers: API_CONFIG.headers } // Pass headers correctly
+    );
+    return response.data; // Axios automatically parses JSON
+  } catch (error) {
+    return error.response?.data;
+    // throw new Error(error.response?.data?.message || "No category found");
+  }
+};
+
 export const fetchProducts = async () => {
   try {
     const response = await axios.post(

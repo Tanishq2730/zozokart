@@ -53,7 +53,7 @@ const Dashboard = () => {
               <section className="">
                 <div className="col-12 d-flex dashcardtop p-10">
                   <img
-                    src="assets/images/common/profile-pic.jpg"
+                    src="/zozo_cart_website/assets/images/common/profile-pic.jpg"
                     alt=""
                     width="100px"
                     className="rounded"

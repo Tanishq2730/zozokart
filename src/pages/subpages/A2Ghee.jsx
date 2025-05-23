@@ -49,7 +49,7 @@ const A2Ghee = () => {
                         <Col md="4">
                             <Row className="mt-30">
                                 <div className="col-3">
-                                    <img src="assets/images/icon/ic-1.png" alt="" width="100%" />
+                                    <img src="/zozo_cart_website/assets/images/icon/ic-1.png" alt="" width="100%" />
                                 </div>
                                 <div className="col-9">
                                     <h6 className="mb-1">Natural Moisturizer</h6>
@@ -58,7 +58,7 @@ const A2Ghee = () => {
                             </Row>
                             {/* <Row className="mt-30">
                                 <div className="col-3">
-                                    <img src="assets/images/icon/ic-2.png" alt="" width="100%" />
+                                    <img src="/zozo_cart_website/assets/images/icon/ic-2.png" alt="" width="100%" />
                                 </div>
                                 <div className="col-9">
                                     <h6 className="mb-1">Supports Heart Health</h6>
@@ -67,7 +67,7 @@ const A2Ghee = () => {
                             </Row>
                             <Row className="mt-30">
                                 <div className="col-3">
-                                    <img src="assets/images/icon/ic-3.png" alt="" width="100%" />
+                                    <img src="/zozo_cart_website/assets/images/icon/ic-3.png" alt="" width="100%" />
                                 </div>
                                 <div className="col-9">
                                     <h6 className="mb-1">Boosts Wellness and Increases Energy</h6>
@@ -78,7 +78,7 @@ const A2Ghee = () => {
                         <Col md="4">
                             <Row className="mt-30">
                                 <div className="col-3">
-                                    <img src="assets/images/icon/ic-2.png" alt="" width="100%" />
+                                    <img src="/zozo_cart_website/assets/images/icon/ic-2.png" alt="" width="100%" />
                                 </div>
                                 <div className="col-9">
                                     <h6 className="mb-1">Supports Heart Health</h6>
@@ -89,7 +89,7 @@ const A2Ghee = () => {
                         <Col md="4">
                             <Row className="mt-30">
                                 <div className="col-3">
-                                    <img src="assets/images/icon/ic-3.png" alt="" width="100%" />
+                                    <img src="/zozo_cart_website/assets/images/icon/ic-3.png" alt="" width="100%" />
                                 </div>
                                 <div className="col-9">
                                     <h6 className="mb-1">Boosts Wellness and Increases Energy</h6>
@@ -141,7 +141,7 @@ const A2Ghee = () => {
                             </Row>
                         </div>
                         <div className="col-md-6">
-                            <img src="assets/images/common/circle-a2gee.png" alt="" width="100%" />
+                            <img src="/zozo_cart_website/assets/images/common/circle-a2gee.png" alt="" width="100%" />
                         </div>
                         <div className="col-md-3">
                             <Row className="mb-30">
@@ -195,7 +195,7 @@ const A2Ghee = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6">
-                            <img src="assets/images/common/bilona-method-1.jpg" className="rouneded" alt="" width="100%" />
+                            <img src="/zozo_cart_website/assets/images/common/bilona-method-1.jpg" className="rouneded" alt="" width="100%" />
                         </div>
                         <div className="col-md-6">
                             <div className="pt-40">
@@ -239,7 +239,7 @@ const A2Ghee = () => {
                                     className="product-card__thumb flex-center rounded-8 bg-gray-50 position-relative"
                                 >
                                     <img
-                                        src="assets/images/common/ghee-1.png"
+                                        src="/zozo_cart_website/assets/images/common/ghee-1.png"
                                         alt=""
                                         className="w-100 max-w-unset"
                                     />
@@ -307,7 +307,7 @@ const A2Ghee = () => {
                                     className="product-card__thumb flex-center rounded-8 bg-gray-50 position-relative"
                                 >
                                     <img
-                                        src="assets/images/common/ghee-1.png"
+                                        src="/zozo_cart_website/assets/images/common/ghee-1.png"
                                         alt=""
                                         className="w-100 max-w-unset"
                                     />
@@ -375,7 +375,7 @@ const A2Ghee = () => {
                                     className="product-card__thumb flex-center rounded-8 bg-gray-50 position-relative"
                                 >
                                     <img
-                                        src="assets/images/common/ghee-1.png"
+                                        src="/zozo_cart_website/assets/images/common/ghee-1.png"
                                         alt=""
                                         className="w-100 max-w-unset"
                                     />
@@ -443,7 +443,7 @@ const A2Ghee = () => {
                                     className="product-card__thumb flex-center rounded-8 bg-gray-50 position-relative"
                                 >
                                     <img
-                                        src="assets/images/common/ghee-1.png"
+                                        src="/zozo_cart_website/assets/images/common/ghee-1.png"
                                         alt=""
                                         className="w-100 max-w-unset"
                                     />

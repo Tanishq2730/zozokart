@@ -16,11 +16,11 @@ const GraceCowFullVideo = () => {
                                     zIndex: '-1'
                                 }}
                             >
-                                <source src="assets/images/video/fashion.mp4" type="video/mp4" />
+                                <source src="/zozo_cart_website/assets/images/video/fashion.mp4" type="video/mp4" />
                             </video>
                         </div>
                         <div className='col-md-6 p-0'>
-                                    <img src='assets/images/ads/adsbanner.png'/>
+                                    <img src='/zozo_cart_website/assets/images/ads/adsbanner.png'/>
                         </div>
                     </div>
                 </div>

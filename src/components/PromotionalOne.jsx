@@ -6,7 +6,10 @@ import Card from "./common/card";
 import { fetchProducts } from "../api/homeAPI";
 import HomeCategoryCard from "./common/homeCategoryCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight
+} from "@fortawesome/free-solid-svg-icons";
 import "./PromotionalOne.css";
 
 const PromotionalOne = () => {
@@ -30,7 +33,7 @@ const PromotionalOne = () => {
     getProducts();
   }, []);
 
-  const NextArrow = (props) => {
+  const NextArrow = props => {
     const { onClick } = props;
     return (
       <button className="slick-next slick-arrow" onClick={onClick}>
@@ -39,7 +42,7 @@ const PromotionalOne = () => {
     );
   };
 
-  const PrevArrow = (props) => {
+  const PrevArrow = props => {
     const { onClick } = props;
     return (
       <button className="slick-prev slick-arrow" onClick={onClick}>
@@ -65,7 +68,7 @@ const PromotionalOne = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 1
         }
       },
       {
@@ -79,13 +82,16 @@ const PromotionalOne = () => {
     ]
   };
 
-  const slides = useMemo(() => {
-    const arr = [...products];
-    while (arr.length < 5) {
-      arr.push({ _id: `placeholder-${arr.length}`, placeholder: true });
-    }
-    return arr;
-  }, [products]);
+  const slides = useMemo(
+    () => {
+      const arr = [...products];
+      while (arr.length < 5) {
+        arr.push({ _id: `placeholder-${arr.length}`, placeholder: true });
+      }
+      return arr;
+    },
+    [products]
+  );
 
   return (
     <div className="container-fluid">
@@ -93,28 +99,28 @@ const PromotionalOne = () => {
         <div className="row">
           <div className="col-md-10">
             <div className="bestsellerslider promotional-slider">
-              <div className="mainhead px-20 pt-20 pb-0" >
+              <div className="mainhead px-20 pt-20 pb-0">
                 <h5>Beauty, Food, Toys &amp; more</h5>
               </div>
 
-              {loading ? (
-                <p>Loading...</p>
-              ) : (
-                <Slider {...settings}>
-                  {slides.map(item =>
-                    item.placeholder ? (
-                      <div key={item._id} style={{ padding: "0 8px" }} />
-                    ) : (
-                      <HomeCategoryCard key={item._id} product={item} />
-                    )
-                  )}
-                </Slider>
-              )}
+              {loading
+                ? <p>Loading...</p>
+                : <Slider {...settings}>
+                    {slides.map(
+                      item =>
+                        item.placeholder
+                          ? <div key={item._id} style={{ padding: "0 8px" }} />
+                          : <HomeCategoryCard key={item._id} product={item} />
+                    )}
+                  </Slider>}
             </div>
           </div>
           <div className="col-md-2">
             <div className="adsimg">
-              <img src="assets/images/ads/ads.png" alt="promo ad" />
+              <img
+                src="/zozo_cart_website/assets/images/ads/ads.png"
+                alt="promo ad"
+              />
             </div>
           </div>
         </div>

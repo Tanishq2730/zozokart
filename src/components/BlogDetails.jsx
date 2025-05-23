@@ -1,92 +1,101 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const BlogDetails = () => {
-    return (
-        <section className="blog-details py-40">
-            <div className="container container-lg">
-                <div className="row gy-5">
-                    <div className="col-lg-8 pe-xl-4">
-                        <div className="blog-item-wrapper">
-                            <div className="blog-item">
-                                <img
-                                    src="assets/images/common/blog-3.jpg"
-                                    alt=""
-                                    className="cover-img rounded-16"
-                                />
-                                <div className="blog-item__content mt-24">
-                                    <span className="bg-main-50 text-main-600 py-4 px-24 rounded-8 mb-16">
-                                        Gadget
-                                    </span>
-                                    <h4 className="mb-24">
-                                      Why Is Desi Gir Cow Milk from Grace of Cows Considered Better for Bone Health?
-                                    </h4>
-                                    <p className="text-gray-700 mb-24">
-                                          Milk has long been celebrated as a powerhouse of nutrients, especially for strengthening 
-                                          bones. However, not all milk is the same, and Desi Gir Cow Milk stands out as a uniquely 
-                                          beneficial choice when it comes to bone health. At Grace of Cows, we specialize in delivering 
-                                          high-quality Desi Gir Cow Milk, ensuring our customers experience the numerous health benefits 
-                                          this traditional milk offers. In this article, we’ll delve into why Desi Gir Cow Milk is 
-                                          considered superior for bone health and explore how it supports overall wellness.
-                                    </p>
-                                    <p className="text-gray-700 pb-24 mb-24 border-bottom border-gray-100">
-                                          Milk has long been celebrated as a powerhouse of nutrients, especially for strengthening bones. 
-                                          However, not all milk is the same, and Desi Gir Cow Milk stands out as a uniquely beneficial 
-                                          choice when it comes to bone health. At Grace of Cows, we specialize in delivering high-quality 
-                                          Desi Gir Cow Milk, ensuring our customers experience the numerous health benefits this traditional 
-                                          milk offers. In this article, we’ll delve into why Desi Gir Cow Milk is considered superior for 
-                                          bone health and explore how it supports overall wellness.
-                                    </p>
-                                    <div className="flex-align flex-wrap gap-24">
-                                        <div className="flex-align flex-wrap gap-8">
-                                            <span className="text-lg text-main-600">
-                                                <i className="ph ph-calendar-dots" />
-                                            </span>
-                                            <span className="text-sm text-gray-500">
-                                                <Link
-                                                    to="/blog-details"
-                                                    className="text-gray-500 hover-text-main-600"
-                                                >
-                                                    July 12, 2025
-                                                </Link>
-                                            </span>
-                                        </div>
-                                        <div className="flex-align flex-wrap gap-8">
-                                            <span className="text-lg text-main-600">
-                                                <i className="ph ph-chats-circle" />
-                                            </span>
-                                            <span className="text-sm text-gray-500">
-                                                <Link
-                                                    to="/blog-details"
-                                                    className="text-gray-500 hover-text-main-600"
-                                                >
-                                                    0 Comments
-                                                </Link>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="mt-48">
-                            <div className="row gy-4">
-                                <div className="col-sm-6 col-xs-6">
-                                    <img
-                                        src="assets/images/common/blog-3.jpg"
-                                        alt=""
-                                        className="rounded-16"
-                                    />
-                                </div>
-                                <div className="col-sm-6 col-xs-6">
-                                    <img
-                                        src="assets/images/common/blog-3.jpg"
-                                        alt=""
-                                        className="rounded-16"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        {/* <div className="mt-48">
+  return (
+    <section className="blog-details py-40">
+      <div className="container container-lg">
+        <div className="row gy-5">
+          <div className="col-lg-8 pe-xl-4">
+            <div className="blog-item-wrapper">
+              <div className="blog-item">
+                <img
+                  src="/zozo_cart_website/assets/images/common/blog-3.jpg"
+                  alt=""
+                  className="cover-img rounded-16"
+                />
+                <div className="blog-item__content mt-24">
+                  <span className="bg-main-50 text-main-600 py-4 px-24 rounded-8 mb-16">
+                    Gadget
+                  </span>
+                  <h4 className="mb-24">
+                    Why Is Desi Gir Cow Milk from Grace of Cows Considered
+                    Better for Bone Health?
+                  </h4>
+                  <p className="text-gray-700 mb-24">
+                    Milk has long been celebrated as a powerhouse of nutrients,
+                    especially for strengthening bones. However, not all milk is
+                    the same, and Desi Gir Cow Milk stands out as a uniquely
+                    beneficial choice when it comes to bone health. At Grace of
+                    Cows, we specialize in delivering high-quality Desi Gir Cow
+                    Milk, ensuring our customers experience the numerous health
+                    benefits this traditional milk offers. In this article,
+                    we’ll delve into why Desi Gir Cow Milk is considered
+                    superior for bone health and explore how it supports overall
+                    wellness.
+                  </p>
+                  <p className="text-gray-700 pb-24 mb-24 border-bottom border-gray-100">
+                    Milk has long been celebrated as a powerhouse of nutrients,
+                    especially for strengthening bones. However, not all milk is
+                    the same, and Desi Gir Cow Milk stands out as a uniquely
+                    beneficial choice when it comes to bone health. At Grace of
+                    Cows, we specialize in delivering high-quality Desi Gir Cow
+                    Milk, ensuring our customers experience the numerous health
+                    benefits this traditional milk offers. In this article,
+                    we’ll delve into why Desi Gir Cow Milk is considered
+                    superior for bone health and explore how it supports overall
+                    wellness.
+                  </p>
+                  <div className="flex-align flex-wrap gap-24">
+                    <div className="flex-align flex-wrap gap-8">
+                      <span className="text-lg text-main-600">
+                        <i className="ph ph-calendar-dots" />
+                      </span>
+                      <span className="text-sm text-gray-500">
+                        <Link
+                          to="/blog-details"
+                          className="text-gray-500 hover-text-main-600"
+                        >
+                          July 12, 2025
+                        </Link>
+                      </span>
+                    </div>
+                    <div className="flex-align flex-wrap gap-8">
+                      <span className="text-lg text-main-600">
+                        <i className="ph ph-chats-circle" />
+                      </span>
+                      <span className="text-sm text-gray-500">
+                        <Link
+                          to="/blog-details"
+                          className="text-gray-500 hover-text-main-600"
+                        >
+                          0 Comments
+                        </Link>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-48">
+              <div className="row gy-4">
+                <div className="col-sm-6 col-xs-6">
+                  <img
+                    src="/zozo_cart_website/assets/images/common/blog-3.jpg"
+                    alt=""
+                    className="rounded-16"
+                  />
+                </div>
+                <div className="col-sm-6 col-xs-6">
+                  <img
+                    src="/zozo_cart_website/assets/images/common/blog-3.jpg"
+                    alt=""
+                    className="rounded-16"
+                  />
+                </div>
+              </div>
+            </div>
+            {/* <div className="mt-48">
                             <p className="text-gray-700 mb-24">
                                 A great commerce experience cannot be distilled to a single number.
                                 It’s not a Lighthouse score, or a set of Core Web Vitals figures,
@@ -166,7 +175,7 @@ const BlogDetails = () => {
                                 </div>
                             </div>
                         </div> */}
-                        {/* <div className="mt-48">
+            {/* <div className="mt-48">
                             <div className="rounded-16 bg-main-50 p-24">
                                 <span className="w-48 h-48 bg-main-600 text-white flex-center rounded-circle mb-24 text-2xl">
                                     <i className="ph ph-quotes" />
@@ -257,69 +266,69 @@ const BlogDetails = () => {
                         <div className="my-48">
                             <span className="border-bottom border-gray-100 d-block" />
                         </div> */}
-                        <div className="my-48">
-                            <form action="#">
-                                <h6 className="mb-24">Leave a Comment</h6>
-                                <div className="row gy-4">
-                                    <div className="col-sm-6 col-xs-6">
-                                        <label
-                                            htmlFor="name"
-                                            className="text-sm font-heading-two text-gray-900 fw-semibold mb-4"
-                                        >
-                                            Full Name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className="common-input px-16"
-                                            id="name"
-                                            placeholder="Full name"
-                                        />
-                                    </div>
-                                    <div className="col-sm-6 col-xs-6">
-                                        <label
-                                            htmlFor="email"
-                                            className="text-sm font-heading-two text-gray-900 fw-semibold mb-4"
-                                        >
-                                            Email Address
-                                        </label>
-                                        <input
-                                            type="email"
-                                            className="common-input px-16"
-                                            id="email"
-                                            placeholder="Email address"
-                                        />
-                                    </div>
-                                    <div className="col-sm-12">
-                                        <label
-                                            htmlFor="message"
-                                            className="text-sm font-heading-two text-gray-900 fw-semibold mb-4"
-                                        >
-                                            Message
-                                        </label>
-                                        <textarea
-                                            className="common-input px-16"
-                                            id="message"
-                                            placeholder="What's your thought about this blog..."
-                                            defaultValue={""}
-                                        />
-                                    </div>
-                                    <div className="col-sm-12 mt-32">
-                                        <button
-                                            type="submit"
-                                            className="btn btn-main py-18 px-32 rounded-8"
-                                        >
-                                            Post Comment
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        {/* <div className="my-48">
+            <div className="my-48">
+              <form action="#">
+                <h6 className="mb-24">Leave a Comment</h6>
+                <div className="row gy-4">
+                  <div className="col-sm-6 col-xs-6">
+                    <label
+                      htmlFor="name"
+                      className="text-sm font-heading-two text-gray-900 fw-semibold mb-4"
+                    >
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      className="common-input px-16"
+                      id="name"
+                      placeholder="Full name"
+                    />
+                  </div>
+                  <div className="col-sm-6 col-xs-6">
+                    <label
+                      htmlFor="email"
+                      className="text-sm font-heading-two text-gray-900 fw-semibold mb-4"
+                    >
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      className="common-input px-16"
+                      id="email"
+                      placeholder="Email address"
+                    />
+                  </div>
+                  <div className="col-sm-12">
+                    <label
+                      htmlFor="message"
+                      className="text-sm font-heading-two text-gray-900 fw-semibold mb-4"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      className="common-input px-16"
+                      id="message"
+                      placeholder="What's your thought about this blog..."
+                      defaultValue={""}
+                    />
+                  </div>
+                  <div className="col-sm-12 mt-32">
+                    <button
+                      type="submit"
+                      className="btn btn-main py-18 px-32 rounded-8"
+                    >
+                      Post Comment
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            {/* <div className="my-48">
                             <form action="#">
                                 <h6 className="mb-48">Comments</h6>
                                 <div className="d-flex align-items-start gap-16 mb-32 pb-32 border-bottom border-gray-100">
                                     <img
-                                        src="assets/images/thumbs/comment-img1.png"
+                                        src="/zozo_cart_website/assets/images/thumbs/comment-img1.png"
                                         alt=""
                                         className="w-40 h-40 rounded-circle object-fit-cover flex-shrink-0"
                                     />
@@ -340,7 +349,7 @@ const BlogDetails = () => {
                                 </div>
                                 <div className="d-flex align-items-start gap-16 mb-32 pb-32 border-bottom border-gray-100">
                                     <img
-                                        src="assets/images/thumbs/comment-img2.png"
+                                        src="/zozo_cart_website/assets/images/thumbs/comment-img2.png"
                                         alt=""
                                         className="w-40 h-40 rounded-circle object-fit-cover flex-shrink-0"
                                     />
@@ -363,7 +372,7 @@ const BlogDetails = () => {
                                 </div>
                                 <div className="d-flex align-items-start gap-16 mb-32 pb-32 border-bottom border-gray-100">
                                     <img
-                                        src="assets/images/thumbs/comment-img3.png"
+                                        src="/zozo_cart_website/assets/images/thumbs/comment-img3.png"
                                         alt=""
                                         className="w-40 h-40 rounded-circle object-fit-cover flex-shrink-0"
                                     />
@@ -383,7 +392,7 @@ const BlogDetails = () => {
                                 </div>
                                 <div className="d-flex align-items-start gap-16 mb-32 pb-32 border-bottom border-gray-100">
                                     <img
-                                        src="assets/images/thumbs/comment-img4.png"
+                                        src="/zozo_cart_website/assets/images/thumbs/comment-img4.png"
                                         alt=""
                                         className="w-40 h-40 rounded-circle object-fit-cover flex-shrink-0"
                                     />
@@ -404,7 +413,7 @@ const BlogDetails = () => {
                                 </div>
                                 <div className="d-flex align-items-start gap-16">
                                     <img
-                                        src="assets/images/thumbs/comment-img5.png"
+                                        src="/zozo_cart_website/assets/images/thumbs/comment-img5.png"
                                         alt=""
                                         className="w-40 h-40 rounded-circle object-fit-cover flex-shrink-0"
                                     />
@@ -431,10 +440,10 @@ const BlogDetails = () => {
                                 </div>
                             </form>
                         </div> */}
-                    </div>
-                    <div className="col-lg-4 ps-xl-4">
-                        {/* Search Start */}
-                        {/* <div className="blog-sidebar border border-gray-100 rounded-8 p-32 mb-40">
+          </div>
+          <div className="col-lg-4 ps-xl-4">
+            {/* Search Start */}
+            {/* <div className="blog-sidebar border border-gray-100 rounded-8 p-32 mb-40">
                             <h6 className="text-xl mb-32 pb-32 border-bottom border-gray-100">
                                 Search Here
                             </h6>
@@ -454,144 +463,148 @@ const BlogDetails = () => {
                                 </div>
                             </form>
                         </div> */}
-                        {/* Search End */}
-                        {/* Recent Post Start */}
-                        <div className="blog-sidebar border border-gray-100 rounded-8 p-32 mb-40">
-                            <h6 className="text-xl mb-32 pb-32 border-bottom border-gray-100">
-                                Recent Posts
-                            </h6>
-                            <div className="d-flex align-items-center flex-sm-nowrap flex-wrap gap-24 mb-16">
-                                <Link
-                                    to="/blog-details"
-                                    className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
-                                >
-                                    <img
-                                        src="assets/images/common/blog-3.jpg"
-                                        alt=""
-                                        className="cover-img"
-                                    />
-                                </Link>
-                                <div className="flex-grow-1">
-                                    <h6 className="text-lg">
-                                        <Link to="/blog-details" className="text-line-3">
-                                           Desi Gir Cow Milk from Grace of Cows Considered Better for Bone Health?
-                                        </Link>
-                                    </h6>
-                                    <div className="flex-align flex-wrap gap-8">
-                                        <span className="text-lg text-main-600">
-                                            <i className="ph ph-calendar-dots" />
-                                        </span>
-                                        <span className="text-sm text-gray-500">
-                                            <Link
-                                                to="/blog-details"
-                                                className="text-gray-500 hover-text-main-600"
-                                            >
-                                                July 12, 2025
-                                            </Link>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="d-flex align-items-center flex-sm-nowrap flex-wrap gap-24 mb-16">
-                                <Link
-                                    to="/blog-details"
-                                    className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
-                                >
-                                    <img
-                                        src="assets/images/common/blog-3.jpg"
-                                        alt=""
-                                        className="cover-img"
-                                    />
-                                </Link>
-                                <div className="flex-grow-1">
-                                    <h6 className="text-lg">
-                                        <Link to="/blog-details" className="text-line-3">
-                                           Desi Gir Cow Milk from Grace of Cows Considered Better for Bone Health?
-                                        </Link>
-                                    </h6>
-                                    <div className="flex-align flex-wrap gap-8">
-                                        <span className="text-lg text-main-600">
-                                            <i className="ph ph-calendar-dots" />
-                                        </span>
-                                        <span className="text-sm text-gray-500">
-                                            <Link
-                                                to="/blog-details"
-                                                className="text-gray-500 hover-text-main-600"
-                                            >
-                                                July 12, 2025
-                                            </Link>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="d-flex align-items-center flex-sm-nowrap flex-wrap gap-24 mb-16">
-                                <Link
-                                    to="/blog-details"
-                                    className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
-                                >
-                                    <img
-                                        src="assets/images/common/blog-3.jpg"
-                                        alt=""
-                                        className="cover-img"
-                                    />
-                                </Link>
-                                <div className="flex-grow-1">
-                                    <h6 className="text-lg">
-                                        <Link to="/blog-details" className="text-line-3">
-                                           Desi Gir Cow Milk from Grace of Cows Considered Better for Bone Health?
-                                        </Link>
-                                    </h6>
-                                    <div className="flex-align flex-wrap gap-8">
-                                        <span className="text-lg text-main-600">
-                                            <i className="ph ph-calendar-dots" />
-                                        </span>
-                                        <span className="text-sm text-gray-500">
-                                            <Link
-                                                to="/blog-details"
-                                                className="text-gray-500 hover-text-main-600"
-                                            >
-                                                July 12, 2025
-                                            </Link>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="d-flex align-items-center flex-sm-nowrap flex-wrap gap-24 mb-0">
-                                <Link
-                                    to="/blog-details"
-                                    className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
-                                >
-                                    <img
-                                        src="assets/images/common/blog-3.jpg"
-                                        alt=""
-                                        className="cover-img"
-                                    />
-                                </Link>
-                                <div className="flex-grow-1">
-                                    <h6 className="text-lg">
-                                        <Link to="/blog-details" className="text-line-3">
-                                        Desi Gir Cow Milk from Grace of Cows Considered Better for Bone Health?
-                                        </Link>
-                                    </h6>
-                                    <div className="flex-align flex-wrap gap-8">
-                                        <span className="text-lg text-main-600">
-                                            <i className="ph ph-calendar-dots" />
-                                        </span>
-                                        <span className="text-sm text-gray-500">
-                                            <Link
-                                                to="/blog-details"
-                                                className="text-gray-500 hover-text-main-600"
-                                            >
-                                                July 12, 2025
-                                            </Link>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Recent Post End */}
-                        {/* Tags Start */}
-                        {/* <div className="blog-sidebar border border-gray-100 rounded-8 p-32 mb-40">
+            {/* Search End */}
+            {/* Recent Post Start */}
+            <div className="blog-sidebar border border-gray-100 rounded-8 p-32 mb-40">
+              <h6 className="text-xl mb-32 pb-32 border-bottom border-gray-100">
+                Recent Posts
+              </h6>
+              <div className="d-flex align-items-center flex-sm-nowrap flex-wrap gap-24 mb-16">
+                <Link
+                  to="/blog-details"
+                  className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
+                >
+                  <img
+                    src="/zozo_cart_website/assets/images/common/blog-3.jpg"
+                    alt=""
+                    className="cover-img"
+                  />
+                </Link>
+                <div className="flex-grow-1">
+                  <h6 className="text-lg">
+                    <Link to="/blog-details" className="text-line-3">
+                      Desi Gir Cow Milk from Grace of Cows Considered Better for
+                      Bone Health?
+                    </Link>
+                  </h6>
+                  <div className="flex-align flex-wrap gap-8">
+                    <span className="text-lg text-main-600">
+                      <i className="ph ph-calendar-dots" />
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      <Link
+                        to="/blog-details"
+                        className="text-gray-500 hover-text-main-600"
+                      >
+                        July 12, 2025
+                      </Link>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex align-items-center flex-sm-nowrap flex-wrap gap-24 mb-16">
+                <Link
+                  to="/blog-details"
+                  className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
+                >
+                  <img
+                    src="/zozo_cart_website/assets/images/common/blog-3.jpg"
+                    alt=""
+                    className="cover-img"
+                  />
+                </Link>
+                <div className="flex-grow-1">
+                  <h6 className="text-lg">
+                    <Link to="/blog-details" className="text-line-3">
+                      Desi Gir Cow Milk from Grace of Cows Considered Better for
+                      Bone Health?
+                    </Link>
+                  </h6>
+                  <div className="flex-align flex-wrap gap-8">
+                    <span className="text-lg text-main-600">
+                      <i className="ph ph-calendar-dots" />
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      <Link
+                        to="/blog-details"
+                        className="text-gray-500 hover-text-main-600"
+                      >
+                        July 12, 2025
+                      </Link>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex align-items-center flex-sm-nowrap flex-wrap gap-24 mb-16">
+                <Link
+                  to="/blog-details"
+                  className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
+                >
+                  <img
+                    src="/zozo_cart_website/assets/images/common/blog-3.jpg"
+                    alt=""
+                    className="cover-img"
+                  />
+                </Link>
+                <div className="flex-grow-1">
+                  <h6 className="text-lg">
+                    <Link to="/blog-details" className="text-line-3">
+                      Desi Gir Cow Milk from Grace of Cows Considered Better for
+                      Bone Health?
+                    </Link>
+                  </h6>
+                  <div className="flex-align flex-wrap gap-8">
+                    <span className="text-lg text-main-600">
+                      <i className="ph ph-calendar-dots" />
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      <Link
+                        to="/blog-details"
+                        className="text-gray-500 hover-text-main-600"
+                      >
+                        July 12, 2025
+                      </Link>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex align-items-center flex-sm-nowrap flex-wrap gap-24 mb-0">
+                <Link
+                  to="/blog-details"
+                  className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
+                >
+                  <img
+                    src="/zozo_cart_website/assets/images/common/blog-3.jpg"
+                    alt=""
+                    className="cover-img"
+                  />
+                </Link>
+                <div className="flex-grow-1">
+                  <h6 className="text-lg">
+                    <Link to="/blog-details" className="text-line-3">
+                      Desi Gir Cow Milk from Grace of Cows Considered Better for
+                      Bone Health?
+                    </Link>
+                  </h6>
+                  <div className="flex-align flex-wrap gap-8">
+                    <span className="text-lg text-main-600">
+                      <i className="ph ph-calendar-dots" />
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      <Link
+                        to="/blog-details"
+                        className="text-gray-500 hover-text-main-600"
+                      >
+                        July 12, 2025
+                      </Link>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Recent Post End */}
+            {/* Tags Start */}
+            {/* <div className="blog-sidebar border border-gray-100 rounded-8 p-32 mb-40">
                             <h6 className="text-xl mb-32 pb-32 border-bottom border-gray-100">
                                 Recent Posts
                             </h6>
@@ -675,13 +688,12 @@ const BlogDetails = () => {
                                 </li>
                             </ul>
                         </div> */}
-                        {/* Tags End */}
-                    </div>
-                </div>
-            </div>
-        </section>
+            {/* Tags End */}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-    )
-}
-
-export default BlogDetails
+export default BlogDetails;

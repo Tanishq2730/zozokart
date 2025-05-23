@@ -116,7 +116,7 @@ const ProductRatingAndReview = ({ product,getProduct }) => {
                   key={reviewData._id}
                 >
                   <img
-                    src="assets/images/thumbs/comment-img1.png"
+                    src="/zozo_cart_website/assets/images/thumbs/comment-img1.png"
                     alt="User Avatar"
                     className="w-52 h-52 object-fit-cover rounded-circle flex-shrink-0"
                   />

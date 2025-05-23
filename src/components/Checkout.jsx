@@ -328,7 +328,7 @@ const Checkout = () => {
           order_id: orderData.id,
           name: "ZozoKart",
           description: "Payment for your order",
-          image: "assets/images/logo/logo.png", // Replace with your logo URL
+          image: "/assets/images/logo/logo.png", // Replace with your logo URL
           handler: async (response) => {
             if (response?.razorpay_payment_id) {
               // Payment successful, now place the order

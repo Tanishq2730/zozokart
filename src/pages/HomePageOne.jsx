@@ -117,7 +117,7 @@ const HomePageOne = () => {
               <a className="btn btn-main d-inline-flex align-items-center rounded-pill gap-8 mt-20 mb-20" href="/product">Shop Now<span class="icon text-xl d-flex"><i class="ph ph-arrow-right"></i></span></a>
             </Col>
             <Col md="7">
-              <img src="assets/images/product/p1.png" alt="Logo" width="100%" />
+              <img src="/zozo_cart_website/assets/images/product/p1.png" alt="Logo" width="100%" />
             </Col>
           </Row>
           {/* <Button color="primary" onClick={toggleModal}>

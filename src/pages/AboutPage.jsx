@@ -67,7 +67,7 @@ const AboutPage = () => {
                         <div className="col-md-6">
                             <Fade right>
                                 <div className="mb-10 mt-20">
-                                    <img src="assets/images/common/who-we-are-img.jpg" alt="" className="rounded" width="100%" />
+                                    <img src="/zozo_cart_website/assets/images/common/who-we-are-img.jpg" alt="" className="rounded" width="100%" />
                                 </div>
                             </Fade>
                         </div>
@@ -98,7 +98,7 @@ const AboutPage = () => {
                                     <div className="row">
                                         <dic className="col-2 text-center">
                                             <div className="">
-                                                <img src="assets/images/common/comm-icon-1-72x72.png" alt="" />
+                                                <img src="/zozo_cart_website/assets/images/common/comm-icon-1-72x72.png" alt="" />
                                             </div>
                                         </dic>
                                         <dic className="col-10">
@@ -114,7 +114,7 @@ const AboutPage = () => {
                                     <div className="row">
                                         <dic className="col-2 text-center">
                                             <div className="">
-                                                <img src="assets/images/common/comm-icon-2-72x72.png" alt="" />
+                                                <img src="/zozo_cart_website/assets/images/common/comm-icon-2-72x72.png" alt="" />
                                             </div>
                                         </dic>
                                         <dic className="col-10">
@@ -130,7 +130,7 @@ const AboutPage = () => {
                                     <div className="row">
                                         <dic className="col-2 text-center">
                                             <div className="">
-                                                <img src="assets/images/common/comm-icon-3-72x72.png" alt="" />
+                                                <img src="/zozo_cart_website/assets/images/common/comm-icon-3-72x72.png" alt="" />
                                             </div>
                                         </dic>
                                         <dic className="col-10">
@@ -158,31 +158,31 @@ const AboutPage = () => {
                                     <div className="row">
                                         <div className="col-md-6 mb-10">
                                             <div className="p-10 shadow"> 
-                                                <img src="assets/images/common/aim-icon.png" alt=""  width="50px" />
+                                                <img src="/zozo_cart_website/assets/images/common/aim-icon.png" alt=""  width="50px" />
                                                 <h6>Express Deliver Pure Quality</h6>
                                             </div>
                                         </div>
                                         <div className="col-md-6 mb-10">
                                             <div className="p-10 shadow">
-                                                <img src="assets/images/common/aim-icon-2.png" alt="" width="50px" />
+                                                <img src="/zozo_cart_website/assets/images/common/aim-icon-2.png" alt="" width="50px" />
                                                 <h6>Promote Sustainable Farming</h6>
                                             </div>
                                         </div>
                                         <div className="col-md-6 mb-10">
                                             <div className="p-10 shadow">
-                                                <img src="assets/images/common/aim-icon-3.png" alt="" width="50px" />
+                                                <img src="/zozo_cart_website/assets/images/common/aim-icon-3.png" alt="" width="50px" />
                                                 <h6>Enhance Nutritional Benefits</h6>
                                             </div>
                                         </div>
                                         <div className="col-md-6 mb-10">
                                             <div className="p-10 shadow">
-                                                <img src="assets/images/common/aim-icon-4.png" alt="" width="50px"/>
+                                                <img src="/zozo_cart_website/assets/images/common/aim-icon-4.png" alt="" width="50px"/>
                                                 <h6>Educate on A2 Milk & A2 Ghee</h6>
                                             </div>
                                         </div>
                                         <div className="col-md-6 mb-10">
                                             <div className="p-10 shadow">
-                                                <img src="assets/images/common/aim-icon-5.png" alt="" width="50px"/>
+                                                <img src="/zozo_cart_website/assets/images/common/aim-icon-5.png" alt="" width="50px"/>
                                                 <h6>Uphold Traditional Practices</h6>
                                             </div>
                                         </div>

@@ -45,7 +45,10 @@ const NotificationList = () => {
       {notifications.length === 0 && !loading
         ? <div className="notifyimagCard">
             <div className="notifyImg">
-              <img src="assets/images/notify.png" alt="No Notifications" />
+              <img
+                src="/zozo_cart_website/assets/images/notify.png"
+                alt="No Notifications"
+              />
             </div>
             <h5 className="mb-5" style={{ fontSize: "18px" }}>
               All caught up!

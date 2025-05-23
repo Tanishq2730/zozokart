@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { FaWhatsapp, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import {
+  FaWhatsapp,
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube
+} from "react-icons/fa";
 import { MdEmail, MdLocalPhone, MdLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { fetchCategories } from "../api/homeAPI";
@@ -35,13 +42,17 @@ const FooterOne = () => {
             <div className="footer-column">
               <div className="footer-logo">
                 <Link to="/">
-                  <img src="assets/images/logo/logo.png" alt="Zozo Kart Logo" />
+                  <img
+                    src="/zozo_cart_website/assets/images/logo/logo.png"
+                    alt="Zozo Kart Logo"
+                  />
                 </Link>
               </div>
               <div className="footer-about">
                 <p className="text-white">
-                  At Zozo Kart, we bring you a curated collection of stylish clothing and premium bags,
-                  designed to elevate your fashion statement. Explore our trendy and high-quality products,
+                  At Zozo Kart, we bring you a curated collection of stylish
+                  clothing and premium bags, designed to elevate your fashion
+                  statement. Explore our trendy and high-quality products,
                   crafted for elegance and comfort.
                 </p>
               </div>
@@ -71,13 +82,13 @@ const FooterOne = () => {
               <h3>Categories</h3>
               <div className="footer-links">
                 <ul>
-                  {categories.map((category, index) => (
+                  {categories.map((category, index) =>
                     <li key={index}>
                       <Link to={`/category/${category.slug}`}>
                         {category.name}
                       </Link>
                     </li>
-                  ))}
+                  )}
                 </ul>
               </div>
             </div>
@@ -128,27 +139,29 @@ const FooterOne = () => {
                   <div className="icon">
                     <MdEmail />
                   </div>
-                  <a href="mailto:support@zozokart.in">
-                    support@zozokart.in
-                  </a>
+                  <a href="mailto:support@zozokart.in">support@zozokart.in</a>
                 </div>
                 <div className="footer-contact-item">
                   <div className="icon">
                     <MdLocalPhone />
                   </div>
-                  <a href="tel:+919371290000">
-                    +91 93712 90000
-                  </a>
+                  <a href="tel:+919371290000">+91 93712 90000</a>
                 </div>
               </div>
               <div className="footer-apps">
                 <h4>Download Our App</h4>
                 <div className="footer-apps-container">
                   <a href="#" className="me-2">
-                    <img src="assets/images/thumbs/store-img1.png" alt="App Store" />
+                    <img
+                      src="/zozo_cart_website/assets/images/thumbs/store-img1.png"
+                      alt="App Store"
+                    />
                   </a>
                   <a href="#">
-                    <img src="assets/images/thumbs/store-img2.png" alt="Play Store" />
+                    <img
+                      src="/zozo_cart_website/assets/images/thumbs/store-img2.png"
+                      alt="Play Store"
+                    />
                   </a>
                 </div>
               </div>

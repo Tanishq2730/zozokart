@@ -6,39 +6,41 @@ function CategoryCard({ heading }) {
 
   const categories = [
     {
-      img: "assets/images/product/p6.png",
+      img: "/zozo_cart_website/assets/images/product/p6.png",
       name: "Topwear",
       offer: "Special offer",
-      path: "/product-details",
+      path: "/product-details"
     },
     {
-      img: "assets/images/product/p2.png",
+      img: "/zozo_cart_website/assets/images/product/p2.png",
       name: "Bottomwear",
       offer: "Limited Deal",
-      path: "/product-details",
+      path: "/product-details"
     },
     {
-      img: "assets/images/product/p4.png",
+      img: "/zozo_cart_website/assets/images/product/p4.png",
       name: "Footwear",
       offer: "Exclusive Discount",
-      path: "/product-details",
+      path: "/product-details"
     },
     {
-      img: "assets/images/product/p1.png",
+      img: "/zozo_cart_website/assets/images/product/p1.png",
       name: "Accessories",
       offer: "Hot Sale",
-      path: "/product-details",
-    },
+      path: "/product-details"
+    }
   ];
 
   return (
     <div className="catcardSection">
       <div className="cardHead">
-        <h5>{heading}</h5>
+        <h5>
+          {heading}
+        </h5>
         <button className="btn btn-primary">›</button>
       </div>
       <div className="row">
-        {categories.map((category, index) => (
+        {categories.map((category, index) =>
           <div className="col-md-6" key={index}>
             <div
               className="categorycard"
@@ -46,11 +48,15 @@ function CategoryCard({ heading }) {
               style={{ cursor: "pointer" }}
             >
               <img src={category.img} alt={category.name} />
-              <span>{category.name}</span>
-              <h5>{category.offer}</h5>
+              <span>
+                {category.name}
+              </span>
+              <h5>
+                {category.offer}
+              </h5>
             </div>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );

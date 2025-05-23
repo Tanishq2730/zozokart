@@ -1,11 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import { fetchCategories } from "../api/homeAPI";
+import { Link, useNavigate } from "react-router-dom";
+import { fetchCategories, fetchSubCategoriesOne, fetchSubCategoriesTwo } from "../api/homeAPI";
 import { useEffect, useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
+import { IMAGE_URL } from "../utils/api-config";
 
 export default function HomeCategoryHeader() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
+  const [subCategoriesOne, setSubCategoriesOne] = useState([]);
+  const [subCategoriesTwo, setSubCategoriesTwo] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeSubCategory, setActiveSubCategory] = useState(null);
@@ -24,47 +27,39 @@ export default function HomeCategoryHeader() {
     }
   };
 
+  const getSubCategoriesOne = async () => {
+    try {
+      const data = await fetchSubCategoriesOne();
+      if (data.success) {
+        console.log(data.data);
+        setSubCategoriesOne(data.data);
+      }
+    } catch (error) {
+      console.error("Error fetching banners:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getSubCategoriesTwo = async () => {
+    try {
+      const data = await fetchSubCategoriesTwo();
+      if (data.success) {
+        console.log(data.data);
+        setSubCategoriesTwo(data.data);
+      }
+    } catch (error) {
+      console.error("Error fetching banners:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     getCategories();
+    getSubCategoriesOne();
+    getSubCategoriesTwo();
   }, []);
-
-  // Sample subcategories data (you can replace this with your API data)
-  const subCategories = {
-    featured: {
-      title: "Featured",
-      items: [
-        "New Arrivals",
-        "Best Sellers",
-        "Top Rated",
-        "Most Popular",
-        "Featured Brands",
-      ],
-    },
-    shopBy: {
-      title: "Shop By",
-      items: ["Price Range", "Discount", "Brand", "Rating", "Availability"],
-    },
-    priceRange: {
-      title: "Price Range",
-      items: [
-        "Under ₹499",
-        "₹500 - ₹999",
-        "₹1000 - ₹1999",
-        "₹2000 - ₹4999",
-        "Above ₹5000",
-      ],
-    },
-    collections: {
-      title: "Collections",
-      items: [
-        "Premium Collection",
-        "Trending Now",
-        "New Releases",
-        "Special Offers",
-        "Clearance Sale",
-      ],
-    },
-  };
 
   return (
     <>
@@ -192,49 +187,89 @@ export default function HomeCategoryHeader() {
                       setActiveSubCategory(category._id);
                     }}
                   >
-                    <div className="category-header">
-                      <img
-                        src="/assets/images/category/categoryImg.png"
-                        alt={category.name}
-                      />
-                      <div>
-                        <span>{category.name}</span>
-                        <MdKeyboardArrowDown className="arrow-icon" />
+                    <a
+                      href="#"
+                      onClick={e => {
+                        e.preventDefault();
+                        navigate("/product", {
+                          state: {
+                            categoryId: category._id
+                          }
+                        });
+                      }}
+                    >
+                      <div className="category-header">
+                        <img
+                          src={`${IMAGE_URL}/${category.image}`}
+                          alt={category.name}
+                        />
+                        <div>
+                          <span>{category.name}</span>
+                          <MdKeyboardArrowDown className="arrow-icon" />
+                        </div>
                       </div>
-                    </div>
+                    </a>
 
                     {activeCategory === category._id && (
                       <div className="submenu">
                         <div className="submenu-categories">
-                          {Object.keys(subCategories).map((key) => (
+                          {subCategoriesOne
+                            .filter(sub1 => sub1.categoryId === category._id)
+                            .map(sub1 => (
+                              <div
+                                key={sub1._id}
+                                className={`submenu-category ${activeSubCategory === sub1._id ? "active" : ""}`}
+                                onMouseEnter={() => setActiveSubCategory(sub1._id)}
+                              >
+                                <a
+                                  href="#"
+                                  onClick={e => {
+                                    e.preventDefault();
+                                    navigate("/product", {
+                                      state: {
+                                        categoryId: category._id,
+                                        subCategoryOneId: sub1._id
+                                      }
+                                    });
+                                  }}
+                                >
+                                  <span>{sub1.name}</span>
+                                </a>
+                                <MdKeyboardArrowRight className="arrow-icon" />
+                              </div>
+                            ))}
+                        </div>
+
+                        {subCategoriesOne
+                          .filter(sub1 => sub1.categoryId === category._id)
+                          .map(sub1 => (
                             <div
-                              key={key}
-                              className={`submenu-category ${
-                                activeSubCategory === key ? "active" : ""
-                              }`}
-                              onMouseEnter={() => setActiveSubCategory(key)}
+                              key={sub1._id}
+                              className={`submenu-items ${activeSubCategory === sub1._id ? "active" : ""}`}
                             >
-                              <span>{subCategories[key].title}</span>
-                              <MdKeyboardArrowRight className="arrow-icon" />
+                              <div className="submenu-items-list">
+                                {subCategoriesTwo
+                                  .filter(sub2 => sub2.subCategoryOneId === sub1._id)
+                                  .map(sub2 => (
+                                    <a
+                                      href="#"
+                                      onClick={e => {
+                                        e.preventDefault();
+                                        navigate("/product", {
+                                          state: {
+                                            categoryId: category._id,
+                                            subCategoryOneId: sub1._id,
+                                            subCategoryTwoId: sub2._id
+                                          }
+                                        });
+                                      }}
+                                    >
+                                      {sub2.name}
+                                    </a>
+                                  ))}
+                              </div>
                             </div>
                           ))}
-                        </div>
-                        {Object.keys(subCategories).map((key) => (
-                          <div
-                            key={key}
-                            className={`submenu-items ${
-                              activeSubCategory === key ? "active" : ""
-                            }`}
-                          >
-                            <div className="submenu-items-list">
-                              {subCategories[key].items.map((item, index) => (
-                                <a key={index} href="#">
-                                  {item}
-                                </a>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
                       </div>
                     )}
                   </div>

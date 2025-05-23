@@ -137,7 +137,7 @@ export default function HeaderOne() {
                   className="h3 fw-bold mb-0 logo"
                   onClick={() => navigate(`/`)}
                 >
-                  <img src="assets/images/logo/logo.png" alt="Logo" />
+                  <img src="/zozo_cart_website/assets/images/logo/logo.png" alt="Logo" />
                 </div>
               </div>
 

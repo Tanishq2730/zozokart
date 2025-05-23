@@ -9,7 +9,7 @@ const LoaderOverlay = () => {
   return (
     <div style={styles.loaderOverlay}>
       <div className="preloader">
-        <img src="assets/images/icon/preloader.gif" alt="" />
+        <img src="/zozo_cart_website/assets/images/icon/preloader.gif" alt="" />
       </div>
     </div>
   );

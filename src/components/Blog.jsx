@@ -24,7 +24,7 @@ const Blog = () => {
                                             <Link to="/blog-details">
                                                 <div className="blog-image">
                                                     <img
-                                                        src="assets/images/common/blog-1.jpg"
+                                                        src="/zozo_cart_website/assets/images/common/blog-1.jpg"
                                                         alt=""
                                                         className="rounded"
                                                     />
@@ -53,7 +53,7 @@ const Blog = () => {
                                             <Link to="/blog-details">
                                                 <div className="blog-image">
                                                     <img
-                                                        src="assets/images/common/blog-2.jpg"
+                                                        src="/zozo_cart_website/assets/images/common/blog-2.jpg"
                                                         alt=""
                                                         className="rounded"
                                                     />
@@ -83,7 +83,7 @@ const Blog = () => {
                                             <Link to="/blog-details">
                                                 <div className="blog-image">
                                                     <img
-                                                        src="assets/images/common/blog-3.jpg"
+                                                        src="/zozo_cart_website/assets/images/common/blog-3.jpg"
                                                         alt=""
                                                         className="rounded"
                                                     />
@@ -112,7 +112,7 @@ const Blog = () => {
                                             <Link to="/blog-details">
                                                 <div className="blog-image">
                                                     <img
-                                                        src="assets/images/common/blog-3.jpg"
+                                                        src="/zozo_cart_website/assets/images/common/blog-3.jpg"
                                                         alt=""
                                                         className="rounded"
                                                     />
@@ -143,7 +143,7 @@ const Blog = () => {
                                                 className="w-100 h-100 rounded-16 overflow-hidden"
                                             >
                                                 <img
-                                                    src="assets/images/thumbs/blog-img2.png"
+                                                    src="/zozo_cart_website/assets/images/thumbs/blog-img2.png"
                                                     alt=""
                                                     className="cover-img"
                                                 />
@@ -201,7 +201,7 @@ const Blog = () => {
                                                 className="w-100 h-100 rounded-16 overflow-hidden"
                                             >
                                                 <img
-                                                    src="assets/images/thumbs/blog-img3.png"
+                                                    src="/zozo_cart_website/assets/images/thumbs/blog-img3.png"
                                                     alt=""
                                                     className="cover-img"
                                                 />
@@ -362,7 +362,7 @@ const Blog = () => {
                                     className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
                                 >
                                     <img
-                                        src="assets/images/thumbs/recent-post1.png"
+                                        src="/zozo_cart_website/assets/images/thumbs/recent-post1.png"
                                         alt=""
                                         className="cover-img"
                                     />
@@ -394,7 +394,7 @@ const Blog = () => {
                                     className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
                                 >
                                     <img
-                                        src="assets/images/thumbs/recent-post2.png"
+                                        src="/zozo_cart_website/assets/images/thumbs/recent-post2.png"
                                         alt=""
                                         className="cover-img"
                                     />
@@ -426,7 +426,7 @@ const Blog = () => {
                                     className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
                                 >
                                     <img
-                                        src="assets/images/thumbs/recent-post3.png"
+                                        src="/zozo_cart_website/assets/images/thumbs/recent-post3.png"
                                         alt=""
                                         className="cover-img"
                                     />
@@ -458,7 +458,7 @@ const Blog = () => {
                                     className="w-100 h-100 rounded-4 overflow-hidden w-120 h-120 flex-shrink-0"
                                 >
                                     <img
-                                        src="assets/images/thumbs/recent-post4.png"
+                                        src="/zozo_cart_website/assets/images/thumbs/recent-post4.png"
                                         alt=""
                                         className="cover-img"
                                     />
