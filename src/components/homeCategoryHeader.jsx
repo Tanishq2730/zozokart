@@ -192,23 +192,11 @@ export default function HomeCategoryHeader() {
                       setActiveSubCategory(category._id);
                     }}
                   >
-<<<<<<< Updated upstream
                     <div className="category-header">
                       <img
                         src="/assets/images/category/categoryImg.png"
                         alt={category.name}
                       />
-=======
-                    <div
-                      className="category-header"
-                      onClick={() =>
-                        navigate("/product", {
-                          state: { categoryId: category._id },
-                        })
-                      }
-                    >
-                      <img src="assets/images/category/categoryImg.png" />
->>>>>>> Stashed changes
                       <div>
                         <span>{category.name}</span>
                         <MdKeyboardArrowDown className="arrow-icon" />
