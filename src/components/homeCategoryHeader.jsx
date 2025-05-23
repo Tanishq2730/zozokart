@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { fetchCategories } from "../api/homeAPI";
 import { useEffect, useState } from "react";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
 
 export default function HomeCategoryHeader() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [activeSubCategory, setActiveSubCategory] = useState(null);
 
   const getCategories = async () => {
     try {
@@ -26,6 +27,44 @@ export default function HomeCategoryHeader() {
   useEffect(() => {
     getCategories();
   }, []);
+
+  // Sample subcategories data (you can replace this with your API data)
+  const subCategories = {
+    featured: {
+      title: "Featured",
+      items: [
+        "New Arrivals",
+        "Best Sellers",
+        "Top Rated",
+        "Most Popular",
+        "Featured Brands",
+      ],
+    },
+    shopBy: {
+      title: "Shop By",
+      items: ["Price Range", "Discount", "Brand", "Rating", "Availability"],
+    },
+    priceRange: {
+      title: "Price Range",
+      items: [
+        "Under ₹499",
+        "₹500 - ₹999",
+        "₹1000 - ₹1999",
+        "₹2000 - ₹4999",
+        "Above ₹5000",
+      ],
+    },
+    collections: {
+      title: "Collections",
+      items: [
+        "Premium Collection",
+        "Trending Now",
+        "New Releases",
+        "Special Offers",
+        "Clearance Sale",
+      ],
+    },
+  };
 
   return (
     <>
@@ -47,7 +86,7 @@ export default function HomeCategoryHeader() {
             gap: 8px;
             padding: 8px;
             position: relative;
-                flex-direction: column;
+            flex-direction: column;
           }
 
           .category-header img {
@@ -56,32 +95,20 @@ export default function HomeCategoryHeader() {
             object-fit: contain;
           }
 
-          .category-header span {
-            margin-right: 0px; /* Add space for the arrow */
-          }
-
-          .arrow-icon {
-            font-size: 20px;
-            color: currentColor;
-          }
-
-          .innercatcard:hover .arrow-icon {
-            transform: translateY(0%) rotate(-180deg);
-          }
-
           .submenu {
             position: absolute;
             top: 100%;
             left: 0;
             background: white;
-            min-width: 600px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 4px 16px 0 rgba(0,0,0,.2);
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: all 0.3s ease;
             z-index: 1000;
+            display: flex;
+            text-align: left;
           }
 
           .innercatcard:hover .submenu {
@@ -90,48 +117,66 @@ export default function HomeCategoryHeader() {
             transform: translateY(0);
           }
 
-          .submenu-content {
+          .submenu-categories {
+            width: 200px;
+            background: #f9f9f9;
+            padding: 15px 0;
+            border-right: 1px solid #eee;
+          }
+
+          .submenu-category {
+            padding: 12px 20px;
             display: flex;
-            padding: 24px;
-            gap: 32px;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
           }
 
-          .submenu-column {
+          .submenu-category:hover {
+            background: white;
+            color: #2874f0;
+          }
+
+          .submenu-category.active {
+            background: white;
+            color: #2874f0;
+          }
+
+          .submenu-items {
             flex: 1;
+            padding: 15px 20px;
+            display: none;
           }
 
-          .submenu-column h4 {
-            color: #333;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 16px;
+          .submenu-items.active {
+            display: block;
           }
 
-          .submenu-links {
+          .submenu-items-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
           }
 
-          .submenu-links a {
+          .submenu-items-list a {
             color: #666;
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.2s ease;
+            padding: 4px 0;
+            transition: color 0.2s;
           }
 
-          .submenu-links a:hover {
+          .submenu-items-list a:hover {
+            color: #2874f0;
+          }
+
+          .arrow-icon {
+            font-size: 16px;
             color: #000;
-          }
-
-          /* Adjust submenu position for items near the right edge */
-          .innercatcard:nth-last-child(-n+3) .submenu {
-            left: auto;
-            right: 0;
           }
         `}
       </style>
-      {/* Categories Navigation */}
       <div className="headerCategory">
         <nav className="headcat text-white py-5">
           <div className="container-fluid">
@@ -142,56 +187,54 @@ export default function HomeCategoryHeader() {
                     key={category._id}
                     className="innercatcard"
                     onMouseEnter={() => setActiveCategory(category._id)}
-                    onMouseLeave={() => setActiveCategory(null)}
+                    onMouseLeave={() => {
+                      setActiveCategory(category._id);
+                      setActiveSubCategory(category._id);
+                    }}
                   >
-                    <div
-                      className="category-header"
-                      onClick={() =>
-                        navigate("/product", {
-                          state: { categoryId: category._id },
-                        })
-                      }
-                    >
-                      <img src="/assets/images/category/categoryImg.png" />
+                    <div className="category-header">
+                      <img
+                        src="/assets/images/category/categoryImg.png"
+                        alt={category.name}
+                      />
                       <div>
                         <span>{category.name}</span>
-                        <MdKeyboardArrowDown
-                          className="arrow-icon"
-                          style={{ color: "#000" }}
-                        />
+                        <MdKeyboardArrowDown className="arrow-icon" />
                       </div>
                     </div>
 
                     {activeCategory === category._id && (
                       <div className="submenu">
-                        <div className="submenu-content">
-                          <div className="submenu-column">
-                            <h4>Featured {category.name}</h4>
-                            <div className="submenu-links">
-                              <a href="#">New Arrivals</a>
-                              <a href="#">Best Sellers</a>
-                              <a href="#">Top Rated</a>
+                        <div className="submenu-categories">
+                          {Object.keys(subCategories).map((key) => (
+                            <div
+                              key={key}
+                              className={`submenu-category ${
+                                activeSubCategory === key ? "active" : ""
+                              }`}
+                              onMouseEnter={() => setActiveSubCategory(key)}
+                            >
+                              <span>{subCategories[key].title}</span>
+                              <MdKeyboardArrowRight className="arrow-icon" />
                             </div>
-                          </div>
-                          <div className="submenu-column">
-                            <h4>Shop By</h4>
-                            <div className="submenu-links">
-                              <a href="#">Price</a>
-                              <a href="#">Discount</a>
-                              <a href="#">Brand</a>
-                              <a href="#">Rating</a>
-                            </div>
-                          </div>
-                          <div className="submenu-column">
-                            <h4>Collections</h4>
-                            <div className="submenu-links">
-                              <a href="#">Premium {category.name}</a>
-                              <a href="#">Trending Now</a>
-                              <a href="#">New Releases</a>
-                              <a href="#">Special Offers</a>
-                            </div>
-                          </div>
+                          ))}
                         </div>
+                        {Object.keys(subCategories).map((key) => (
+                          <div
+                            key={key}
+                            className={`submenu-items ${
+                              activeSubCategory === key ? "active" : ""
+                            }`}
+                          >
+                            <div className="submenu-items-list">
+                              {subCategories[key].items.map((item, index) => (
+                                <a key={index} href="#">
+                                  {item}
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>

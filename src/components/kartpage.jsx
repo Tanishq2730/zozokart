@@ -178,7 +178,7 @@ const KartPage = () => {
   ) : (
     <section className="empty-cart">
       <h3>Your cart is empty!</h3>
-      <Link to="/" className="btn-main">
+      <Link to="/" className="btn btn-primary">
         Continue Shopping
       </Link>
     </section>

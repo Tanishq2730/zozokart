@@ -1442,7 +1442,7 @@ ul.why-us-bx li {
   .count {
     margin: 10px 10px !important;
     border: 1px solid #ccc;
-    padding: 2px 20px;
+    // padding: 2px 20px;
     text-align: center;
   }
 }
@@ -1928,4 +1928,13 @@ ul.why-us-bx li {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+.empty-cart{
+  text-align: center;
+  background-color: #fff;
+  width: 40%;
+  margin: 2em auto;
+  padding: 2em;
 }
