@@ -4,7 +4,9 @@ import { getOrders } from "../api/dashboardAPI";
 import { IMAGE_URL } from "../utils/api-config";
 
 const OrderData = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const [orders, setOrders] = useState([]);
+  const [filterOrders, setFilterOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({ orderStatus: [], orderTime: [] });
 
@@ -13,6 +15,7 @@ const OrderData = () => {
       const data = await getOrders(filters);
       if (data.success) {
         setOrders(data.data);
+        setFilterOrders(data.data);
       }
     } catch (error) {
       console.error("Error fetching banners:", error);
@@ -55,6 +58,27 @@ const OrderData = () => {
     ...Array.from({ length: 5 }, (_, i) => (currentYear - i).toString()),
     "Older"
   ];
+
+  const handleSearch = () => {
+    const keyword = searchQuery.toLowerCase();
+  
+    const filtered = orders.filter(order =>
+      order.orderRows[0]?.productId?.name?.toLowerCase().includes(keyword)
+    );
+  
+    setFilterOrders(filtered);
+  };
+
+  useEffect(() => {
+    const keyword = searchQuery.toLowerCase();
+  
+    const filtered = orders.filter(order =>
+      order.orderRows[0]?.productId?.name?.toLowerCase().includes(keyword) || 
+      order.orderStatus.toLowerCase().includes(keyword)
+    );
+  
+    setFilterOrders(filtered);
+  }, [searchQuery, orders]);
 
   return (
     <div className="container my-20 my-5">
@@ -113,19 +137,22 @@ const OrderData = () => {
               type="text"
               className="form-control"
               placeholder="Search your orders here"
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') handleSearch();
+              }}
             />
             <button className="btn btn-primary" type="button">
               <i className="bi bi-search" /> Search Orders
             </button>
           </div>
           {/* Order Card */}
-          {orders.map(order =>
+          {filterOrders.map(order =>
             <div className="card mb-3 mx-3 productDetailing">
               <div className="row g-0 align-items-center p-20">
                 <div className="col-md-2 text-center">
                   <img
-                    src={`${IMAGE_URL}${order.orderRows[0].productVariationId
-                      .image}`}
+                    src={`${IMAGE_URL}/${order.orderRows[0]?.productVariationId?.image || order.orderRows[0]?.productId?.images.mainImage}`}
                     className="img-fluid p-2"
                     alt="product"
                   />
