@@ -2,33 +2,51 @@ import React, { useState, useEffect } from "react";
 import { Modal, ModalHeader, ModalBody, Button, Row, Col } from "reactstrap";
 import Preloader from "../helper/Preloader";
 import HeaderOne from "../components/HeaderOne";
-import BannerOne from "../components/BannerOne";
 import PromotionalOne from "../components/PromotionalOne";
-import RecommendedOne from "../components/RecommendedOne";
-import DeliveryOne from "../components/DeliveryOne";
-import ShippingOne from "../components/ShippingOne";
 import FooterOne from "../components/FooterOne";
 import BottomFooter from "../components/BottomFooter";
 import ScrollToTop from "react-scroll-to-top";
 import ColorInit from "../helper/ColorInit";
 import GraceCowFullVideo from "../components/GraceCowFullVideo";
-import WhyUs from "../components/WhyUs";
-import VideoGrid from "../components/VideoGrid";
-import InstagramFeed from "../components/InstagramFeed";
-import TestimonialsFeed from "../components/TestimonialsFeed";
-import BlogGrid from "../components/BlogGrid";
 import Banner from "../components/Banner";
 import Beauty from "../components/Beauty";
 import Adscatgory from "../components/adscatgory";
 import CategorySection from "../components/categorySection";
 import HomeCategoryHeader from "../components/homeCategoryHeader";
-import CommonCategoryHeader from "../components/commonCategoryHeader";
+import { fetchWebsiteHomePageContent } from "../api/homeAPI";
+import SectionOne from "../components/homePageSections/SectionOne";
+import SectionTwo from "../components/homePageSections/SectionTwo";
+import SectionThree from "../components/homePageSections/SectionThree";
+import SectionFourFiveSix from "../components/homePageSections/sectionFourFiveSix";
+import SectionSeven from "../components/homePageSections/SectionSeven";
+import SectionEight from "../components/homePageSections/SectionEight";
+import SectionNine from "../components/homePageSections/sectionNine";
+
 const HomePageOne = () => {
   // State to control the popup visibility
   const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [homePage, setHomePage] = useState();
 
   // Function to toggle the modal
   const toggleModal = () => setModalOpen(!modalOpen);
+
+  const getHomePageContent = async () => {
+    try {
+      const data = await fetchWebsiteHomePageContent();
+      if (data.success) {
+        setHomePage(data.data);
+      }
+    } catch (error) {
+      console.error("Error fetching home page content:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getHomePageContent();
+  }, []);
 
   // Open the modal on page load
   useEffect(() => {
@@ -60,23 +78,30 @@ const HomePageOne = () => {
       {/* <BannerOne /> */}
 
       {/* PromotionalOne */}
-      <PromotionalOne />
+      {/* <PromotionalOne /> */}
+      <SectionOne homePage={homePage}/>
+      <SectionTwo homePage={homePage}/>
+      <SectionThree homePage={homePage}/>
+      <SectionFourFiveSix homePage={homePage}/>
+      <SectionSeven homePage={homePage}/>
+      <SectionEight homePage={homePage}/>
+      <SectionNine homePage={homePage}/>
 
       {/* beauty  */}
-      <Beauty/>
+      {/* <Beauty/> */}
 
       {/* ads */}
-      <Adscatgory/>
+      {/* <Adscatgory/> */}
 
-      <CategorySection/>
+      {/* <CategorySection/> */}
 
       {/* beauty  */}
-      <Beauty/>
+      {/* <Beauty/> */}
       {/* ads */}
-      <Adscatgory/>
+      {/* <Adscatgory/> */}
 
       {/* fullvedeo */}
-      <GraceCowFullVideo />
+      {/* <GraceCowFullVideo /> */}
 
       {/* <WhyUs/> */}
 

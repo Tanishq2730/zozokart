@@ -93,3 +93,16 @@ export const fetchNewArrivals = async () => {
   }
 };
 
+export const fetchWebsiteHomePageContent = async () => {
+  try {
+    const response = await axios.get(
+      `${API_CONFIG.baseURL}/web/get-website-home-page-content`,
+      { headers: API_CONFIG.headers } // Pass headers correctly
+    );
+    return response.data; // Axios automatically parses JSON
+  } catch (error) {
+    return error.response?.data;
+    // throw new Error(error.response?.data?.message || "No new arrivals found");
+  }
+};
+

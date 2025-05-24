@@ -8,13 +8,14 @@ import {
   FaYoutube
 } from "react-icons/fa";
 import { MdEmail, MdLocalPhone, MdLocationOn } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchCategories } from "../api/homeAPI";
 import "./FooterOne.scss";
 
 const FooterOne = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const getCategories = async () => {
     try {
@@ -45,7 +46,12 @@ const FooterOne = () => {
                   <img
                     src="/zozo_cart_website/assets/images/logo/logo.png"
                     alt="Zozo Kart Logo"
-                    style={{filter:'none !important',width:"35%",marginBottom:'1em',borderRadius:'10px'}}
+                    style={{
+                      filter: "none !important",
+                      width: "35%",
+                      marginBottom: "1em",
+                      borderRadius: "10px"
+                    }}
                   />
                 </Link>
               </div>
@@ -85,9 +91,19 @@ const FooterOne = () => {
                 <ul>
                   {categories.map((category, index) =>
                     <li key={index}>
-                      <Link to={`/category/${category.slug}`}>
+                      <a
+                        href="#"
+                        onClick={e => {
+                          e.preventDefault();
+                          navigate("/product", {
+                            state: {
+                              categoryId: category._id
+                            }
+                          });
+                        }}
+                      >
                         {category.name}
-                      </Link>
+                      </a>
                     </li>
                   )}
                 </ul>
