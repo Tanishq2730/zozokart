@@ -70,9 +70,17 @@ const ProductDetailsOne = ({ product, onAddToCart }) => {
       setAttributeOptions(newOptions);
 
       // Update images based on the selected variation (if the variation has specific images)
-      if (selectedVariation.images?.length > 0) {
+      if (selectedVariation.image) {
+        let imagesArray = [
+          selectedVariation.image,
+          ...(selectedVariation.additionalImages || []),
+        ]
+        imagesArray = imagesArray.concat([
+          product.images.mainImage,
+          ...(product.images.galleryImages || []),
+        ].filter(Boolean));
         setProductImages(
-          selectedVariation.images.map((img) => `${IMAGE_URL}/${img}`)
+          imagesArray.map((img) => `${IMAGE_URL}/${img}`)
         );
       } else if (product?.images) {
         const imagesArray = [
