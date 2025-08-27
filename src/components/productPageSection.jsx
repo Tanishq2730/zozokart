@@ -11,7 +11,7 @@ const ProductPageSection = () => {
   const [filtersLoading, setFiltersLoading] = useState(true);
   const location = useLocation();
   const { categoryId, searchKey } = location.state || {};
-
+  
   const getProducts = async (filters) => {
     setLoading(true);
     try {

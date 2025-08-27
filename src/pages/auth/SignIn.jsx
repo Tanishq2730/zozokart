@@ -30,7 +30,7 @@ const SignIn = () => {
 			const data = {
 				emailOrPhone:emailOrPhone
 			}
-			const response = await login(data);
+			const response = await login({...data, loginType:'customer'});
 			if (response.success == true) {
 				showToast('success', response.message)
 				navigate('/sign-in-otp-page', { state: { emailOrPhone } }); // Redirect upon successful login

@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/zozo_cart_website/static/css/main.7c654223.css",
-    "main.js": "/zozo_cart_website/static/js/main.8901f5e5.js",
+    "main.js": "/zozo_cart_website/static/js/main.6e2f1adf.js",
     "static/js/87.3b11e409.chunk.js": "/zozo_cart_website/static/js/87.3b11e409.chunk.js",
     "static/css/126.cdc34bde.chunk.css": "/zozo_cart_website/static/css/126.cdc34bde.chunk.css",
-    "static/js/126.b878651f.chunk.js": "/zozo_cart_website/static/js/126.b878651f.chunk.js",
+    "static/js/126.4b7405a5.chunk.js": "/zozo_cart_website/static/js/126.4b7405a5.chunk.js",
     "static/js/724.3e1e1f61.chunk.js": "/zozo_cart_website/static/js/724.3e1e1f61.chunk.js",
     "static/css/219.31d6cfe0.chunk.css": "/zozo_cart_website/static/css/219.31d6cfe0.chunk.css",
     "static/js/219.21c24dee.chunk.js": "/zozo_cart_website/static/js/219.21c24dee.chunk.js",
@@ -55,10 +55,10 @@
     "static/media/slick.woff": "/zozo_cart_website/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/zozo_cart_website/index.html",
     "main.7c654223.css.map": "/zozo_cart_website/static/css/main.7c654223.css.map",
-    "main.8901f5e5.js.map": "/zozo_cart_website/static/js/main.8901f5e5.js.map",
+    "main.6e2f1adf.js.map": "/zozo_cart_website/static/js/main.6e2f1adf.js.map",
     "87.3b11e409.chunk.js.map": "/zozo_cart_website/static/js/87.3b11e409.chunk.js.map",
     "126.cdc34bde.chunk.css.map": "/zozo_cart_website/static/css/126.cdc34bde.chunk.css.map",
-    "126.b878651f.chunk.js.map": "/zozo_cart_website/static/js/126.b878651f.chunk.js.map",
+    "126.4b7405a5.chunk.js.map": "/zozo_cart_website/static/js/126.4b7405a5.chunk.js.map",
     "724.3e1e1f61.chunk.js.map": "/zozo_cart_website/static/js/724.3e1e1f61.chunk.js.map",
     "219.21c24dee.chunk.js.map": "/zozo_cart_website/static/js/219.21c24dee.chunk.js.map",
     "74.2a9888d8.chunk.js.map": "/zozo_cart_website/static/js/74.2a9888d8.chunk.js.map",
@@ -104,6 +104,6 @@
   },
   "entrypoints": [
     "static/css/main.7c654223.css",
-    "static/js/main.8901f5e5.js"
+    "static/js/main.6e2f1adf.js"
   ]
 }
